@@ -1,0 +1,12 @@
+<TableIdentification>
+<TableStructure names="Table">
+	<TableTagNames>Table</TableTagNames>
+	<TableCaptionPaths><TableCapPath>Caption</TableCapPath></TableCaptionPaths>
+	<TableHeaderCellPath>tgroup/thead/row/entry</TableHeaderCellPath>
+	<TableBodyCellPath>tgroup/tbody/row/entry</TableBodyCellPath>
+	<TableFooterCellPath>tfooter</TableFooterCellPath>
+	<TableRowTagXpath tagname="row">tgroup/tbody/row</TableRowTagXpath>
+	<TableColumnTagXpathWRTrow tagname="entry">entry</TableColumnTagXpathWRTrow>
+	<TableCoulumInformationXPath columnNoaAttr="colnum" columnwidthAttr="" columnname="colname">tgroup/colspec</TableCoulumInformationXPath>	
+</TableStructure>
+</TableIdentification>

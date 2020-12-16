@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpRaven" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Acdc.JournalPreprocessor\Acdc.JournalPreprocessor.vbproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.CMS.Communicator\Acdc.Preprocessor.CMS.Communicator.csproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.Logging\Acdc.Preprocessor.Logging.csproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.Settings\Acdc.Preprocessor.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,1115 @@
+<root>
+<!-- ============================================================================================================================================================== -->
+<PlaceEnter>
+	<!-- Para start-->
+	<node override="false" position="after" Insertionnode="vbnewline">.//Para[not(@cs_tablefigure) and not(.='')and not(ancestor::Footnote) and not(child::Equation) and not(parent::ItemContent) and not(child::BlockQuote) and not(child::DefinitionList)]</node><!--  position="first"  position="last"  position="after"  position="before" -->
+	<node override="true" position="after" Insertionnode="vbnewline">.//OrderedList/ListItem[not(position()=last())]/ItemContent/Para</node>
+	<node override="true" position="after" Insertionnode="vbnewline">.//OrderedList/ListItem[position()=last()]/ItemContent/Para[not(position()=last())]</node>
+	<node override="true" position="after" Insertionnode="vbnewline">.//UnorderedList/ItemContent[not(position()=last())]/Para</node>
+	<node override="true" position="after" Insertionnode="vbnewline">.//UnorderedList/ItemContent[position()=last()]/Para[not(position()=last())]</node>
+	<!-- Para end-->
+	<!-- Section Heading start-->
+	<node override="false" position="after" Insertionnode="vbnewline">.//Section7/Heading[not(.='')]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//Section6/Heading[not(.='')]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//Section5/Heading[not(.='')]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//Section4/Heading[not(.='')]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//Section3/Heading[not(.='')]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//Section2/Heading[not(.='')]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//Section1/Heading[not(.='')]</node>
+	<!-- Section Heading end-->
+	<!-- Journal Title Frame start-->
+	<node override="false" position="after" Insertionnode="vbnewline">.//cs_text[@type='journaltitle']/ArticleTitle[following-sibling::*]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//cs_text[@type='journaltitle']/ArticleSubTitle[following-sibling::*]</node>
+	<node override="false" position="after" Insertionnode="vbnewline">.//cs_text[@type='journaltitle']/cs_text[@type='authname' and following-sibling::*]</node>
+	<node override="false" position="after" Insertionnode="nonbreakingspace_middot_space">.//cs_text[@type='authname']/AuthorName[not(position()=last())]/FamilyName</node>
+	
+	<node override="false" position="before" Insertionnode="nonbreakingspace_middot_space">.//cs_text[@type='authname']/InstitutionalAuthorName</node>
+
+	<node override="true" position="after" Insertionnode="vbnewline">.//cs_text[@type='articleaddress']/Affiliation[following-sibling::*]</node>
+	<node override="true" position="after" Insertionnode="vbnewline">.//cs_text[@type='articleaddress' and following-sibling::*]</node>
+	<node override="false" position="before" Insertionnode="space">.//cs_text[@type='authname']/AuthorName/FamilyName/Suffix[following-sibling::*]</node>
+	<!-- Journal Title Frame end-->
+	<!-- Abstarct_keyword start-->
+ 	<node override="false"  position="after" Insertionnode="emspace">.//cs_text[@type='abstract_keyword']/Abstract[not(child::AbstractSection)]/Heading[not(.='')]</node> 
+	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='abstract_keyword']/Abstract[child::AbstractSection]/Heading[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="emspace">.//cs_text[@type='abstract_keyword']/KeywordGroup/Heading[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='abstract_keyword']/KeywordGroup</node>
+	<node override="false"  position="after" Insertionnode="emspace">.//AbstractSection/Heading[not(.='') and not(@cs_type='graphicalAbs')]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//AbstractSection/Heading[not(.='') and (@cs_type='graphicalAbs')]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='abstract_keyword']/ArticleSubTitle[following-sibling::*]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Abstract/Para[@cs_position]/preceding-sibling::Heading</node>
+	<!--  Abstarct_keyword end-->
+	<!-- Reference start-->
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Bibliography//Heading[not(.='')]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//Citation</node>
+<!-- 	<node override="false"  position="after" Insertionnode="vbnewline">.//Bibliography//BibUnstructured</node> -->
+	<node override="false"  position="after" Insertionnode="vbtab">.//Bibliography//CitationNumber</node>
+	<!--  Reference end-->
+	<!-- Equation start -->
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Equation[not(following-sibling::*[position()=1 and local-name()='Equation'])]</node>
+	<node override="false"  position="before" Insertionnode="vbnewline">.//Equation</node>
+	
+	<node override="true"  position="first" Insertionnode="RightIndentTab">.//Equation/EquationNumber</node>
+	<!-- Equation end -->
+	<!-- Table start -->
+<!-- 	<node override="false"  position="after" Insertionnode="enspace">.//Table//CaptionNumber[not(.='')]</node> -->
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Table//SimplePara[not(position()=last())]</node>
+	<!-- Table end -->
+	<!-- Figure start -->
+	<node override="false"  position="after" Insertionnode="enspace">.//Figure//CaptionNumber</node>
+	<!-- Figure end -->
+	<!-- Biography start -->
+	<!-- <node override="false"  position="before" Insertionnode="vbnewline">.//Biography[not(.='') and (position()=1)]</node> -->
+<!-- 	<node override="false"  position="before" Insertionnode="vbnewline">.//Biography/FormalPara/Heading[not(.='')]</node> -->
+	<!-- <node override="true"  position="after" Insertionnode="vbnewline">.//Biography[not(.='') and @cs_imageeixst='no']</node> -->
+	<!-- <node override="true"  position="after" Insertionnode="vbnewline">.//Biography[not(.='')]</node> -->
+	<!-- Biography end -->
+	<!-- OrderedList/Unorderedlist start -->
+	<node override="false"  position="after" Insertionnode="vbtab">.//OrderedList/ListItem/ItemNumber</node>
+	<node override="true"  position="before" Insertionnode="indentohere">.//OrderedList/ListItem/ItemContent/Para[position()>1]</node>
+<!-- 	<node override="true"  position="after" Insertionnode="vbnewline">.//cs_text[@type='order_unorder_newline']</node> -->
+	<!-- OrderedList/Unorderedlist end -->
+	<!-- BlockQuote start -->
+	<node override="false"  position="after" Insertionnode="vbnewline">.//BlockQuote</node>
+	<!-- BlockQuote end -->
+	<!-- Footnote start -->
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Footnote/Para[not(position()=last())]</node>
+	<!-- Footnote end -->
+	<!-- ArticleNote start -->
+	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='Misc' or @type='ESMHint' or @type='CommunicatedBy' or @type='Dedication' or @type='PresentedBy' ]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote/SimplePara</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote[not(@Type='ESMHint')]/Heading</node>
+	
+	<!-- ArticleNote end -->
+	<!-- auth_aff_collections start -->
+	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_collections']</node>
+     <!-- 	<node override="true"   position="after" Insertionnode="space_middot_space">.//AuthorName[@cs_type='correspond' and following-sibling::AuthorName]</node> -->
+	<node override="true"   position="after" Insertionnode="nonbreakingspace_openingbracket_envelop_closingbracket">.//InstitutionalAuthorName[@cs_type='correspond']</node>
+	<node override="true"   position="after" Insertionnode="nonbreakingspace_openingbracket_envelop_closingbracket">.//AuthorName[@cs_type='correspond']</node>
+    <!-- 	<node override="false"  position="after" Insertionnode="space_middot_space">.//cs_text[@type='auth_aff_collections']/cs_text[@type='sub_auth_aff_collections' and position()=1]/cs_text[@type='auth_collections']/AuthorName[position()>1 and not(position()=last())]</node> -->
+ 	<node override="false"  position="after" Insertionnode="nonbreakingspace_middot_space">.//cs_text[@type='auth_aff_collections']/cs_text[@type='sub_auth_aff_collections' and position()>1]/cs_text[@type='auth_collections']/AuthorName[not(position()=1 and position()=last()) and not(position()=last())]/following-sibling::cs:text[cs_text[@type='envelop'] and not[position()=last()]]</node>
+  	<node override="false"  position="after" Insertionnode="nonbreakingspace">.//Prefix[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="nonbreakingspace">.//Particle[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="nonbreakingspace">.//GivenName[not(.='')]</node>
+	<node override="false"  position="before" Insertionnode="comma_nonbreakingspace">.//Degrees[not(.='')]</node>
+	<node override="false"  position="first" Insertionnode="nonbreakingspace">.//FamilyName[not(ancestor::cs_text[@type='journaltitle'])]/following-sibling::Suffix[not(.='')]</node>
+	<node override="false"  position="first" Insertionnode="semicolon_space">.//Email/following-sibling::Email[not(.='')]</node>
+	<node override="false"  position="before" Insertionnode="tel">.//Phone[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Phone[not(.='')]</node>
+	<node override="false"  position="first" Insertionnode="fax">.//Fax[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Email[following-sibling::URL[not(.='')]]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Fax[following-sibling::Email[not(.='')]]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Role[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Contact[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="comma_space">.//OrgDivision[not(.='') and not(ancestor::*[@type='articleaddress'])]</node>
+		<node override="false"  position="after" Insertionnode="vbnewline">.//Street[not(.='')]</node>
+ 	<node override="false"  position="after" Insertionnode="comma">.//Street[not(.='')]</node> 
+	<node override="false"  position="after" Insertionnode="comma_vbnewline">.//OrgName[not(.='') and not(ancestor::*[@type='articleaddress'])]</node>
+	<node override="false"  position="after" Insertionnode="space">.//Postcode[not(.='') and following-sibling::City]</node>
+	<node override="false"  position="after" Insertionnode="comma_space">.//Postcode[not(.='') and (following-sibling::Country) and not(following-sibling::City)]</node>
+	<node override="false"  position="after" Insertionnode="comma_space">.//City[not(.='') and not(ancestor::*[@type='articleaddress']) and not(following-sibling::Postcode)]</node>
+	<node override="false"  position="after" Insertionnode="space">.//City[not(.='') and not(ancestor::*[@type='articleaddress']) and (following-sibling::Postcode)]</node>
+	<node override="false"  position="after" Insertionnode="comma_space">.//Postbox[not(.='')]</node>
+	<node override="false"  position="after" Insertionnode="comma_space">.//State[not(.='') and (following-sibling::Country)]</node>
+	<node override="false"  position="after" Insertionnode="vbnewline">.//Country[not(.='') and not(ancestor::*[@type='articleaddress'])]</node>
+	<node override="false"  position="after" Insertionnode="nonbreakingspace_middot_space">.//cs_text[@type='auth_collections']/AuthorName[not(@cs_type) and following-sibling::AuthorName]</node>
+    <node override="false"  position="after" Insertionnode="nonbreakingspace_middot_space">.//cs_text[@type='closingbracket' and following-sibling::AuthorName]</node>
+	
+	<!-- auth_aff_collections end -->
+
+    <!-- Authaff new spec 2015 node start -->
+    <node override="true"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_aff_collections']/test_Author</node>
+	<node override="true"  position="after" Insertionnode="space">.//cs_text[@type='auth_aff_collections']//test_AuthorName/test_Prefix</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_aff_collections']//test_AuthorName[following-sibling::*]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_aff_collections']/test_Affiliation[not(position()=last())]</node>
+	<node override="true"  position="after" Insertionnode="space">.//cs_text[@type='auth_aff_collections']/test_Author/test_AuthorName/test_GivenName</node>
+ 	<node override="true"  position="after" Insertionnode="vbtab">.//cs_text[@type='auth_aff_collections']//test_superscript</node>
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_OrgDivision[following-sibling::*]</node>
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_OrgName[following-sibling::*]</node>
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_Street[following-sibling::*]</node>
+
+	<node override="true"  position="after" Insertionnode="semicolon_space">.//cs_text[@type='auth_aff_collections']//test_Email[following-sibling::test_Email and not(position()=last())]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_aff_collections']//test_Email[following-sibling::test_URL and (position()=last())]</node>
+	<node override="true"  position="after" Insertionnode="semicolon_space">.//cs_text[@type='auth_aff_collections']//test_URL[following-sibling::*]</node>
+
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_Postbox[following-sibling::*]</node>
+	<node override="true"  position="after" Insertionnode="space">.//cs_text[@type='auth_aff_collections']//test_Particle[following-sibling::*]</node>
+
+
+	<node override="true"  position="after" Insertionnode="space">.//cs_text[@type='auth_aff_collections']//test_Postcode[following-sibling::*[position()=1 and local-name()='test_City']]</node>
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_City[following-sibling::*[position()=1 and local-name()='test_State']]</node>
+	<node override="true"  position="after" Insertionnode="space">.//cs_text[@type='auth_aff_collections']//test_City[following-sibling::*[position()=1 and local-name()='test_Postcode']]</node>
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_Postcode[following-sibling::*[position()=1 and local-name()='test_Country']]</node>
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_State[following-sibling::*[position()=1 and local-name()='test_Country']]</node>
+	<node override="true"  position="after" Insertionnode="space">.//cs_text[@type='auth_aff_collections']//test_State[following-sibling::*[position()=1 and local-name()='test_Postcode']]</node>
+
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_City[following-sibling::*[position()=1 and local-name()='test_Country']]</node>
+	<node override="true"  position="before" Insertionnode="space">.//cs_text[@type='auth_aff_collections']/test_Author[@CorrespondingAffiliationID]/test_AuthorName/test_Suffix</node>
+
+
+    <node override="true"  position="after" Insertionnode="space">.//cs_text[@type='auth_aff_collections']//test_PresentAffID</node>
+	<node override="true"  position="after" Insertionnode="comma_space">.//cs_text[@type='auth_aff_collections']//test_Postcode[following-sibling::*[position()=1 and local-name()='test_State']]</node>
+
+	
+	
+	<!-- DefinitionListEntry start -->
+	<node override="true"  position="after" Insertionnode="vbnewline">.//DefinitionList/Heading[not(.='')]</node>
+	<node override="true"  position="after" Insertionnode="vbtab_indentohere">.//DefinitionListEntry/Term</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//AbbreviationGroup//Heading[not(.='')]</node>
+	<!-- DefinitionListEntry end -->
+	<!-- Acknowledgments start -->
+	<!-- <node override="true"  position="after" Insertionnode="vbnewline">.//Acknowledgments/Heading[not(.='')]</node> -->
+	<node override="true"  position="after" Insertionnode="vbnewline">.//Acknowledgments/SimplePara[not(.='')]</node>
+	<!-- Acknowledgments end -->
+	<!-- Formal para start -->
+	<node override="true"  position="after" Insertionnode="emspace">.//FormalPara/Heading[not(.='')]</node>
+	<!-- <node override="false"  position="after" Insertionnode="indentohere">.//FormalPara[@RenderingStyle='Style2']/Heading[not(.='')]</node> -->
+
+<!-- <node override="true"  position="after" Insertionnode="vbnewline">.//cs_text[@type='vbgabler_historydt']</node>
+ -->
+	<!-- Formal para end -->
+ 
+ <!-- enter before running title/footer/atriclecategory start -->
+ <node override="true"  position="before" Insertionnode="vbnewline">.//cs_text[@type='left_running_title']</node>
+ <node override="true"  position="before" Insertionnode="vbnewline">.//cs_text[@type='right_running_title']</node>
+ <node override="true"  position="before" Insertionnode="vbnewline">.//cs_text[@type='left_running_footer']</node>
+ <node override="true"  position="before" Insertionnode="vbnewline">.//cs_text[@type='right_running_footer']</node>
+ <node override="true"  position="before" Insertionnode="vbnewline">.//cs_text[@type='right_article_category']</node>
+ <node override="true"  position="before" Insertionnode="vbnewline">.//cs_text[@type='left_article_category']</node>
+ <!-- enter before running title/footer/atriclecategory end -->
+
+     <!-- Ethics Start -->
+	<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/Heading[not(.='')]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/SimplePara</node>
+<!-- 	<node override="true"  position="after" Insertionnode="emspace">.//Ethics/FormalPara/Heading</node> -->
+	<!-- Ethics End -->
+
+	<!-- open choice start -->
+	<node override="true"  position="after" Insertionnode="emspace">.//cs_openchoice[@cs_type='openchoice']//Emphasis[1]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//cs_openchoice[@cs_type='openchoice']//SimplePara[not(position()=last())]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//ArticleBackmatter/cs_openchoice[@cs_type='openchoice' and following-sibling::*]</node>
+	
+	<!-- open choice end -->
+
+	<!-- ArticleNote ESMHint start -->
+		<node override="true"  position="after" Insertionnode="emspace">.//cs_text[@type='auth_aff_collections']/ArticleNote[@Type='ESMHint']/Heading</node>
+	<!-- ArticleNote ESMHint end -->
+
+	<!-- ArticleNote ESMHint start -->
+	<node override="true"  position="after" Insertionnode="vbnewline">.//Para[@cs_inlineEnter='true']</node>
+	<!-- ArticleNote ESMHint end -->
+
+	<!-- Credit Start -->
+	<node override="true"  position="before" Insertionnode="space">.//Credit</node>
+	<node override="true"  position="before" Insertionnode="space">.//Credit[following-sibling::*]</node>
+	<!-- Credit End -->
+	</PlaceEnter>
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<ApplyParagraphstyle>
+
+
+	<!-- Section heading start -->
+	<node pstyle="Head_1">.//Section1/Heading</node>
+	<node pstyle="Head_2">.//Section2/Heading</node>
+	<node pstyle="Head_3">.//Section3/Heading</node>
+	<node pstyle="Head_2_After 1">.//Section2/Heading[not(.='') and @cs_headposition='h2afterh1']</node>
+	<node pstyle="Head_3_after 2">.//Section3/Heading[not(.='') and @cs_headposition='h3afterh2']</node>
+	<!-- Section heading end -->
+
+	<!-- Para start -->
+	<node pstyle="Body_Text_Indent">.//child::Para</node>
+	<node pstyle="Body_Text">.//child::Para[position()=1]</node>
+	<node pstyle="Body_Text_without_First_Heading">.//Body/Para[position()=1 and not(preceding-sibling::Heading)]</node>
+	<node pstyle="Body_Text">.//Body/Para[position()=1 and not(preceding-sibling::Heading)]/following-sibling::Para[position()=1]</node>
+	<node pstyle="Body_Text_Indent">.//Body/Para[position()=1 and not(preceding-sibling::Heading)]/following-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]/following-sibling::*[position()=1 and (starts-with(local-name(),'Para'))]</node>
+	<!-- Para end -->
+
+	<!-- ArticleCategory start -->
+	<node pstyle="Article_Category">.//ArticleCategory[not(.='')]</node>
+	<!-- ArticleCategory end -->
+
+
+	<!-- Journal Title Frame start -->
+    <node pstyle="Add_Lang_Title">.//ArticleTitle</node>
+	<node pstyle="Add_Lang_Title_De">.//ArticleTitle[@Language='De']</node>
+    <node pstyle="Add_Lang_Title_En">.//ArticleTitle[@Language='En']</node>
+	<node pstyle="Add_Lang_Title_Fr">.//ArticleTitle[@Language='Fr']</node>
+	<node pstyle="Add_Lang_Title_Es">.//ArticleTitle[@Language='Es']</node>
+
+	<node pstyle="Article_Title">.//cs_text[@type='journaltitle']/ArticleTitle</node>
+	<node pstyle="Article_SubTitle">.//cs_text[@type='journaltitle']/ArticleSubTitle</node>
+	<node pstyle="Authors">.//cs_text[@type='journaltitle']/cs_text[@type='authname']</node>
+	<node pstyle="Title_Author_Affilation">.//cs_text[@type='journaltitle']/cs_text[@type='articleaddress']</node>
+
+    <node pstyle="Add_Lang_Title_Only_De">.//cs_text[@type='abstract_keyword']/ArticleTitle[(@Language='De') and not(following-sibling::ArticleSubTitle)]</node>
+	<node pstyle="Add_Lang_Title_Only_En">.//cs_text[@type='abstract_keyword']/ArticleTitle[(@Language='En') and not(following-sibling::ArticleSubTitle)]</node>
+	<node pstyle="Add_Lang_Title_Only_Fr">.//cs_text[@type='abstract_keyword']/ArticleTitle[(@Language='Fr') and not(following-sibling::ArticleSubTitle)]</node>
+	<node pstyle="Add_Lang_Title_Only_Es">.//cs_text[@type='abstract_keyword']/ArticleTitle[(@Language='Es') and not(following-sibling::ArticleSubTitle)]</node>
+	<!-- Journal Title Frame end -->
+
+	
+
+	<!-- Abstract start -->
+	<node pstyle="Abstract_UNstructured_Text_De">.//Abstract[@Language='De' and not(child::AbstractSection)]/Heading</node>
+	<node pstyle="Abstract_UNstructured_Text_En">.//Abstract[@Language='En' and not(child::AbstractSection)]/Heading</node>
+	<node pstyle="Abstract_UNstructured_Text_De">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_De_Indent">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_Text_En">.//Abstract[@Language='En' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_En_Indent">.//Abstract[@Language='En' and not(child::AbstractSection)]/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_Text_Fr">.//Abstract[@Language='Fr' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Text_Es">.//Abstract[@Language='Es' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Fr_Indent">.//Abstract[@Language='Fr' and not(child::AbstractSection)]/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_Es_Indent">.//Abstract[@Language='Es' and not(child::AbstractSection)]/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_Text_De_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='De']/Para[1]</node>
+	<node pstyle="Abstract_UNstructured_Text_En_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='En']/Para[1]</node>
+	<node pstyle="Abstract_UNstructured_Text_Fr_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='Fr']/Para[1]</node>
+	<node pstyle="Abstract_UNstructured_Text_Es_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='Es']/Para[1]</node>
+	<!-- Abstract end -->
+
+
+	<!-- AbstractSection start -->
+	<node pstyle="Abstract_Structured_Heading">.//Abstract[AbstractSection]/Heading[not(.='')]</node>
+	<node pstyle="Abstract_Structured_Heading_No Space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[AbstractSection]/Heading[not(.='')]</node>
+	<node pstyle="Abstract_Structured_Text_De_NoIndent">.//Abstract[@Language='De']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_En_NoIndent">.//Abstract[@Language='En']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_Fr_NoIndent">.//Abstract[@Language='Fr']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_Es_NoIndent">.//Abstract[@Language='Es']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_En">.//Abstract[@Language='En']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_De">.//Abstract[@Language='De']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_Fr">.//Abstract[@Language='Fr']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_Es">.//Abstract[@Language='Es']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_UNstructured_En_Indent">.//Abstract[@Language='En']/AbstractSection/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_De_Indent">.//Abstract[@Language='De']/AbstractSection/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_Fr_Indent">.//Abstract[@Language='Fr']/AbstractSection/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_Es_Indent">.//Abstract[@Language='Es']/AbstractSection/Para[position()>1]</node>
+	<!-- AbstractSection end -->
+
+
+
+	<!-- AbstractSection ES end -->
+	<node pstyle="Abstract_GA">.//AbstractSection[@OutputMedium='All']/Para</node>
+	<node pstyle="Abstract_GA">.//AbstractSection[@OutputMedium='All']//Heading</node>
+	<node pstyle="Abstract_GA_Heading">.//AbstractSection[@OutputMedium='All']//Heading[@cs_type='graphicalAbs']</node>
+	<!-- Graphical Abstract start -->
+
+	<!-- Graphical Abstract end -->
+	<!-- Abstract Nl start -->
+	<node pstyle="Abstract_UNstructured_Text_Nl">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Heading</node>
+	<node pstyle="Abstract_UNstructured_Text_Nl">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Nl_Indent">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para[position()>1]</node>
+	<node pstyle="Abstract_UNstructured_Text_Nl_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='Nl']/Para[1]</node>
+	<node pstyle="Abstract_Structured_Text_Nl_NoIndent">.//Abstract[@Language='Nl']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_Nl">.//Abstract[@Language='Nl']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_UNstructured_Nl_Indent">.//Abstract[@Language='Nl']/AbstractSection/Para[position()>1]</node>
+	<!-- Abstract Nl end -->
+
+	<!-- KeywordGroup start -->
+	<node pstyle="Keyword_Text_De">.//KeywordGroup[@Language='De']</node>
+	<node pstyle="Keyword_Text_En">.//KeywordGroup[@Language='En']</node>
+	<node pstyle="Keyword_Text_Fr">.//KeywordGroup[@Language='Fr']</node>
+	<node pstyle="Keyword_Text_Es">.//KeywordGroup[@Language='Es']</node>
+	<node pstyle="Keyword_Text_Nl">.//KeywordGroup[@Language='Nl']</node>
+	<node pstyle="Classification_Codes">.//KeywordGroup[@Language='--']</node>
+	<!-- KeywordGroup end -->
+
+	<!-- Bibliography start -->
+	<node pstyle="Literatur_Heading">.//Bibliography/Heading[not(.='')]</node>
+	<node pstyle="Literatur_Sub_Heading">.//Bibliography/BibSection/Heading[not(.='')]</node>
+
+    <node pstyle="Literatur_Below_Heading">.//Bibliography/Heading[@cs_type='bibmainhd']</node>
+    <node pstyle="Literatur_Sub_Below_Heading">.//BibSection/Heading[@cs_type='bibsubhd']</node>
+
+	<node pstyle="Literatur_Entry">.//Bibliography//Citation[@type='Literatur_Entry']</node>
+	<node pstyle="Literatur_Entry_1-99">.//Bibliography//Citation[@type='Literatur_Entry_1-99']</node>
+	<!-- Bibliography end -->
+
+
+	<!-- Figure start -->
+	<node pstyle="Figure_Caption">.//Figure/Caption/CaptionContent/SimplePara</node>
+	<!-- Figure end -->
+
+
+	
+
+	<!-- Formal Para start -->
+	<node pstyle="Formalpara_RuninHeading_Bold">.//FormalPara[@RenderingStyle='Style1']/Para</node>
+	<node pstyle="Formalpara_RuninHeading_Italic">.//FormalPara[@RenderingStyle='Style2']/Para</node>
+
+	<node pstyle="Formalpara_RuninHeading_Bold_No space">.//FormalPara[@RenderingStyle='Style1' and @cs_formparapos='formparaaftrhead']/Para</node>
+	<node pstyle="Formalpara_RuninHeading_Italic_No space">.//FormalPara[@RenderingStyle='Style2' and @cs_formparapos='formparaaftrhead']/Para</node>
+
+
+	<node pstyle="Body_Text_Indent">.//FormalPara/Para[position()>1]</node>
+   <!-- 	<node pstyle="Hypothese">.//FormalPara[@RenderingStyle='Style2']/Heading[not(.='')]</node> -->
+		<!-- Formal Para end -->
+
+	<!-- Acknowledgments start -->
+	<node pstyle="Acknowledgement">.//Acknowledgments/Heading</node>
+	<node pstyle="Acknowledgments_Text_Indent">.//Acknowledgments/SimplePara</node>
+	<node pstyle="Acknowledgments_Text_Plain">.//Acknowledgments/SimplePara[1]</node>
+
+	<node pstyle="Acknowledgments_Text_Indent">.//Acknowledgments/FormalPara/Para</node>
+	<node pstyle="Acknowledgments_Text">.//Acknowledgments/FormalPara/Para[1]</node>
+	<!-- Acknowledgments end -->
+	
+		<!-- Biography start -->
+	<node pstyle="Biography_Para">.//Biography/FormalPara/Para</node>
+	<node pstyle="Biography_Entry2">.//Biography/FormalPara/Para[1]</node> 
+	<node pstyle="Biography_Entry2">.//Biography[1]/FormalPara/Para[1]</node> 
+	<!-- Biography end -->
+
+
+	<!-- Article Note start -->
+	<node pstyle="Article_Note">.//ArticleNote/Heading</node>
+	<node pstyle="Article_Note_Para">.//ArticleNote/SimplePara</node>
+	<node pstyle="Article_Note">.//ArticleNote[not(child::Heading)]/SimplePara[1]</node>
+	<!-- <node pstyle="Article_Note">.//cs_text[@type='Misc' or @type='ESMHint' or @type='CommunicatedBy' or @type='Dedication' or @type='PresentedBy' ]</node> -->
+	<!-- Article Note end -->
+
+	<!-- DOIFrameValue start -->
+	<node pstyle="DOI_Detail">.//cs_text[@type='doiframe']/cs_text[@type='firstlinedetail']</node>
+	<node pstyle="DOI_Detail">.//cs_text[@type='doiframe']/cs_text[@type='secondlinedetail']</node>
+	<node pstyle="DOI_Detail">.//cs_text[@type='doiframe']/cs_text[@type='thirdlinedetail']</node>
+	<!-- DOIFrameValue end -->
+
+	<!-- Footnote start -->
+	<node pstyle="Footnote_Indent">.//Footnote/Para</node>
+	<node pstyle="Footnote">.//Footnote/Para[1]</node>
+	<node pstyle="Footnote_1Digit">.//Footnote/Para[position()=1 and cs_type='single']</node>
+	<node pstyle="Footnote">.//Footnote/Para[position()=1 and cs_type='double']</node>
+	
+	<!-- Footnote end -->
+	
+	<!-- ArticleHistory start -->
+	<node pstyle="Article_History">.//cs_text[@type='articlehistoryframe']</node>
+	<!-- ArticleHistory end -->
+
+	<!-- Abbreviations start -->
+	<node pstyle="Abbrevation_Heading">.//AbbreviationGroup/Heading</node>
+	<node pstyle="Abbrevation_Sub_Below_Heading">.//AbbreviationGroupSection/Heading</node>
+	<node pstyle="Abbrevation_Heading">.//AbbreviationGroupSection[(position()=1) and not(preceding-sibling::Heading)]/Heading</node>
+	<node pstyle="Abbrevation_Sub_Heading">.//AbbreviationGroupSection[not(position()=1)]/Heading</node>
+	
+	<!-- <node pstyle="Abbrevation_Heading">.//DefinitionList/Heading</node> -->
+	<node pstyle="Abbreviation_Para">.//DefinitionList//Term</node>
+	<node pstyle="Abbreviation_Para">.//DefinitionList//Para</node>
+    <node pstyle="Abbreviation_Para_First">.//DefinitionList[(ancestor::AbbreviationGroup[not(child::Heading)]) and (ancestor::AbbreviationGroupSection[not(child::Heading)])]/DefinitionListEntry[position()=1]//Term</node>
+	<node pstyle="Abbreviation_Para_First">.//DefinitionList[ancestor::AbbreviationGroup[not(child::Heading)] and (ancestor::AbbreviationGroupSection[not(child::Heading)])]/DefinitionListEntry[position()=1]//Para</node> 
+	<node pstyle="Abbreviation_Para_Last">.//DefinitionList/DefinitionListEntry[position()=last()]/Term</node>
+	<node pstyle="Abbreviation_Para_Last">.//DefinitionList/DefinitionListEntry[position()=last()]//Para</node>
+
+	<node pstyle="Abbreviation_Para_Single">.//DefinitionList/DefinitionListEntry[position()=1 and position()=last()]/Term</node>
+	<node pstyle="Abbreviation_Para_Single">.//DefinitionList/DefinitionListEntry[position()=1 and position()=last()]//Para</node>
+	<!-- Abbreviations end -->
+
+	<!-- BlockQuote start -->
+	<node pstyle="Block_Quote_Middle">.//BlockQuote/Para</node>
+	<node pstyle="Block_Quote">.//BlockQuote/Para[position()=1 and position()=last()]</node>
+	<node pstyle="Block_Quote_First">.//BlockQuote/Para[position()=1 and not(position()=1 and position()=last())]</node>
+	<node pstyle="Block_Quote_Last">.//BlockQuote/Para[position()=last() and not (position()=1 and position()=last())]</node>
+	<!-- BlockQuote end -->
+
+
+	<!-- UnorderedList 1st level Bullet start -->
+	<node pstyle="Unordered_Bullet_L1_Para">.//UnorderedList[@cs_level='first' and @Mark='Bullet']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Bullet_L1_Middle">.//UnorderedList[@cs_level='first' and @Mark='Bullet']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L1_First">.//UnorderedList[(@cs_level='first' and @Mark='Bullet') and parent::Para[not(@cs_position='abovelist')]/preceding-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]]/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L1_Last">.//UnorderedList[(@cs_level='first' and @Mark='Bullet') and parent::Para/following-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]]/ItemContent[position()=last()]/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L1_First">.//Para[@cs_tablefigure]/following-sibling::*[position()=1 and (starts-with(local-name(),'Para')) and child::*[position()=1 and name()='UnorderedList']]/UnorderedList[@cs_level='first' and @Mark='Bullet']/ItemContent[position()=1]/Para[1]</node>
+    <node pstyle="Unordered_Bullet_L1_Middle">.//UnorderedList[@cs_level='first' and @Mark='Bullet']/ItemContent[@cs_listbeforehead]/Para[1]</node>
+	<!-- UnorderedList 1st level Bullet end -->
+
+	<!-- UnorderedList single 1st level Bullet start -->
+	<node pstyle="Unordered_Bullet_L1_Only">.//UnorderedList[@cs_level='first' and @Mark='Bullet']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 1st level Bullet start -->
+	
+	<!-- UnorderedList 2nd level Bullet start -->
+	<node pstyle="Unordered_Bullet_L2_Para">.//UnorderedList[@cs_level='second' and @Mark='Bullet']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Bullet_L2_Middle">.//UnorderedList[@cs_level='second' and @Mark='Bullet']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L2_First">.//UnorderedList[@cs_level='second' and @Mark='Bullet']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L2_Last">.//UnorderedList[@cs_level='second' and @Mark='Bullet']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 2nd level Bullet end -->
+
+	<!-- UnorderedList single 2nd level Bullet start -->
+	<node pstyle="Unordered_Bullet_L2_Only">.//UnorderedList[@cs_level='second' and @Mark='Bullet']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 2nd level Bullet start -->
+
+	<!-- UnorderedList 3rd level Bullet start -->
+	<node pstyle="Unordered_Bullet_L3_Para">.//UnorderedList[@cs_level='third' and @Mark='Bullet']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Bullet_L3_Middle">.//UnorderedList[@cs_level='third' and @Mark='Bullet']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L3_First">.//UnorderedList[@cs_level='third' and @Mark='Bullet']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L3_Last">.//UnorderedList[@cs_level='third' and @Mark='Bullet']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 3rd level Bullet end -->
+
+	<!-- UnorderedList single 3rd level Bullet start -->
+	<node pstyle="Unordered_Bullet_L3_Only">.//UnorderedList[@cs_level='third' and @Mark='Bullet']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 3rd level Bullet start -->
+
+
+	<!-- UnorderedList 4th level Bullet start -->
+	<node pstyle="Unordered_Bullet_L4_Para">.//UnorderedList[@cs_level='four' and @Mark='Bullet']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Bullet_L4_Middle">.//UnorderedList[@cs_level='four' and @Mark='Bullet']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L4_First">.//UnorderedList[@cs_level='four' and @Mark='Bullet']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Bullet_L4_Last">.//UnorderedList[@cs_level='four' and @Mark='Bullet']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 4th level Bullet end -->
+
+	<!-- UnorderedList single 4th level Bullet start -->
+	<node pstyle="Unordered_Bullet_L4_Only">.//UnorderedList[@cs_level='four' and @Mark='Bullet']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 4th level Bullet start -->
+
+	<!-- UnorderedList 1st level Dash start -->
+	<node pstyle="Unordered_Dash_L1_Para">.//UnorderedList[@cs_level='first' and @Mark='Dash']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Dash_L1_Middle">.//UnorderedList[@cs_level='first' and @Mark='Dash']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Dash_L1_First">.//UnorderedList[(@cs_level='first' and @Mark='Dash') and parent::Para[not(@cs_position='abovelist')]/preceding-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]]/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Dash_L1_Last">.//UnorderedList[(@cs_level='first' and @Mark='Dash') and parent::Para/following-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]]/ItemContent[position()=last()]/Para[1]</node>
+	<node pstyle="Unordered_Dash_L1_First">.//Para[@cs_tablefigure]/following-sibling::*[position()=1 and (starts-with(local-name(),'Para')) and child::*[position()=1 and name()='UnorderedList']]/UnorderedList[@cs_level='first' and @Mark='Dash']/ItemContent[position()=1]/Para[1]</node>
+    <node pstyle="Unordered_Dash_L1_Middle">.//UnorderedList[@cs_level='first' and @Mark='Dash']/ItemContent[@cs_listbeforehead]/Para[1]</node>
+	<!-- UnorderedList 1st level Dash end -->
+
+
+	<!-- UnorderedList single 1st level Dash start -->
+	<node pstyle="Unordered_Dash_L1_Only">.//UnorderedList[@cs_level='first' and @Mark='Dash']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 1st level Dash start -->
+
+
+	<!-- UnorderedList 2nd level Dash start -->
+	<node pstyle="Unordered_Dash_L2_Para">.//UnorderedList[@cs_level='second' and @Mark='Dash']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Dash_L2_Middle">.//UnorderedList[@cs_level='second' and @Mark='Dash']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Dash_L2_First">.//UnorderedList[@cs_level='second' and @Mark='Dash']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Dash_L2_Last">.//UnorderedList[@cs_level='second' and @Mark='Dash']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 2nd level Dash end -->
+
+	<!-- UnorderedList single 2nd level Dash start -->
+	<node pstyle="Unordered_Dash_L2_Only">.//UnorderedList[@cs_level='second' and @Mark='Dash']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 2nd level Dash start -->
+
+	<!-- UnorderedList 3rd level Dash start -->
+	<node pstyle="Unordered_Dash_L3_Para">.//UnorderedList[@cs_level='third' and @Mark='Dash']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Dash_L3_Middle">.//UnorderedList[@cs_level='third' and @Mark='Dash']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Dash_L3_First">.//UnorderedList[@cs_level='third' and @Mark='Dash']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Dash_L3_Last">.//UnorderedList[@cs_level='third' and @Mark='Dash']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 3rd level Dash end -->
+
+	<!-- UnorderedList single 3rd level Dash start -->
+	<node pstyle="Unordered_Dash_L3_Only">.//UnorderedList[@cs_level='third' and @Mark='Dash']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 3rd level Dash start -->
+
+
+	<!-- UnorderedList 4th level Dash start -->
+	<node pstyle="Unordered_Dash_L4_Para">.//UnorderedList[@cs_level='four' and @Mark='Dash']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_Dash_L4_Middle">.//UnorderedList[@cs_level='four' and @Mark='Dash']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_Dash_L4_First">.//UnorderedList[@cs_level='four' and @Mark='Dash']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_Dash_L4_Last">.//UnorderedList[@cs_level='four' and @Mark='Dash']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 4th level Dash end -->
+
+	<!-- UnorderedList single 4th level Dash start -->
+	<node pstyle="Unordered_Dash_L4_Only">.//UnorderedList[@cs_level='four' and @Mark='Dash']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 4th level Dash start -->
+
+
+	<!-- UnorderedList 1st level None start -->
+	<node pstyle="Unordered_None_L1_Para">.//UnorderedList[@cs_level='first' and @Mark='None']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_None_L1_Middle">.//UnorderedList[@cs_level='first' and @Mark='None']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_None_L1_First">.//UnorderedList[(@cs_level='first' and @Mark='None') and parent::Para[not(@cs_position='abovelist')]/preceding-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]]/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_None_L1_Last">.//UnorderedList[(@cs_level='first' and @Mark='None') and parent::Para/following-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]]/ItemContent[position()=last()]/Para[1]</node>
+	<node pstyle="Unordered_None_L1_First">.//Para[@cs_tablefigure]/following-sibling::*[position()=1 and (starts-with(local-name(),'Para')) and child::*[position()=1 and name()='UnorderedList']]/UnorderedList[@cs_level='first' and @Mark='None']/ItemContent[position()=1]/Para[1]</node>
+    <node pstyle="Unordered_None_L1_Middle">.//UnorderedList[@cs_level='first' and @Mark='None']/ItemContent[@cs_listbeforehead]/Para[1]</node>
+	<!-- UnorderedList 1st level None end -->
+
+	<!-- UnorderedList single 1st level None start -->
+	<node pstyle="Unordered_None_L1_Only">.//UnorderedList[@cs_level='first' and @Mark='None']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 1st level None start -->
+	
+	<!-- UnorderedList 2nd level None start -->
+	<node pstyle="Unordered_None_L2_Para">.//UnorderedList[@cs_level='second' and @Mark='None']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_None_L2_Middle">.//UnorderedList[@cs_level='second' and @Mark='None']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_None_L2_First">.//UnorderedList[@cs_level='second' and @Mark='None']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_None_L2_Last">.//UnorderedList[@cs_level='second' and @Mark='None']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 2nd level None end -->
+
+	<!-- UnorderedList single 2nd level None start -->
+	<node pstyle="Unordered_None_L2_Only">.//UnorderedList[@cs_level='second' and @Mark='None']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 2nd level None start -->
+
+	<!-- UnorderedList 3rd level None start -->
+	<node pstyle="Unordered_None_L3_Para">.//UnorderedList[@cs_level='third' and @Mark='None']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_None_L3_Middle">.//UnorderedList[@cs_level='third' and @Mark='None']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_None_L3_First">.//UnorderedList[@cs_level='third' and @Mark='None']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_None_L3_Last">.//UnorderedList[@cs_level='third' and @Mark='None']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 3rd level None end -->
+
+	<!-- UnorderedList single 3rd level None start -->
+	<node pstyle="Unordered_None_L3_Only">.//UnorderedList[@cs_level='third' and @Mark='None']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 3rd level None start -->
+
+
+	<!-- UnorderedList 4th level None start -->
+	<node pstyle="Unordered_None_L4_Para">.//UnorderedList[@cs_level='four' and @Mark='None']/ItemContent/Para[position()>1]</node>
+	<node pstyle="Unordered_None_L4_Middle">.//UnorderedList[@cs_level='four' and @Mark='None']/ItemContent/Para[1]</node>
+	<node pstyle="Unordered_None_L4_First">.//UnorderedList[@cs_level='four' and @Mark='None']/ItemContent[position()=1]/Para[1]</node>
+	<node pstyle="Unordered_None_L4_Last">.//UnorderedList[@cs_level='four' and @Mark='None']/ItemContent[position()=last()]/Para[1]</node>
+	<!-- UnorderedList 4th level None end -->
+
+	<!-- UnorderedList single 4th level None start -->
+	<node pstyle="Unordered_None_L4_Only">.//UnorderedList[@cs_level='four' and @Mark='None']/ItemContent[(position()=1) and (position()=last())]/Para[1]</node>
+	<!-- UnorderedList single 4th level None start -->
+
+	<!-- =================================================== -->
+
+	<!-- OrderedList 1st level start -->
+	<node pstyle="Ordered_L1_Para">.//OrderedList[@cs_level='first']/ListItem/ItemContent/Para[position()>1]</node>
+	<node pstyle="Ordered_L1_Middle">.//OrderedList[@cs_level='first']/ListItem/ItemContent/Para[1]</node>
+	<node pstyle="Ordered_L1_First">.//OrderedList[(@cs_level='first') and parent::Para[not(@cs_position='abovelist')]/preceding-sibling::*[position()=1 and (starts-with(local-name(),'cs_text'))]]/ListItem[position()=1]/ItemContent/Para[1]</node>
+	<node pstyle="Ordered_L1_Last">.//OrderedList[(@cs_level='first') and parent::Para/following-sibling::*[position()=1 and (starts-with(local-name(),'cs_text')) and following-sibling::*]]/ListItem[position()=last()]/ItemContent/Para[1]</node>
+	<node pstyle="Ordered_L1_First">.//Para[@cs_tablefigure]/following-sibling::*[position()=1 and (starts-with(local-name(),'Para')) and child::*[position()=1 and name()='OrderedList']]/OrderedList[@cs_level='first']/ListItem[position()=1]/ItemContent/Para[1]</node>
+	<node pstyle="Ordered_L1_Middle">.//OrderedList[@cs_level='first']/ListItem/ItemContent[@cs_listbeforehead]/Para</node>
+	<!-- OrderedList 1st level end -->
+
+	<!-- OrderedList single 1st level start -->
+	<node pstyle="Ordered_L1_Only">.//OrderedList[@cs_level='first']/ListItem[(position()=1) and (position()=last())]/ItemContent/Para[1]</node>
+	<!-- OrderedList single 1st level end -->
+
+	<!-- OrderedList 2nd level start -->
+	<node pstyle="Ordered_L2_Para">.//OrderedList[@cs_level='second']/ListItem/ItemContent/Para[position()>1]</node>
+	<node pstyle="Ordered_L2_Middle">.//OrderedList[@cs_level='second']/ListItem/ItemContent/Para[1]</node>
+	<node pstyle="Ordered_L2_First">.//OrderedList[@cs_level='second']/ListItem[1]/ItemContent[1]/Para[1]</node>
+	<node pstyle="Ordered_L2_Last">.//OrderedList[@cs_level='second']/ListItem[position()=last()]/ItemContent[position()=last()]/Para[1]</node>
+	<!-- OrderedList 2nd level end -->
+
+	<!-- OrderedList single 2nd level start -->
+	<node pstyle="Ordered_L2_Only">.//OrderedList[@cs_level='second']/ListItem[(position()=1) and (position()=last())]/ItemContent/Para[1]</node>
+	<!-- OrderedList single 2nd level end -->
+	
+	<!-- OrderedList 3rd level start -->
+	<node pstyle="Ordered_L3_Para">.//OrderedList[@cs_level='third']/ListItem/ItemContent/Para[position()>1]</node>
+	<node pstyle="Ordered_L3_Middle">.//OrderedList[@cs_level='third']/ListItem/ItemContent/Para[1]</node>
+	<node pstyle="Ordered_L3_First">.//OrderedList[@cs_level='third']/ListItem[1]/ItemContent[1]/Para[1]</node>
+	<node pstyle="Ordered_L3_Last">.//OrderedList[@cs_level='third']/ListItem[position()=last()]/ItemContent[position()=last()]/Para[1]</node>
+	<!-- OrderedList 3rd level end -->
+
+	<!-- OrderedList single 3rd level start -->
+	<node pstyle="Ordered_L3_Only">.//OrderedList[@cs_level='third']/ListItem[(position()=1) and (position()=last())]/ItemContent/Para[1]</node>
+	<!-- OrderedList single 3rd level end -->
+
+
+	<!-- OrderedList 4th level start -->
+	<node pstyle="Ordered_L4_Para">.//OrderedList[@cs_level='four']/ListItem/ItemContent/Para[position()>1]</node>
+	<node pstyle="Ordered_L4_Middle">.//OrderedList[@cs_level='four']/ListItem/ItemContent/Para[1]</node>
+	<node pstyle="Ordered_L4_First">.//OrderedList[@cs_level='four']/ListItem[1]/ItemContent[1]/Para[1]</node>
+	<node pstyle="Ordered_L4_Last">.//OrderedList[@cs_level='four']/ListItem[position()=last()]/ItemContent[position()=last()]/Para[1]</node>
+	<!-- OrderedList 4th level end -->
+
+	<!-- OrderedList single 4th level start -->
+	<node pstyle="Ordered_L4_Only">.//OrderedList[@cs_level='four']/ListItem[(position()=1) and (position()=last())]/ItemContent/Para[1]</node>
+	<!-- OrderedList single 4th level end -->
+
+
+	<!-- OrderedList/UnorderedList start -->
+	<!-- <node pstyle="Sub_List_Middle">.//OrderedList/ListItem/ItemContent//UnorderedList/ItemContent/Para</node>
+	<node pstyle="Sub_List_Last">.//OrderedList/ListItem/ItemContent//UnorderedList/ItemContent[position()=last()]/Para</node>
+	<node pstyle="Sub_List_First">.//OrderedList/ListItem/ItemContent//UnorderedList/ItemContent[position()=1]/Para</node>
+	<node pstyle="Sub_List_Middle">.//OrderedList/ListItem/ItemContent//UnorderedList/ItemContent[@cs_listbeforehead]/Para</node>
+  -->	<!-- OrderedList/UnorderedList end -->
+
+	<!-- UnorderedList/OrderedList start -->
+	<!-- <node pstyle="Sub_List_Middle">.//UnorderedList/ItemContent//OrderedList/ListItem/ItemContent/Para</node>
+	<node pstyle="Sub_List_Last">.//UnorderedList/ItemContent//OrderedList/ListItem[position()=last()]/ItemContent/Para</node>
+	<node pstyle="Sub_List_First">.//UnorderedList/ItemContent//OrderedList/ListItem[position()=1]/ItemContent/Para</node>
+	<node pstyle="Sub_List_Middle">.//UnorderedList/ItemContent//OrderedList/ListItem/ItemContent[@cs_listbeforehead]/Para</node>
+	 --><!-- UnorderedList/OrderedList end -->
+	
+	<!-- Authaff node start -->
+	<node pstyle="Affilation">.//cs_text[@type='auth_aff_collections']/cs_text[@type='sub_auth_aff_collections']</node>
+	<node pstyle="Affilation_Author_With Space">.//cs_text[@type='auth_aff_collections']/cs_text[@type='sub_auth_aff_collections'and position()>1]/cs_text[@type='auth_collections']/AuthorName[1]</node>
+	<node pstyle="Affilation_Author_With Rule">.//cs_text[@type='auth_aff_collections']/cs_text[@type='sub_auth_aff_collections' and position()=1]/cs_text[@type='auth_collections']/AuthorName[position()=1]</node>
+	<node pstyle="Affilation_Author_With Rule">.//cs_text[@type='auth_aff_collections']/cs_text[@type='sub_auth_aff_collections']/cs_text[@type='auth_collections']/AuthorName[@cs_type='correspond' and position()=1]</node>
+	<node pstyle="Affilation_Author_With Rule">.//cs_text[@type='auth_aff_collections']/cs_text[@type='sub_auth_aff_collections']/cs_text[@type='auth_collections']/InstitutionalAuthorName[@cs_type='correspond' and position()=1]</node>
+	<node pstyle="Article_History">.//cs_text[@type='auth_aff_collections']/cs_text[@type='copyright']</node>
+	<node pstyle="Affilation_Author_With Rule">.//AuthorName[@cs_type='correspond']</node>
+	<!-- Authaff node end -->
+
+	<!-- Authaff new spec 2015 node start -->
+    <!-- Authaff new spec 2015 node end -->
+	
+	<!--  para which is coming after some special element start -->
+	<node pstyle="Body_Text">.//child::Para[child::UnorderedList[not(ancestor::Abstract)] or child::OrderedList[not(ancestor::Abstract)]]/following-sibling::Para[1]</node>
+	<node pstyle="Body_Text">.//Para[child::Equation]/following-sibling::Para[1]</node>
+	<node pstyle="Body_Text">.//Para[child::BlockQuote]/following-sibling::Para[1]</node>
+	<node pstyle="Body_Text">.//child::Para[child::DefinitionList]/following-sibling::Para[1]</node>
+	<node pstyle="Body_Text">.//FormalPara[@RenderingStyle='Style1']/following-sibling::Para[1]</node>
+	<node pstyle="Body_Text">.//DefinitionList/following-sibling::Para[1]</node>
+	<node pstyle="Body_Text_without_First_Heading">.//Body/Para[position()=1 and not(preceding-sibling::Heading) and child::DefinitionList]/following-sibling::Para[position()=1]</node>
+	<node pstyle="Body_Text">.//Body/Para[position()=1 and not(preceding-sibling::Heading) and child::DefinitionList]/following-sibling::Para[position()=1]/following-sibling::Para[position()=1]</node>
+	<!--  para which is coming after some special element end -->
+
+	<!-- AQ start -->
+	<node pstyle="AQ_entry">.//cs_query</node>
+	<!-- AQ end -->
+
+	<!-- Equation start -->
+	<node pstyle="EQ">.//Equation</node><!-- .//Para[Equation] -->
+	<!-- Equation end -->
+
+    <!-- Sidebar start-->
+	<node pstyle="Sidemargin_Text">.//Sidebar//Para</node>
+	<node pstyle="Sidemargin_List">.//Sidebar//ItemContent//Para</node>
+	<!-- Sidebar end -->
+
+    <!-- Questionnaire section,question,answer start -->
+	<node pstyle="Questionare_Head">.//*[@Type='Questionnaire']/Heading</node>
+	<node pstyle="Question">.//Para[@Type='Questions']</node>
+	<node pstyle="Answer">.//Para[@Type='Answers']</node>
+    <!-- Questionnaire section,question,answer end -->
+
+
+
+	 <!-- Abstract Unorderedlist start -->    
+	<node pstyle="Abstract_Bullet_list_De">.//Abstract[@Language='De']//UnorderedList/ItemContent/Para</node>
+	<node pstyle="Abstract_Bullet_list_De_Space_Above">.//Abstract[@Language='De']//UnorderedList/ItemContent[1]/Para</node>
+	<node pstyle="Abstract_Bullet_list_De_Space_Below">.//Abstract[@Language='De']//UnorderedList/ItemContent[position()=last()]/Para</node>
+	
+	<node pstyle="Abstract_Bullet_list_En">.//Abstract[@Language='En']//UnorderedList/ItemContent/Para</node>
+	<node pstyle="Abstract_Bullet_list_En_Space_Above">.//Abstract[@Language='En']//UnorderedList/ItemContent[1]/Para</node>
+	<node pstyle="Abstract_Bullet_list_En_Space_Below">.//Abstract[@Language='En']//UnorderedList/ItemContent[position()=last()]/Para</node>
+
+	<node pstyle="Abstract_Bullet_list_Fr">.//Abstract[@Language='Fr']//UnorderedList/ItemContent/Para</node>
+	<node pstyle="Abstract_Bullet_list_Fr_Space_above">.//Abstract[@Language='Fr']//UnorderedList/ItemContent[1]/Para</node>
+	<node pstyle="Abstract_Bullet_list_Fr_Space_Below">.//Abstract[@Language='Fr']//UnorderedList/ItemContent[position()=last()]/Para</node>
+
+	<node pstyle="Abstract_Bullet_list_Es">.//Abstract[@Language='Es']//UnorderedList/ItemContent/Para</node>
+	<node pstyle="Abstract_Bullet_list_Es_Space_above">.//Abstract[@Language='Es']//UnorderedList/ItemContent[1]/Para</node>
+	<node pstyle="Abstract_Bullet_list_Es_Space_Below">.//Abstract[@Language='Es']//UnorderedList/ItemContent[position()=last()]/Para</node>
+	<!-- Abstract Unorderedlist end -->
+
+
+	<!-- Abstract Orderedlist start --> 
+	<node pstyle="Abstract_list_De">.//Abstract[@Language='De']//OrderedList/ListItem/ItemContent/Para</node>
+	<node pstyle="Abstract_list_De_Space_Above">.//Abstract[@Language='De']//OrderedList/ListItem[1]/ItemContent/Para</node>
+	<node pstyle="Abstract_list_De_Space_Below">.//Abstract[@Language='De']//OrderedList/ListItem[position()=last()]/ItemContent/Para</node>
+
+	<node pstyle="Abstract_list_En">.//Abstract[@Language='En']//OrderedList/ListItem/ItemContent/Para</node>
+	<node pstyle="Abstract_list_En_Space_Above">.//Abstract[@Language='En']//OrderedList/ListItem[1]/ItemContent/Para</node>
+	<node pstyle="Abstract_list_En_Space_Below">.//Abstract[@Language='En']//OrderedList/ListItem[position()=last()]/ItemContent/Para</node>
+
+	<node pstyle="Abstract_list_Fr">.//Abstract[@Language='Fr']//OrderedList/ListItem/ItemContent/Para</node>
+	<node pstyle="Abstract_list_Fr_Space_Above">.//Abstract[@Language='Fr']//OrderedList/ListItem[1]/ItemContent/Para</node>
+	<node pstyle="Abstract_list_Fr_Space_Below">.//Abstract[@Language='Fr']//OrderedList/ListItem[position()=last()]/ItemContent/Para</node>
+
+	<node pstyle="Abstract_list_Es">.//Abstract[@Language='Es']//OrderedList/ListItem/ItemContent/Para</node>
+	<node pstyle="Abstract_list_Es_Space_Above">.//Abstract[@Language='Es']//OrderedList/ListItem[1]/ItemContent/Para</node>
+	<node pstyle="Abstract_list_Es_Space_Below">.//Abstract[@Language='Es']//OrderedList/ListItem[position()=last()]/ItemContent/Para</node>
+	<!-- Abstract Orderedlist end --> 
+
+	<!-- Ethics start -->
+	<node pstyle="Interessenkonflict_Head">.//Ethics/Heading[not(.='')]</node>
+	<node pstyle="Interessenkonflict_Para">.//Ethics//SimplePara</node>
+
+	<node pstyle="Interessenkonflict">.//Ethics//FormalPara/Heading[not(.='')]</node>
+	<node pstyle="Interessenkonflict">.//Ethics//Para</node>
+	<node pstyle="Interessenkonflict_Para">.//Ethics//Para[position()>1]</node>
+	<!-- Ethics end -->
+
+    <!-- Undefined Start -->
+	<node pstyle="Undefine">.//cs_text[@type='undefined']</node>
+	<!-- Undefined End -->
+
+	<!-- New Spec Afflitaion style Start -->
+	<node pstyle="Affilation_Author_Without Rule">.//cs_text[@type='auth_aff_collections']/test_Author[@CorrespondingAffiliationID]</node>
+	<node pstyle="Affilation_Author_With Rule">.//cs_text[@type='auth_aff_collections']/test_Author[@CorrespondingAffiliationID and position()=1]</node>
+
+	<node pstyle="Affilation_Author_With Space">.//cs_text[@type='auth_aff_collections']/test_Author[not(@CorrespondingAffiliationID)]</node>
+
+	<node pstyle="Affilation_Author_Email">.//cs_text[@type='auth_aff_collections']//test_Email</node>
+	<node pstyle="Affilation_Author_Email">.//cs_text[@type='auth_aff_collections']//test_URL</node>
+	<node pstyle="Affilation_M">.//cs_text[@type='auth_aff_collections']/test_Affiliation</node>
+	<node pstyle="Affilation_F">.//cs_text[@type='auth_aff_collections']/test_Affiliation[position()=1]</node>
+	<!-- New Spec Afflitaion style End -->
+
+	<!-- open choice start -->
+	<node pstyle="Open_Access">.//cs_openchoice[@cs_type='openchoice']</node>
+	<node pstyle="Open_Access_Text_Indent">.//cs_openchoice[@cs_type='openchoice']//SimplePara[position()>1]</node>
+	<!-- open choice end -->
+
+	<!-- .//ArticleNote[@Type='ESMHint'] start -->
+	<node pstyle="Article_Note_ESM">.//ArticleNote[@Type='ESMHint']</node>
+	<!-- .//ArticleNote[@Type='ESMHint'] end -->
+
+	<!-- para after head/table start -->
+	<node pstyle="Body_Text">.//Para[@cs_position='tb_afterHead']</node>
+	<!-- para after head/table end -->
+</ApplyParagraphstyle>
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<ApplyBSLParagraphstyle>
+
+	<!-- FormalPara Type='Overview' start -->
+	<node pstyle="Box_head">.//FormalPara[@Type='Overview']/Heading</node>
+	<node pstyle="Box_TX">.//FormalPara[@Type='Overview']/Para</node>
+	<node pstyle="Box_TXF">.//FormalPara[@Type='Overview']/Para[1]</node>
+	<node pstyle="Box_TXF">.//FormalPara[@Type='Overview']/Para[position()=1 and position()=last()]</node>
+	<!-- FormalPara Type='Overview' end -->
+	
+	<!-- Para Type='Trailer' start -->
+	<node pstyle="Trailer_Single_Para">.//Para[@Type='Trailer']</node>
+	<!-- Para Type='Trailer' end -->
+
+	<!-- Para Type='EyeCatcher' start -->
+	<node pstyle="Eyecatcher_Single_Para">.//Para[@Type='EyeCatcher']</node>
+	<!-- Para Type='EyeCatcher' end -->
+
+	<!-- Para Type='Important' start -->
+	<node pstyle="Important_Single_Para">.//Para[@Type='Important']</node>
+	<!-- Para Type='Important' end -->
+
+	<!-- Keyword start -->
+	<node pstyle="Keyword_Head_De">.//KeywordGroup[@Language='De']/Heading</node>
+	<node pstyle="Keyword_Head_En">.//KeywordGroup[@Language='En']/Heading</node>
+    <node pstyle="Keyword_Head_Nl">.//KeywordGroup[@Language='Nl']/Heading</node>
+ 	
+	<node pstyle="Keyword_Text_Fr">.//KeywordGroup[@Language='De']/Keyword</node>
+	<node pstyle="Keyword_Text_Es">.//KeywordGroup[@Language='En']/Keyword</node>
+
+	<!-- Keyword end -->
+
+	<!-- Conclusion start -->
+	<node pstyle="Conclusion_Head">.//*[@Type='Conclusion']/Heading</node>
+	<node pstyle="Conclusion_TX">.//*[@Type='Conclusion']/Para</node>
+	<node pstyle="Conclusion_TXF">.//*[@Type='Conclusion']/Para[1]</node>
+	<node pstyle="Conclusion_TXF">.//*[@Type='Conclusion']/Para[position()=1 and position()=last()]</node>
+	<!-- Conclusion end -->
+
+	<!-- ArticleNote Motto start -->
+	<node pstyle="Motto_De">.//ArticleNote[@Type='Motto' and @cs_language='De']/SimplePara</node>
+	<node pstyle="Motto_En">.//ArticleNote[@Type='Motto' and @cs_language='En']/SimplePara</node>
+	<node pstyle="Motto_Nl">.//ArticleNote[@Type='Motto' and @cs_language='Nl']/SimplePara</node>
+	<!-- ArticleNote Motto end -->
+
+	<!-- FormalParaPara Type='Questionnaire' start -->
+<!-- 	<node pstyle="Questionnaire_Head">.//FormalPara[@Type='Questionnaire']/Heading</node>
+	<node pstyle="Question">.//FormalPara[@Type='Questionnaire']/Para[@Type='Questions']</node>
+	<node pstyle="Answer">.//FormalPara[@Type='Questionnaire']/Para[@Type='Answers']</node> -->
+
+	<node pstyle="Questionnaire_Head">.//*[@Type='Questionnaire']/Heading</node>
+	<node pstyle="Question">.//*[@Type='Questionnaire']/Para[@Type='Questionnaire']</node>
+	<node pstyle="Question_above space">.//*[@Type='Questionnaire']/Para[@Type='Questionnaire' and position()>1]</node>
+	<node pstyle="Answer">.//*[@Type='Questionnaire']/Para[@Type='Answers']</node>
+	<!-- FormalParaPara Type='Questionnaire' end -->
+
+	<node pstyle="Abstract_Structured_Heading">.//Abstract[@Language='De' or @Language='Nl' and not(child::AbstractSection)]/Heading</node>
+    <node pstyle="Abstract_Structured_Text_De_NoIndent">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para</node>
+	  <node pstyle="Abstract_Structured_Text_Nl_NoIndent">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para</node>
+</ApplyBSLParagraphstyle>
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<ApplyCharacterstyle>
+
+	<!-- Bold Italic BoldItalic SmallCaps in Paragrapg start -->
+	<node cstyle="Bold">.//Emphasis[@Type='Bold']</node>
+	<node cstyle="Italic">.//Emphasis[@Type='Italic']</node>
+	<node cstyle="Bold_Italic">.//Emphasis[@Type='BoldItalic']</node>
+	<node cstyle="Bold_Italic">.//Emphasis[@Type='Italic' and parent::Heading]</node>
+	<node cstyle="small caps">.//Emphasis[@Type='SmallCaps']</node>
+	<node cstyle="BoldSmallCaps">.//Emphasis[@Type='BoldSmallCaps']</node>
+	<node cstyle="ItalicSmallCaps">.//Emphasis[@Type='ItalicSmallCaps']</node>
+	<node cstyle="BoldItalicSmallCaps">.//Emphasis[@Type='BoldItalicSmallCaps']</node>
+	<!-- Bold Italic BoldItalic SmallCaps in Paragrapg end -->
+
+	
+	<!-- cMathPackTen start -->
+	<node cstyle="MathPackTen">.//Emphasis[@type='cMathPackTen']</node>
+	<node cstyle="MathPack_13">.//cs_text[@type='entity' and @font='MathPack_13']</node>
+	<!-- cMathPackTen end -->
+    
+    <!-- Underline start -->
+	<node cstyle="Underline_Regular">.//Emphasis[@Type='Underline']</node>
+	<node cstyle="Underline_Bold">.//Emphasis[@Type='BoldUnderline']</node>
+	<node cstyle="Underline_Italic">.//Emphasis[@Type='ItalicUnderline']</node>
+	<node cstyle="Underline_BoldItalic">.//Emphasis[@Type='BoldItalicUnderline']</node>
+	<node cstyle="Underline_Smallcaps">.//Emphasis[@Type='UnderlineSmallCaps']</node>
+
+	<!-- Underline end -->
+
+	 <!-- Underline start -->
+	<node cstyle="DoubleUnderline_Regular">.//Emphasis[@Type='DoubleUnderline']</node>
+	<node cstyle="DoubleUnderline_Bold">.//Emphasis[@Type='BoldDoubleUnderline']</node>
+	<node cstyle="DoubleUnderline_Italic">.//Emphasis[@Type='ItalicDoubleUnderline']</node>
+	<node cstyle="DoubleUnderline_BoldItalic">.//Emphasis[@Type='BoldItalicDoubleUnderline']</node>
+	<node cstyle="DoubleUnderline_Smallcaps">.//Emphasis[@Type='DoubleUnderlineSmallCaps']</node>
+	
+	<!-- Underline end -->
+
+	<!-- Superscript start -->
+	<node cstyle="Superscript">.//Superscript</node>
+	<node cstyle="Superscript">.//cs_text[@type='superscript']</node>
+	<node cstyle="Super_Bold">.//Superscript[Emphasis[@Type='Bold']]</node>
+	<node cstyle="Super_Italic">.//Superscript[Emphasis[@Type='Italic']]</node>
+	<node cstyle="Super_BoldItalic">.//Superscript[Emphasis[@Type='BoldItalic']]</node>
+	<!-- Superscript end -->
+
+    <!-- superscript underline and doubleunderline start -->
+
+	<node cstyle="Underline_Superscript_Regular">.//Superscript[Emphasis[@Type='Underline']]</node>
+	<node cstyle="Underline_Superscript_Bold">.//Superscript[Emphasis[@Type='BoldUnderline']]</node>
+	<node cstyle="Underline_Superscript_Italic">.//Superscript[Emphasis[@Type='ItalicUnderline']]</node>
+	<node cstyle="Underline_Superscript_BoldItalic">.//Superscript[Emphasis[@Type='BoldItalicUnderline']]</node>
+
+	<node cstyle="DoubleUnderline_Superscript_Regular">.//Superscript[Emphasis[@Type='DoubleUnderline']]</node>
+	<node cstyle="DoubleUnderline_Superscript_Bold">.//Superscript[Emphasis[@Type='BoldDoubleUnderline']]</node>
+	<node cstyle="DoubleUnderline_Superscript_Italic">.//Superscript[Emphasis[@Type='ItalicDoubleUnderline']]</node>
+	<node cstyle="DoubleUnderline_Superscript_BoldItalic">.//Superscript[Emphasis[@Type='BoldItalicDoubleUnderline']]</node>
+	<!-- superscript underline and doubleunderline end -->
+
+	
+	<!-- Subscript start -->
+	<node cstyle="Subscript">.//Subscript</node>
+	<node cstyle="Sub_Bold">.//Subscript[Emphasis[@Type='Bold']]</node>
+	<node cstyle="Sub_Italic">.//Subscript[Emphasis[@Type='Italic']]</node>
+	<node cstyle="Sub_BoldItalic">.//Subscript[Emphasis[@Type='BoldItalic']]</node>
+	<!-- Subscript end -->
+
+	<!-- subscript underline and doubleunderline start -->
+	<node cstyle="Underline_Subscript_Regular">.//Subscript[Emphasis[@Type='Underline']]</node>
+	<node cstyle="Underline_Subscript_Bold">.//Subscript[Emphasis[@Type='BoldUnderline']]</node>
+	<node cstyle="Underline_Subscript_Italic">.//Subscript[Emphasis[@Type='ItalicUnderline']]</node>
+	<node cstyle="Underline_Subscript_BoldItalic">.//Subscript[Emphasis[@Type='BoldItalicUnderline']]</node>
+
+	<node cstyle="DoubleUnderline_Subscript_Regular">.//Subscript[Emphasis[@Type='DoubleUnderline']]</node>
+	<node cstyle="DoubleUnderline_Subscript_Bold">.//Subscript[Emphasis[@Type='BoldDoubleUnderline']]</node>
+	<node cstyle="DoubleUnderline_Subscript_Italic">.//Subscript[Emphasis[@Type='ItalicDoubleUnderline']]</node>
+	<node cstyle="DoubleUnderline_Subscript_BoldItalic">.//Subscript[Emphasis[@Type='BoldItalicDoubleUnderline']]</node>
+	<!-- superscript underline and doubleunderline end -->
+
+	<!-- Bold Italic BoldItalic in Figure start -->
+	<node cstyle="SAN_Bold">.//Figure//Emphasis[@Type='Bold']</node>
+	<node cstyle="SAN_Italic">.//Figure//Emphasis[@Type='Italic']</node>
+	<node cstyle="SAN_Bold_Italic">.//Figure//Emphasis[@Type='BoldItalic']</node>
+	<node cstyle="Caption_Figure_Table_No">.//Figure/Caption/CaptionNumber</node>
+
+	<node cstyle="SAN_Superscript">.//Figure//Superscript</node>
+	<node cstyle="SAN_Super_Bold">.//Figure//Superscript[Emphasis[@Type='Bold']]</node>
+	<node cstyle="SAN_Super_Italic">.//Figure//Superscript[Emphasis[@Type='Italic']]</node>
+	<node cstyle="SAN_Super_BoldItalic">.//Figure//Superscript[Emphasis[@Type='BoldItalic']]</node>
+
+
+	<node cstyle="SAN_Subscript">.//Figure//Subscript</node>
+	<node cstyle="SAN_Sub_Bold">.//Figure//Subscript[Emphasis[@Type='Bold']]</node>
+	<node cstyle="SAN_Sub_Italic">.//Figure//Subscript[Emphasis[@Type='Italic']]</node>
+	<node cstyle="SAN_Sub_BoldItalic">.//Figure//Subscript[Emphasis[@Type='BoldItalic']]</node>
+	<!-- Bold Italic BoldItalic in Figure end -->
+
+	
+	<!-- Hyperlink start -->
+	<node cstyle="hyperlink">.//InternalRef</node>
+	<!-- Hyperlink end -->
+
+	<!-- Symbol start -->
+	<node cstyle="cSYMBOL">.//Emphasis[@type='cSymbol']</node>
+	<node cstyle="cSYMBOL">.//cs_text[@type='cSYMBOL']</node>
+
+
+	<node cstyle="cSYMBOL_Bold">.//Emphasis[@Type='Bold']/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_Italic">.//Emphasis[@Type='Italic']/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_BoldItalic">.//Emphasis[@Type='BoldItalic']/cs_text[@type='cSYMBOL']</node>
+
+	<node cstyle="cSYMBOL_Superscript">.//Superscript/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_Superscript_Bold">.//Superscript/Emphasis[@Type='Bold']/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_Superscript_Italic">.//Superscript/Emphasis[@Type='Italic']/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_Superscript_Bold_Italic">.//Superscript/Emphasis[@Type='BoldItalic']/cs_text[@type='cSYMBOL']</node>
+
+
+	<node cstyle="cSYMBOL_Subscript">.//Subscript/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_Subscript_Bold">.//Subscript/Emphasis[@Type='Bold']/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_Subscript_Italic">.//Subscript/Emphasis[@Type='Italic']/cs_text[@type='cSYMBOL']</node>
+	<node cstyle="cSYMBOL_Subscript_Bold_Italic">.//Subscript/Emphasis[@Type='BoldItalic']/cs_text[@type='cSYMBOL']</node>
+	<!-- Symbol end -->
+
+	<!-- Envelop start -->
+	<node cstyle="envilope logo">.//cs_text[@type='envelop']</node>
+    <!-- Envelop end -->
+
+	<node cstyle="Bold_Italic">.//cs_text[@type='journaltitle']/ArticleTitle/Emphasis[@Type='Italic']</node>
+	<node cstyle="Bold_Italic">.//cs_text[@type='abstract_keyword']/ArticleTitle/Emphasis[@Type='Italic']</node>
+	<node cstyle="Bold_Italic">.//cs_text[@type='abstract_keyword']/ArticleSubTitle/Emphasis[@Type='Italic']</node>
+
+    <!-- New Spec Afflitaion style Start -->
+    <node cstyle="Superscript">.//cs_text[@type='auth_aff_collections']//test_superscript</node>
+	<!-- New Spec Afflitaion style End -->
+
+	<!-- Refsource csymbol hyperlink start -->
+    <node cstyle="cSYMBOL_Hyperlink">.//ExternalRef//cs_text[@type='cSYMBOL']</node>
+	<!-- Refsource csymbol hyperlink end -->
+</ApplyCharacterstyle>
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<ApplyEntityCharacterStyle>
+	<node cstyle=""></node>
+	<node cstyle=""></node>
+</ApplyEntityCharacterStyle>
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<ApplyTableParagraphstyle>
+	<node pstyle="Table_Caption">.//Cell[@cs_type='tablecaption']/entry</node>
+	<node pstyle="Table_Head">.//Cell[@cs_type='tgroup/thead/row/entry']/entry</node>
+	<node pstyle="Table_Body">.//Cell[@cs_type='tgroup/tbody/row/entry']/entry</node>
+	<node pstyle="Table_Footnote">.//Cell[@cs_type='tablefooter']/entry</node>
+	<node pstyle="Table_Body_List">.//SimplePara[@cs_tblhyphen='HypLevel1']</node>
+	<node pstyle="Table_Body_List">.//SimplePara[@cs_tblbullet='BulLevel1']</node>
+
+
+	<node pstyle="Table_Body_Indent_1">.//SimplePara[@cs_tbllisttype='firstlevel']</node>
+	<node pstyle="Table_Body_Indent_2">.//SimplePara[@cs_tbllisttype='secondlevel']</node>
+	<node pstyle="Table_Body_Indent_3">.//SimplePara[@cs_tbllisttype='thirdlevel']</node>
+</ApplyTableParagraphstyle>
+<ApplyTableCharacterstyle>
+<!-- Bold Italic BoldItalic in Table start -->
+	 <node cstyle="Table_Bold">.//Cell/entry//SimplePara/Emphasis[@Type='Bold']</node>
+	 <node cstyle="Table_Italic">.//Cell/entry//SimplePara/Emphasis[@Type='Italic']</node>
+	 <node cstyle="Table_Bold_Italic">.//Cell/entry//SimplePara/Emphasis[@Type='BoldItalic']</node>
+
+	 <node cstyle="Table_Superscript">.//Cell/entry//SimplePara/Superscript</node>
+	 <node cstyle="Table_Super_Bold">.//Cell/entry//SimplePara/Superscript[Emphasis[@Type='Bold']]</node>
+	 <node cstyle="Table_Super_Italic">.//Cell/entry//SimplePara/Superscript[Emphasis[@Type='Italic']]</node>
+	 <node cstyle="Table_Super_Bold_Italic">.//Cell/entry//SimplePara/Superscript[Emphasis[@Type='BoldItalic']]</node>
+
+	 <node cstyle="Table_Subscript">.//Cell/entry//SimplePara/Subscript</node>
+	 <node cstyle="Table_Sub_Bold">.//Cell/entry//SimplePara/Subscript[Emphasis[@Type='Bold']]</node>
+	 <node cstyle="Table_Sub_Italic">.//Cell/entry//SimplePara/Subscript[Emphasis[@Type='Italic']]</node>
+	 <node cstyle="Table_Sub_Bold_Italic">.//Cell/entry//SimplePara/Subscript[Emphasis[@Type='BoldItalic']]</node>
+
+	 <node cstyle="SAN_Bold">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Emphasis[@Type='Bold']</node>
+	 <node cstyle="SAN_Italic">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Emphasis[@Type='Italic']</node>
+	 <node cstyle="SAN_Bold_Italic">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Emphasis[@Type='BoldItalic']</node>
+
+	 <node cstyle="SAN_Superscript">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Superscript</node>
+	 <node cstyle="SAN_Super_Bold">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Superscript[Emphasis[@Type='Bold']]</node>
+	 <node cstyle="SAN_Super_Italic">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Superscript[Emphasis[@Type='Italic']]</node>
+	 <node cstyle="SAN_Super_BoldItalic">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Superscript[Emphasis[@Type='BoldItalic']]</node>
+
+	 <node cstyle="SAN_Subscript">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Subscript</node>
+	 <node cstyle="SAN_Sub_Bold">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Subscript[Emphasis[@Type='Bold']]</node>
+	 <node cstyle="SAN_Sub_Italic">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Subscript[Emphasis[@Type='Italic']]</node>
+	 <node cstyle="SAN_Sub_BoldItalic">.//Cell[@cs_type='tablecaption']/entry//SimplePara/Subscript[Emphasis[@Type='BoldItalic']]</node>
+	<!-- Bold Italic BoldItalic in Table end -->
+</ApplyTableCharacterstyle>
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<ApplyTableCellstyle>
+	<node cellstyle="clTableCaption">.//Cell[@cs_type='tablecaption']</node>
+	<node cellstyle="clTableBody">.//Cell[@cs_type='tgroup/tbody/row/entry']</node>
+	<node cellstyle="clTableHead">.//Cell[@cs_type='tgroup/thead/row/entry']</node>
+	<node cellstyle="clTableFooter">.//Cell[@cs_type='tablefooter']</node>
+	<node cellstyle="clTableBodyLastRow">.//Cell[entry[@rowposition='last'] and (@cs_type='tgroup/tbody/row/entry')]</node>
+
+	
+</ApplyTableCellstyle>
+<!-- ============================================================================================================================================================== -->
+
+<!-- ============================================================================================================================================================== -->
+<ApplyBSLTableCellstyle>
+<node cellstyle="clTableBody">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_middle']</node>
+<node cellstyle="clTableBody_First">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_first']</node>
+<node cellstyle="clTableBody_Last">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_last']</node>
+<node cellstyle="clTableBody_1">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='second_middle']</node>
+<node cellstyle="clTableBody_1_First">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='second_first']</node>
+<node cellstyle="clTableBody_1_Last">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='second_last']</node>
+</ApplyBSLTableCellstyle>
+<!-- ============================================================================================================================================================== -->
+<ApplyJSRTableCellstyle>
+<node cellstyle="clTableSubHead">.//Cell[@cs_type='tgroup/thead/row/entry' and @cs_tblalt='head_middle']</node>
+<node cellstyle="Table_SubHead_Left">.//Cell[@cs_type='tgroup/thead/row/entry' and @cs_tblalt='head_left']</node>
+<node cellstyle="Table_SubHead_Right">.//Cell[@cs_type='tgroup/thead/row/entry' and @cs_tblalt='head_right']</node>
+
+<node cellstyle="clTableHead">.//Cell[@cs_type='tgroup/thead/row/entry' and @cs_tblalt='last_head_middle']</node>
+<node cellstyle="Table_Head_Left">.//Cell[@cs_type='tgroup/thead/row/entry' and @cs_tblalt='last_head_left']</node>
+<node cellstyle="Table_Head_Right">.//Cell[@cs_type='tgroup/thead/row/entry' and @cs_tblalt='last_head_right']</node>
+
+
+<node cellstyle="clTableBody_First_Left">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_left']</node>
+<node cellstyle="clTableBody_First_Middle">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_middle']</node>
+<node cellstyle="clTableBody_First_Right">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_right']</node>
+<node cellstyle="clTableBody_Middle_Left_Col">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_col_middle']</node>
+<node cellstyle="clTableBody_Middle_Right_Col">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='last_col_middle']</node>
+<node cellstyle="clTableBody_Last_Left">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='last_left']</node>
+<node cellstyle="clTableBody_Last_Middle">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='last_middle']</node>
+<node cellstyle="clTableBody_Last_Right">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='last_right']</node>
+
+
+
+<node cellstyle="clTableBody_First_Left_WTH">.//Table[(child::Cell[@cs_type='tablecaption']) and not(child::Cell[@cs_type='tgroup/thead/row/entry'])]//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_left']</node>
+<node cellstyle="clTableBody_First_Middle_WTH">.//Table[(child::Cell[@cs_type='tablecaption']) and not(child::Cell[@cs_type='tgroup/thead/row/entry'])]//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_middle']</node>
+<node cellstyle="clTableBody_First_Right_WTH">.//Table[(child::Cell[@cs_type='tablecaption']) and not(child::Cell[@cs_type='tgroup/thead/row/entry'])]//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_right']</node>
+
+
+
+
+<node cellstyle="clTableBody_First_Middle">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_subposition='below']</node>
+<node cellstyle="clTableBody_First_Left">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='first_col_middle' and @cs_subposition='below']</node>
+<node cellstyle="clTableBody_First_Right">.//Cell[@cs_type='tgroup/tbody/row/entry' and @cs_tblalt='last_col_middle' and @cs_subposition='below']</node>
+
+</ApplyJSRTableCellstyle>
+<!-- ============================================================================================================================================================== -->
+
+<ApplyTablestyle>
+	<node tblstyle="Table_Style_1">.//table[@Style='Style1']/Story/Table</node>
+	<node tblstyle="Table_Style_2">.//table[@Style='Style2']/Story/Table</node>
+	<node tblstyle="Table_Style_3">.//table[@Style='Style3']/Story/Table</node>
+	<node tblstyle="Table_Style_4">.//table[@Style='Style4']/Story/Table</node>
+</ApplyTablestyle>
+     
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<HideElement>
+	<node>.//BibArticle</node>
+
+	<node>.//BibBook</node>
+	<node>.//BibChapter</node>
+	<node>.//ArticleHeader/AuthorGroup</node>
+	<node>.//Abstract[not(parent::cs_text[@type='abstract_keyword']) and (@Language='De' or @Language='En' or @Language='Fr' or @Language='Es' or @Language='Nl')]</node><!-- .//Abstract[not(parent::cs_text)] -->
+	<node>.//KeywordGroup[not(parent::cs_text) and (@Language='De' or @Language='En' or @Language='Fr' or @Language='Es' or @Language='--')]</node>
+	<node>.//ArticleID</node>
+	<node>.//ArticleDOI</node>
+	<node>.//ArticleSequenceNumber</node>
+	<node>.//ArticleFirstPage</node>
+	<node>.//ArticleLastPage</node>
+	<node>.//ArticleHistory</node>
+	<node>.//ArticleContext</node>
+	<node>.//ArticleCopyright</node>
+	<node>.//ArticleTitle[not(parent::cs_text)]</node>
+	<node>.//ArticleSubTitle[not(parent::cs_text)]</node>
+	<node>.//ArticleCategory</node>
+	<node>.//ArticleNote[@Type='PresentedAt' and not(parent::cs_text[@type='auth_aff_collections'])]</node>
+	<node>.//ArticleNote[@Type='PresentedBy' and not(parent::cs_text[@type='auth_aff_collections'])]</node>
+	<node>.//ArticleNote[@Type='Dedication' and not(parent::cs_text[@type='auth_aff_collections'])]</node>
+	<node>.//ArticleNote[@Type='CommunicatedBy' and not(parent::cs_text[@type='auth_aff_collections'])]</node>
+	<node>.//ArticleNote[(@Type='Misc')  and (ancestor::ArticleHeader) and not(parent::cs_text[@type='auth_aff_collections'])]</node>
+	<node>.//ArticleNote[@Type='ESMHint' and not(parent::cs_text[@type='auth_aff_collections'])]</node>
+	<node>.//ArticleNote[@Type='Corrigendum' and not(parent::cs_text[@type='auth_aff_collections'])]</node>
+
+
+	<node>.//cs_text[@type='auth_aff_collections']//test_Phone</node>
+		<node>.//cs_text[@type='auth_aff_collections']//test_Fax</node>
+	<node>.//Appendix[@OutputMedium='Online']</node>
+
+<!-- 	<node>.//ArticleNote[@Type='ESMHint']</node> -->
+    <node>.//EquationSource</node>
+	<node>.//ArticleRelatedObject</node>
+	<node>.//test_Author//test_Biography</node>
+		<node>.//ArticleFundingInformation</node>
+</HideElement>
+<!-- ============================================================================================================================================================== -->
+<Removeattribute>
+	<node attrname="aid:cstyle">.//Subscript/Emphasis[@Type='Italic']</node>
+	<node attrname="aid:cstyle">.//Subscript/Emphasis[@Type='Bold']</node>
+	<node attrname="aid:cstyle">.//Subscript/Emphasis[@Type='BoldItalic']</node>
+	<node attrname="aid:cstyle">.//Superscript/Emphasis[@Type='Italic']</node>
+	<node attrname="aid:cstyle">.//Superscript/Emphasis[@Type='Bold']</node>
+	<node attrname="aid:cstyle">.//Superscript/Emphasis[@Type='BoldItalic']</node>
+	<node attrname="aid:pstyle">.//ArticleNote[@Type='ESMHint']/Heading</node>
+	<node attrname="aid:pstyle">.//ArticleNote[@Type='ESMHint']/SimplePara</node>
+	<node attrname="aid:pstyle">.//test_Affiliation//test_URL</node>
+ </Removeattribute>
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+<!-- ============================================================================================================================================================== -->
+</root>

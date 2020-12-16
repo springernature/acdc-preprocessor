@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+<tablesettingxml>D:\Zappagination\Project\JournalAutomation\Settings\TableSettings.xml</tablesettingxml>
+<figuresettingsxml>D:\Zappagination\Project\JournalAutomation\Settings\FigureSettings.xml</figuresettingsxml>
+<EquationPath>D:\Zappagination\Project\JournalAutomation\JNLPreprocessor\Graphics</EquationPath>
+<Entitysettingsxml>D:\Zappagination\Project\JournalAutomation\JNLPreprocessor\JNLPreprocessor\bin\Debug\Entities.xml</Entitysettingsxml>
+<ACDC_Jobsheetxml>\\192.168.84.43\Breeze_Share</ACDC_Jobsheetxml>
+<ACDC_Graphics>\\192.168.84.43\Breeze_Share</ACDC_Graphics>
+<JournalSubTypeA>|501|11812|</JournalSubTypeA>
+<JournalSubTypeB>|506|717|10353|10354|12254|12548|16024|40211|</JournalSubTypeB>
+<Ignorehistoryframe>|12439|</Ignorehistoryframe>
+<Layoutname>|GlobalMedium|BSL_T1_Grey|Springervienna_1Col|Springervienna|VSAndGabler|GlobalJournalLarge|VS-Verlag|STM_FAZ_4C_WithBackground|GlobalJournalSmallExtended|GlobalJournalSmallCondensed|Springervienna_3Col|Global Large|BSL_Large_NS</Layoutname>
+<TypeSettingMediumLayout>GlobalMedium</TypeSettingMediumLayout>
+<TypeSettingSmallextendedLayout>GlobalJournalSmallExtended</TypeSettingSmallextendedLayout>
+<TypeSettingLargeLayout>GlobalJournalLarge</TypeSettingLargeLayout>
+<TypeSettingSmallcondensedLayout>GlobalJournalSmallCondensed</TypeSettingSmallcondensedLayout>
+
+	<hyperlinks>
+	<hyperlink>
+		<source nodexpath=".//Citation" nodeattr="ID" attrprefix="CR" index="1"></source>
+		<destination nodexpath="CitationRef" nodeattr="CitationID" attrprefix="CR" index="1"></destination>
+	</hyperlink>
+	<hyperlink>
+		<source nodexpath=".//Table" nodeattr="ID" attrprefix="Tab" index="2"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Tab" index="2"></destination>
+	</hyperlink>
+	<hyperlink>
+		<source nodexpath=".//Figure" nodeattr="ID" attrprefix="Fig" index="3"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Fig" index="3"></destination>
+	</hyperlink>
+	<hyperlink>
+    <source nodexpath=".//Figure" nodeattr="ID" attrprefix="Tab" index="4"></source>
+    <destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Tab" index="4"></destination>
+  </hyperlink>
+
+    <hyperlink>
+		<source nodexpath=".//Figure" nodeattr="ID" attrprefix="Sch" index="5"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sch" index="5"></destination>
+  </hyperlink>
+  <hyperlink>
+		<source nodexpath=".//Figure" nodeattr="ID" attrprefix="Str" index="6"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="str" index="6"></destination>
+  </hyperlink>
+
+  <hyperlink>
+		<source nodexpath=".//Section1" nodeattr="ID" attrprefix="Sec" index="7"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sec" index="7"></destination>
+  </hyperlink>
+
+    <hyperlink>
+		<source nodexpath=".//Section2" nodeattr="ID" attrprefix="Sec" index="8"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sec" index="8"></destination>
+  </hyperlink>
+
+    <hyperlink>
+		<source nodexpath=".//Section3" nodeattr="ID" attrprefix="Sec" index="9"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sec" index="9"></destination>
+  </hyperlink>
+
+    <hyperlink>
+		<source nodexpath=".//Section4" nodeattr="ID" attrprefix="Sec" index="10"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sec" index="10"></destination>
+  </hyperlink>
+
+    <hyperlink>
+		<source nodexpath=".//Section5" nodeattr="ID" attrprefix="Sec" index="11"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sec" index="11"></destination>
+  </hyperlink>
+
+    <hyperlink>
+		<source nodexpath=".//Section6" nodeattr="ID" attrprefix="Sec" index="12"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sec" index="12"></destination>
+  </hyperlink>
+
+    <hyperlink>
+		<source nodexpath=".//Section7" nodeattr="ID" attrprefix="Sec" index="13"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Sec" index="13"></destination>
+  </hyperlink>
+
+  
+    <hyperlink>
+		<source nodexpath=".//Equation" nodeattr="ID" attrprefix="Equ" index="14"></source>
+		<destination nodexpath="InternalRef" nodeattr="RefID" attrprefix="Equ" index="14"></destination>
+  </hyperlink>
+
+  
+
+
+
+ </hyperlinks>
+<Endnote JournalID="11575|11612|11618|11620|38354|11621|35834"></Endnote>
+</settings>
+
+

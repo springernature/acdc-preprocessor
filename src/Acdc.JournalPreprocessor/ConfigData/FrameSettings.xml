@@ -1,0 +1,57 @@
+<framesettings>
+		<!-- <frame name="VSArticleCategoryFrame">
+					<top>20.0</top>
+					<left>18.0</left>
+					<height>4</height>
+					<width>170</width>
+					<onpage>1</onpage>
+					<shrink frombottom="false"/>
+					<objectstyle>TextFrame_Category</objectstyle>
+		</frame> -->
+		<frame name="VSArticleTitleFrame">
+					<top>61.322</top>
+					<left>20.0</left>
+					<height>16.228</height>
+					<width>170</width>
+					<onpage>1</onpage>
+					<shrink frombottom="false"/>
+					<objectstyle>TextFrame_Title</objectstyle>
+		</frame>
+		<frame name="Authaffiliation">
+					<top></top>
+					<left></left>
+					<height></height>
+					<width></width>
+					<onpage>1</onpage>
+					<shrink frombottom="true"/>
+					<objectstyle>TextFrame_AuthorDetails</objectstyle>
+		</frame>
+		<frame name="GablerArticleCategoryFrame">
+					<top>20.00</top>
+					<left>15</left>
+					<height>4</height>
+					<width>78</width>
+					<onpage>1</onpage>
+					<shrink frombottom="false"/>
+					<objectstyle>TextFrame_Category</objectstyle>
+		</frame>
+		<frame name="GablerArticleTitleFrame">
+					<top>32.902</top>
+					<left>15.003</left>
+					<height>21.167</height>
+					<width>125</width>
+					<onpage>1</onpage>
+					<shrink frombottom="false"/>
+					<objectstyle>TextFrame_Title</objectstyle>
+		</frame>
+	
+	<frame name="Articleaddressframe">
+		<top>93.655</top>
+		<left>20</left>
+		<height>8.396</height>
+		<width>170</width>
+		<onpage>1</onpage>
+		<shrink frombottom="false"/>
+		<objectstyle>TextFrame_Title</objectstyle>
+	</frame>
+</framesettings>

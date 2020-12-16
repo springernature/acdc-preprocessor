@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyNetQ" Version="2.3.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Acdc.Preprocessor.Core\Acdc.Preprocessor.Core.csproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.Logging\Acdc.Preprocessor.Logging.csproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.Settings\Acdc.Preprocessor.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

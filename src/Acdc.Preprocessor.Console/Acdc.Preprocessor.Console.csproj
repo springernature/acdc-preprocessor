@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
+    <PackageReference Include="Serilog.Sinks.Network" Version="2.0.1.64" />
+    <PackageReference Include="Serilog.Sinks.Sentry" Version="2.2.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Acdc.Preprocessor.Core\Acdc.Preprocessor.Core.csproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.Logging\Acdc.Preprocessor.Logging.csproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.RMQ.Communicator\Acdc.Preprocessor.RMQ.Communicator.csproj" />
+    <ProjectReference Include="..\Acdc.Preprocessor.Settings\Acdc.Preprocessor.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

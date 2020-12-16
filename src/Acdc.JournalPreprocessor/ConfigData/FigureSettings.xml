@@ -1,0 +1,15 @@
+<Root>
+<FigureSettings>
+<BaseDirectory>D:\ZapPagination\</BaseDirectory>
+<FigureElementName idAttribute="ID">Figure</FigureElementName>
+<FigureRefElementName idAttribute="RefID" IDpattern="Fig(\d+)">InternalRef</FigureRefElementName>
+<FigureCaptionElement>Caption</FigureCaptionElement>
+<FigureFootnoteElement></FigureFootnoteElement>
+<!-- Figurepath is wrt FigureElement -->
+<FigureXMLPath>MediaObject/ImageObject/@FileRef</FigureXMLPath>
+<FigurePathXpath>Project\Journal\CS5.5\Springervienna\Preprocessor\Graphics\PRINT</FigurePathXpath>
+<FigureServerPath>\\192.168.32.252\Book</FigureServerPath>
+<DatabaseString>Data Source=mysql;Data Source=192.168.84.8;Database=dbcrest;User ID=zapjournals;Password=zapjournals;port=3306;</DatabaseString>
+<EquationPathXpath>\Project\JournalAutomation\JNLPGUtility_OUT</EquationPathXpath>
+</FigureSettings>
+</Root>
