@@ -19,7 +19,7 @@ namespace Acdc.Preprocessor.Core
             XmlAndFileName editedXml = null;
             XmlAndFileName jobsheetXml = null;
             string reuestID = string.Empty;
-            string workingFolder = @"D:\Breeze_Share";
+            string workingFolder = @"s:\Breeze-Pagination\Breeze\IN\Work";
             string folderPath = null;
             try
             {
@@ -29,16 +29,16 @@ namespace Acdc.Preprocessor.Core
                 if (!result)
                     throw new PreprocessorException("Preprocessor Pre validation gets failed.Unable To Process..");
 
-               workingFolder = Path.Combine(workingFolder, reuestID);
-
-               folderPath= PreprocessorHelper.CreateFolderStructure(workingFolder, editedXml.FileName.Replace(".xml", ""));
+               folderPath= PreprocessorHelper.CreateFolderStructure(workingFolder, editedXml.FileName.Replace(".xml", "") + "_" + DateTime.UtcNow.ToString("yyyy-MM-ddTHHmmss"));
 
                string inputxmlPath= PreprocessorHelper.CopyEditedXml(folderPath,editedXml);
 
 
                string jobSheetXmlPath = PreprocessorHelper.CopyJobsheetXml(folderPath, jobsheetXml);
 
-               string outxmlPath= PreprocessorHelper.SetOutputXmlPath(folderPath, editedXml);
+               bool isImagedownloaded = PreprocessorHelper.CopyImages(folderPath, brokerMessage);
+
+                string outxmlPath= PreprocessorHelper.SetOutputXmlPath(folderPath, editedXml);
 
                new clsJNLrendering(inputxmlPath, outxmlPath, "true", jobSheetXmlPath, "");
 
@@ -49,8 +49,12 @@ namespace Acdc.Preprocessor.Core
                     LoggerCF.GetInstance().LogInfo("Failed to create outxml: " + outxmlPath, brokerMessage);
                     throw new PreprocessorException("Failed to create outxml: " + outxmlPath);
                 }
+                if (isPGXml == false)
+                {
+                    LoggerCF.GetInstance().LogInfo("Failed to create pg xml: " + outxmlPath, brokerMessage);
+                    throw new PreprocessorException("Failed to create pg xml: " + outxmlPath);
+                }
 
-           
                 LoggerCF.GetInstance().LogInfo("Preprocessor Service Completed..", brokerMessage);
 
                 result = true;
@@ -59,8 +63,8 @@ namespace Acdc.Preprocessor.Core
             catch (Exception ex)
             {
                 LoggerCF.GetInstance().LogError("Preprocessor service get failed." + "\n" + ex.Message.ToString());
-                //BrokerMessageHelper.SetError(brokerMessage, ex.Message, ex.StackTrace, GlobalAppSetting.appsetting.ACDC_METADATASYNC_APP_NAME);
-                //AuditLogHelper.alert_message.Add(new AlertMessage { code = Constants.technicalException, description = ex.Message, elementref = ex.StackTrace });
+                BrokerMessageHelper.SetError(brokerMessage, ex.Message, ex.StackTrace, GlobalAppSetting.appsetting.ACDC_PREPROCESSOR_APP_NAME);
+                AuditLogHelper.alert_message.Add(new AlertMessage { code = Constants.technicalException, description = ex.Message, elementref = ex.StackTrace });
                 result = false;
                 throw;
             }

@@ -6220,7 +6220,7 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
         Catch ex As Exception
             CLog.LogMessages("Error in Fn_CreateDOIFrame()" + vbNewLine)
             CLog.LogMessages(ex.Message.ToString + vbNewLine)
-            Throw
+            'Throw
         End Try
         '====================================================END======================================================
         '=============================================================================================================

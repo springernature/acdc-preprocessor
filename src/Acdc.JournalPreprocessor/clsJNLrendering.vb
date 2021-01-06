@@ -168,6 +168,7 @@ Public Class clsJNLrendering
                 GoTo p
             End Try
             oReq.XDoc.Save(outputxml)
+            System.Threading.Thread.Sleep(3000)
             CLog.LogMessages("====================================================================================================================================", True)
             CLog.LogMessages("Successfully created outputxml")
             CLog.LogMessages("====================================================================================================================================", True)
@@ -186,7 +187,7 @@ Public Class clsJNLrendering
         End Try
 p:
         Try
-            Dim ersw As New System.IO.StreamWriter("D:\JNLPGUtility.txt")
+            Dim ersw As New System.IO.StreamWriter("s:\JNLPGUtility.txt")
             ersw.Write("-----STM Journal Preprocessor ------ : " + Now.ToString + vbNewLine + ErrorMessages + vbNewLine)
             ersw.Close()
         Catch ex As Exception

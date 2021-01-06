@@ -6,6 +6,7 @@ using SharpRaven;
 using SharpRaven.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -61,7 +62,14 @@ namespace Acdc.Preprocessor.Core
             return (true, editedXml, jobsheetXml, requestID);
         }
 
- 
+        public static bool CopyImages(string folderPath, JObject brokerMessage)
+        {
+            bool isDownloadImages = false;
+            isDownloadImages = GetImageLinkFromBrokerMessage(brokerMessage, "images_s200", "GET", folderPath);
+            return isDownloadImages;
+
+        }
+
         public static bool CreatePGXml(string inputxmlPath, string jobSheetXmlPath, string folderPath)
         {
             bool isPGXml = false;
@@ -378,6 +386,39 @@ namespace Acdc.Preprocessor.Core
             }
             return articleLinks;
         }
+
+        public static bool GetImageLinkFromBrokerMessage(JObject brokerMessage, string documentName, string method, string folderPath, bool throwException = true)
+        {
+            bool result = false;
+            List<string> articleLinks = new List<string>();
+            articleLinks=BrokerMessageHelper.GetImagesLinkFromBrokerMessage(brokerMessage, documentName, method);
+            if (articleLinks.Count>0)
+            {
+                DownloadImages(articleLinks, folderPath);
+                result = true;
+            }
+            return result;
+        }
+
+        private static void DownloadImages(List<string> articleLinks, string folderPath)
+        {
+            folderPath += @"\Graphics\WEB\";
+            foreach (var link in articleLinks)
+            {
+                StreamAndFileName structureArticleXml = _cmsService.GetXml(link, true);
+                try
+                {
+                    Image image = Image.FromStream(structureArticleXml.FileStream);
+                    image.Save(folderPath+ structureArticleXml.FileName);
+                }
+                catch (Exception ex)
+                {
+
+                    
+                }
+            }
+        }
+
         public static string GetStructureArticleResources(JObject brokerMessage, string documentName, string linkRelation)
         {
             string articleLinksFromBrokerMessage = GetLinkFromBrokerMessage(brokerMessage, documentName, "GET");
@@ -398,8 +439,8 @@ namespace Acdc.Preprocessor.Core
         public static void WriteErrorLog(JObject brokerMessage, string exception, string stackTrace, string errorCode)
         {
             LoggerCF.GetInstance().LogError(exception);
-            //BrokerMessageHelper.SetError(brokerMessage, exception, stackTrace, GlobalAppSetting.appsetting.ACDC_METADATASYNC_APP_NAME);
-            //AuditLogHelper.alert_message.Add(new AlertMessage { code = errorCode, description = exception, elementref = "" });
+            BrokerMessageHelper.SetError(brokerMessage, exception, stackTrace, GlobalAppSetting.appsetting.ACDC_PREPROCESSOR_APP_NAME);
+            AuditLogHelper.alert_message.Add(new AlertMessage { code = errorCode, description = exception, elementref = "" });
         }
     }
 }

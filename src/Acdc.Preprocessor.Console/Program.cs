@@ -24,7 +24,7 @@ namespace Acdc.Preprocessor.Console
         private static void ConfigureConsole()
         {
             System.Console.Clear();
-            System.Console.Title = "acdc-preprocessor-service - [" + typeof(Program).Assembly.GetName().Version + "]";
+            System.Console.Title = "acdc-preprocessor-service DEV- [" + typeof(Program).Assembly.GetName().Version + "]";
             System.Console.WriteLine("preprocessor service started.");
         }
     }

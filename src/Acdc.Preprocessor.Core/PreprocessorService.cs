@@ -4,6 +4,7 @@ using SharpRaven;
 using System;
 using Acdc.Preprocessor.Logging;
 using SharpRaven.Data;
+using System.IO;
 
 namespace Acdc.Preprocessor.Core
 {
@@ -22,7 +23,8 @@ namespace Acdc.Preprocessor.Core
 
         public (bool, JObject) Start(JObject brokerMessage)
         {
-             bool isSuccess = false;
+            JArray errors = null;
+            bool isSuccess = false;
             string tempstorage = null;
             try
             {
@@ -33,25 +35,35 @@ namespace Acdc.Preprocessor.Core
                 (isSuccess, tempstorage) = new XmlToPreProcessedXml().Process(brokerMessage);
 
 
-                brokerMessage = BrokerMessageHelper.GetMessage(brokerMessage, isSuccess, _appSettings, tempstorage);
+                
                 logger.LogServiceCompleted(brokerMessage);
             }
             catch (Exception ex)
             {
                 _ravenClient.Capture(new SentryEvent(ex));
                 LoggerCF.GetInstance().LogError(ex, brokerMessage);
-                //errors = BrokerMessageHelper.SetError(brokerMessage, "Error in metadata sync service: " + ex.Message, ex.StackTrace, _appSettings.ACDC_METADATASYNC_APP_NAME);
-                //AuditLogHelper.alert_message.Add(new AlertMessage
-                //{
-                //    code = Constants.technicalException,
-                //    description = ex.Message,
-                //    elementref = ex.StackTrace
-                //});
+                errors = BrokerMessageHelper.SetError(brokerMessage, "Error in acdc-preprocessor service: " + ex.Message, ex.StackTrace, _appSettings.ACDC_PREPROCESSOR_APP_NAME);
+                AuditLogHelper.alert_message.Add(new AlertMessage
+                {
+                    code = Constants.technicalException,
+                    description = ex.Message,
+                    elementref = ex.StackTrace
+                });
             }
-           
+            brokerMessage = BrokerMessageHelper.GetMessage(brokerMessage, isSuccess, _appSettings, tempstorage);
+            if (!isSuccess)
+            {
+                DeleteFolder(tempstorage);
+            }
             return (isSuccess, brokerMessage);
         }
-
+        private void DeleteFolder(string tempstorage)
+        {
+            if (Directory.Exists(tempstorage))
+            {
+                Directory.Delete(tempstorage, true);
+            }
+        }
         private void SetLogFields(JObject brokerMessage)
         {
             var logger = LoggerCF.GetInstance();

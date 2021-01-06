@@ -411,7 +411,7 @@ Public Class clsTableConversion
 
             ''    End Try
             'commented above for table optimization
-          
+
             ''  Next
 
 
@@ -553,7 +553,9 @@ Public Class clsTableConversion
         Dim EndColDigit As Integer = StartColDigit
         Dim EndColName As String = ""
         Try
-            EndColName = CurrCell.Attributes.ItemOf(EndColNameAttr).Value
+            If (IsNothing(CurrCell.Attributes.ItemOf(EndColNameAttr)) = False) Then
+                EndColName = CurrCell.Attributes.ItemOf(EndColNameAttr).Value
+            End If
             EndColDigit = Integer.Parse(Regex.Match(EndColName, "(\d+)", RegexOptions.Singleline).Groups(1).Value)
         Catch ex As Exception
         End Try

@@ -29,7 +29,7 @@ namespace Acdc.Preprocessor.Core
         public const string Href = "href";
         public const string Errors = "errors";
         public const string Module = "module";
-        public const string AcdcMetaSync = "acdc-meta-sync-service";
+        public const string AcdcPreprocessor = "acdc-preprocessor";
         public const string HostName = "host_name";
         public const string Message = "message";
         public const string Trace = "trace";
@@ -38,7 +38,6 @@ namespace Acdc.Preprocessor.Core
         public const string Detail = "detail";
         public const string ModuleName = "module_name";
         public const string Status = "status";
-        public const string MetadataSyncFlow = "metadata_sync_flow";
         public const string CloudStorage = "cloud_storage";
         public const string ArticleMetadata = "article-metadata";
         public const string SubmissionMetadata = "submission_metadata";

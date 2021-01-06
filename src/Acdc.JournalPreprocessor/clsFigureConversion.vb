@@ -13,6 +13,7 @@
 Imports System.Xml
 Imports System.Text.RegularExpressions
 Imports MySql.Data.MySqlClient
+Imports System.IO
 Public Class clsFigureConversion
     Private FigureSettingXmlPath As String = ""
     Private FigureNodeName As String
@@ -151,7 +152,7 @@ Public Class clsFigureConversion
                         'Added condition on 170610
                         If (BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value.Contains("\") = False) Then
                             ''BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "C:\FigNotFound.jpg"
-                            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "d:\FigNotFoundNew.jpg"
+                            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "s:\FigNotFoundNew.jpg"
                         End If
                     Next
                 Catch ex As Exception
@@ -415,114 +416,28 @@ Public Class clsFigureConversion
         '=============================================================================================================
         '=============================================================================================================
         Try
-            Dim chpaterNd As Xml.XmlNode = XDoc.SelectSingleNode(".//Chapter") 'chpaterNd.Attributes.Itemof("ID").Value
-            Dim ChapterType As Xml.XmlNode = XDoc.SelectSingleNode(".//ChapterInfo")
             Dim destPath As String = ""
             Dim WebDestPath As String = ""
             Dim GetFigPath As String = ""
             Dim HiresPath As String = ""
             Dim LowersPath As String = ""
-            Try
-                'get image path from hard drive if its null then get path on mentioned location
-                If (ACDCLayout = True) Then
-                    GetFigPath = ACDC_Graphics
-                Else
-                    GetFigPath = GetPathFromHardDrivePath(inputxml)
-                End If
-
-            Catch ex As Exception
-
-            End Try
-            If GetFigPath <> "" Then
-                ' destPath = GetFigPath + "\Print"
-                destPath = GetFigPath + "\Web"
-                WebDestPath = GetFigPath + "\Web"
-            End If
-
+            GetFigPath = Path.GetDirectoryName(inputxml).Replace("InputXml", "Graphics\Web")
             Try
                 Dim AllFigs As XmlNodeList = XDoc.SelectNodes(".//" + FigureNodeName)
                 For Each FigNd As XmlNode In AllFigs
-                    Try
-                        Try
-                            Dim sourcePath As String = ""
-                            Dim FigName As String = "" ''''"Fig"
-                            Dim FigSubIndex As String = ""
-                            Try
-                                If (Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "_HTML", RegexOptions.Singleline).Success = True) Then
-                                    Try
-                                        Dim figref_attr As Xml.XmlAttribute = XDoc.CreateAttribute("cs_FileRef")
-                                        figref_attr.Value = FigNd.SelectSingleNode(FigureXMLPath).Value
-                                        FigNd.Attributes.Append(figref_attr)
-                                    Catch ex As Exception
+                    Dim FigName = ""
+                    FigName = FigNd.SelectSingleNode(FigureXMLPath).Value
+                    Dim FigPathforXML As String = getHiresImagePath(GetFigPath, FigName, "")
+                    FigNd.SelectSingleNode(FigureXMLPath).Value = FigPathforXML
 
-                                    End Try
-                                    ''                                    Try
-                                    ''                                        If (FigNd.SelectSingleNode(FigureXMLPath).Value.Contains("Tab")) Then
-                                    ''                                            FigName = "Tab" + Integer.Parse(Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "(\d+)([a-zA-Z]?(-[a-zA-Z])?)_HTML.(gif|jpg|eps|tif)", RegexOptions.Singleline).Groups(1).Value).ToString ' FigNd.SelectSingleNode(FigurePathXPath).Value
-                                    ''                                        Else
-                                    ''                                            FigName += Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "_Fig?(\d+)?([a-zA-Z]?[a-zA-Z]?)_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(1).Value
-                                    ''                                            If (FigName = "Fig") Then
-                                    ''                                                FigName =
-                                    ''""
-                                    ''                                                FigName += Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "_Sch?(\d+)?([a-zA-Z]?[a-zA-Z]?)_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(1).Value
-                                    ''                                                If (FigName = "Sch") Then
-                                    ''                                                    FigName += Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "_Sch?(\d+)?([a-zA-Z]?[a-zA-Z]?(\d+))_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(1).Value
-                                    ''                                                End If
-                                    ''                                                FigSubIndex = Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "_Sch?(\d+)?([a-zA-Z]?[a-zA-Z]?)_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(2).Value
-                                    ''                                                If (FigSubIndex = "") Then
-                                    ''                                                    FigSubIndex = Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "_Sch?(\d+)?([a-zA-Z]?[a-zA-Z]?(\d+)?)_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(2).Value
-                                    ''                                                End If
-                                    ''                                            End If
+                    Dim figref_attr As Xml.XmlAttribute = XDoc.CreateAttribute("cs_FileRef")
+                    figref_attr.Value = FigNd.SelectSingleNode(FigureXMLPath).Value
+                    FigNd.Attributes.Append(figref_attr)
 
-                                    ''                                        End If
-                                    ''                                    Catch ex As Exception
-
-                                    ''                                    End Try
-
-                                    ''                                    FigSubIndex = Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "(\d+)?([a-zA-Z]?)_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(2).Value
-                                    ''                                    FigName += FigSubIndex
-
-                                    Try
-                                        If (FigNd.SelectSingleNode(FigureXMLPath).Value.Contains("Tab")) Then
-                                            FigName = "Tab"
-                                        End If
-                                        If (FigNd.SelectSingleNode(FigureXMLPath).Value.Contains("Fig")) Then
-                                            FigName = "Fig"
-                                        End If
-                                        If (FigNd.SelectSingleNode(FigureXMLPath).Value.Contains("Sch")) Then
-                                            FigName = "Sch"
-                                        End If
-                                        If (FigNd.SelectSingleNode(FigureXMLPath).Value.Contains("Str")) Then
-                                            FigName = "Str"
-                                        End If
-                                        ''If (FigNd.SelectSingleNode(FigureXMLPath).Value.Contains("Equ")) Then
-                                        ''    FigName = "Equ"
-                                        ''End If
-                                        ''If (FigNd.SelectSingleNode(FigureXMLPath).Value.Contains("IEq")) Then
-                                        ''    FigName = "IEq"
-                                        ''End If
-                                    Catch ex As Exception
-
-                                    End Try
-                                    FigName += Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "(\d+)?([a-zA-Z]?[a-zA-Z]?)_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(1).Value
-                                    FigSubIndex = Regex.Match(FigNd.SelectSingleNode(FigureXMLPath).Value, "(\d+)?([a-zA-Z]?)_HTML.(gif|jpg)", RegexOptions.Singleline).Groups(2).Value
-                                    FigName += FigSubIndex
-                                End If
-                                Dim FigPathforXML As String = getHiresImagePath(destPath, FigName, "")
-                                FigNd.SelectSingleNode(FigureXMLPath).Value = FigPathforXML
-                            Catch ex As Exception
-                            End Try
-                            'Check whether directory exist or not
-                        Catch ex As Exception
-                        End Try
-                    Catch ex As Exception
-
-                    End Try
                 Next
             Catch ex As Exception
 
             End Try
-
         Catch ex As Exception
 
         End Try
@@ -546,7 +461,7 @@ Public Class clsFigureConversion
             Try
                 mconn.Open()
                 Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-                Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
+                Dim cdm As New MySqlCommand("Select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
                 Dim reader As MySqlDataReader
                 reader = cdm.ExecuteReader
                 If reader.HasRows = True Then
@@ -690,11 +605,11 @@ Public Class clsFigureConversion
         For Each fl As String In AllNewImages
             Try
                 Dim finf As New System.IO.FileInfo(fl)
-                'If finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_print" + ".eps") Or finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_print" + ".tif") Or finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_print" + ".jpg") Or finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_print" + ".jpeg") Then
-                If finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_html" + ".eps") Or finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_html" + ".tif") Or finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_html" + ".jpg") Or finf.Name.ToLower.Contains(prefix.ToLower() + figIndex.ToLower() + "_html" + ".jpeg") Then
-                    strFilePath = fl
+                If (finf.Name.ToLower().Equals(figIndex.ToLower())) Then
+                    strFilePath = finf.FullName
                     Exit For
                 End If
+
             Catch ex As Exception
             End Try
         Next
@@ -738,33 +653,15 @@ Public Class clsFigureConversion
                 If System.IO.File.Exists(FigName) Then
                     FigureIdentiAttr.Value = FigName
                 Else
-                    If IsNothing(AllImages) = False Then
-                        If FigName.EndsWith(".eps") = False And FigName.EndsWith(".tif") = False And FigName.EndsWith(".jpg") = False Then
-                            Try
-                                Dim FigID As String = ""
-                                FigID = FigNd.Attributes.ItemOf(FigureIdName).Value
-                                Dim IDNum As String = Regex.Match(FigID, "\d+", RegexOptions.Singleline).Value
-                                For Each strF As String In AllImages
-                                    Dim fignum As String = Regex.Match(strF, "\d+", RegexOptions.RightToLeft).Value
-                                    If fignum = IDNum Then
-                                        Dim Finf As New System.IO.FileInfo(strF)
-                                        FigureIdentiAttr.Value = BaseDirectory + sepra + FigName + "\" + Finf.Name
-                                        Exit For
-                                    End If
-                                Next
-                            Catch ex As Exception
-                            End Try
+                    FigureIdentiAttr.Value = "s:\FigNotFound.jpg"
+                    Try
+                        If (FigNd.Attributes.ItemOf("Float").Value.ToLower = "no") Then
+                            FigureIdentiAttr.Value = "s:\FigNotFoundNew.jpg"
                         End If
-                    Else
-                        FigureIdentiAttr.Value = "D:\FigNotFound.jpg"
-                        Try
-                            If (FigNd.Attributes.ItemOf("Float").Value.ToLower = "no") Then
-                                FigureIdentiAttr.Value = "d:\FigNotFoundNew.jpg"
-                            End If
-                        Catch ex As Exception
+                    Catch ex As Exception
 
-                        End Try
-                    End If
+                    End Try
+
                 End If
 
                 FigNd.Attributes.Append(FigureIdentiAttr)
@@ -1044,7 +941,7 @@ Public Class clsFigureConversion
         '====================================================END======================================================
         '=============================================================================================================
     End Function
-   
+
     'Public Function GetOpenChoice(ByVal FigureConversionFile As String, ByVal inputxml As String)
     '    '=============================================================================================================
     '    '=============================================================================================================

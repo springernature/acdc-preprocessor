@@ -105,7 +105,7 @@ Public Class clsPreprocMain
             'For Equal Symbol end
             sr.Close()
 
-            Dim sw As New StreamWriter("d:\tt.xml", False, System.Text.Encoding.GetEncoding(1252))
+            Dim sw As New StreamWriter("s:\tt.xml", False, System.Text.Encoding.GetEncoding(1252))
             sw.Write(XmlStr)
             sw.Close()
             NTable = New NameTable
@@ -115,6 +115,7 @@ Public Class clsPreprocMain
             NS.AddNamespace("aid", "http://ns.adobe.com/AdobeInDesign/4.0/")
             NS.AddNamespace("aid5", "http://ns.adobe.com/AdobeInDesign/5.0/")
 
+            NSht.Clear()
             NSht.Add("cs", "http://www.crest-premedia.in")
             NSht.Add("aid", "http://ns.adobe.com/AdobeInDesign/4.0/")
             NSht.Add("aid5", "http://ns.adobe.com/AdobeInDesign/5.0/")
@@ -129,8 +130,7 @@ Public Class clsPreprocMain
             End Try
 
             XDoc = CreateDom(XmlStr)
-
-
+            XMLM_Data = ""
             ''''''''''''''''''''''CreateEntity start''''''''''''''''''''''''
 
 
@@ -173,13 +173,13 @@ Public Class clsPreprocMain
 
             sxDoc.LoadXml(XmlStr)
 
-            xWrite = XmlWriter.Create("d:\coversIndentXml.xml", xWriteSettings)
+            xWrite = XmlWriter.Create("s:\coversIndentXml.xml", xWriteSettings)
 
             sxDoc.WriteTo(xWrite)
 
             xWrite.Close()
             Dim finalxdoc As New XmlDocument
-            finalxdoc.Load("d:\coversIndentXml.xml")
+            finalxdoc.Load("s:\coversIndentXml.xml")
 
 
             Return finalxdoc.OuterXml
@@ -236,7 +236,7 @@ Public Class clsPreprocMain
         Dim WDEmp As String = m.Groups(2).Value
         Dim WDFont As String = m.Groups(3).Value
         Dim WDHexName As String = m.Groups(4).Value.Replace("&#x", "").Replace(";", "")
-        'System.Configuration.ConfigurationSettings.AppSettings("EntityPath") '"D:\Suresh\EntWord2Indd\Entities.xml"
+
         Dim entityDoc As New Xml.XmlDocument
         entityDoc.Load(EntityPathxml)
         Dim entities As Xml.XmlNode = entityDoc.SelectSingleNode(".//Entity[WFont='" + WDFont + "' and Emp='" + WDEmp + "' and WCC='" + WDHexName + "']")
@@ -254,7 +254,7 @@ Public Class clsPreprocMain
         Dim WDEmp As String = "Normal"
         Dim WDFont As String = m.Groups(1).Value
         Dim WDHexName As String = m.Groups(2).Value.Replace("&#x", "").Replace(";", "")
-        Dim EntityPath As String = "" 'System.Configuration.ConfigurationSettings.AppSettings("EntityPath") '"D:\Suresh\EntWord2Indd\Entities.xml"
+        Dim EntityPath As String = ""
         Dim entityDoc As New Xml.XmlDocument
         entityDoc.Load(EntityPathxml)
         Dim entities As Xml.XmlNode = entityDoc.SelectSingleNode(".//Entity[WFont='" + WDFont + "' and Emp='" + WDEmp + "' and WCC='" + WDHexName + "']")
@@ -309,6 +309,8 @@ Public Class clsPreprocMain
             CLog.LogMessages("====================================================================================================================================", True)
             CLog.LogMessages("====================================================================================================================================", True)
             CLog.LogMessages("====================================================================================================================================", True)
+
+            Throw
         End Try
 
 
@@ -870,7 +872,12 @@ Public Class clsPreprocMain
             Exit Sub
         End If
         Try
-            If (SrcNode.Name.ToLower = "cs:table" And SrcNode.Attributes("Float").Value.ToString.ToLower = "no") Then
+            If (SrcNode.Name.ToLower = "cs:table" And IsNothing(SrcNode.Attributes("Float")) = False) Then
+                If (SrcNode.Attributes("Float").Value.ToString.ToLower = "no") Then
+                    isInlineTable = True
+                Else
+                    isInlineTable = False
+                End If
                 isInlineTable = True
             Else
                 isInlineTable = False
@@ -924,8 +931,13 @@ Public Class clsPreprocMain
         Dim attr As XmlAttribute = XDoc.CreateAttribute("repoID")
         Dim IsInline As Boolean = False
         Try
-            If (SrcNode.Name.ToLower = "figure" And SrcNode.Attributes("Float").Value.ToLower = "no") Then
-                IsInline = True
+            If (SrcNode.Name.ToLower = "figure" And IsNothing(SrcNode.Attributes("Float")) = False) Then
+                If (SrcNode.Attributes("Float").Value.ToLower = "no") Then
+                    IsInline = True
+                Else
+                    IsInline = False
+                End If
+
             Else
                 IsInline = False
             End If

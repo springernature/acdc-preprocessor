@@ -27,12 +27,17 @@ Public Class classAuthoraffiliation_Creation_STM
         Article_Lg = Art_Lang
         Xdoc = Xxdoc
         Dim MainNode As Xml.XmlNode = Xdoc.SelectSingleNode(".//AuthorGroup")
-        If (IsNothing(MainNode) = False) Then
-            affxdoc.InnerXml = MainNode.OuterXml
-            affxdoc.InnerXml = affxdoc.InnerXml.Replace("</", "</test_").Replace("<", "<test_").Replace("<test_/", "</").Replace("<test_!", "<!")
-            affxdoc.InnerXml = affxdoc.InnerXml.Replace("_InstitutionalAuthor", "_Author")
-            affxdoc.InnerXml = "<Root>" + affxdoc.OuterXml + "</Root>"
-        End If
+        Try
+            If (IsNothing(MainNode) = False) Then
+                affxdoc.InnerXml = MainNode.OuterXml
+                affxdoc.InnerXml = affxdoc.InnerXml.Replace("</", "</test_").Replace("<", "<test_").Replace("<test_/", "</").Replace("<test_!", "<!")
+                affxdoc.InnerXml = affxdoc.InnerXml.Replace("_InstitutionalAuthor", "_Author")
+                affxdoc.InnerXml = "<Root>" + affxdoc.OuterXml + "</Root>"
+            End If
+        Catch ex As Exception
+
+        End Try
+
         Fn_Add_Corr_To_Aff()
 
         Fn_Add_PresentAdd_To_Aff()

@@ -36,8 +36,8 @@ namespace Acdc.Preprocessor.Logging
     }
     public static void SetElkConfiguration(IConfiguration configuration)
     {
-      _logger = new LoggerConfiguration().Enrich.WithProperty("service", configuration["ACDC_METADATASYNC_APP_NAME"])
-      .Enrich.WithProperty("module_name", configuration["ACDC_METADATASYNC_APP_NAME"])
+      _logger = new LoggerConfiguration().Enrich.WithProperty("service", configuration["ACDC_PREPROCESSOR_APP_NAME"])
+      .Enrich.WithProperty("module_name", configuration["ACDC_PREPROCESSOR_APP_NAME"])
       .Enrich.WithProperty("environment", configuration["ACDC_ENVIRONMENT"])
       .WriteTo.Sentry($"{configuration["ACDC_SENTRY_CLIENT_KEY"]}", string.Empty, $"{configuration["ACDC_ENVIRONMENT"]}")
       .WriteTo.Console(new RenderedCompactJsonFormatter())

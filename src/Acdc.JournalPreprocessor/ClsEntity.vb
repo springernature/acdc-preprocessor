@@ -199,7 +199,6 @@ Public Class ClsEntity
         Dim WDEmp As String = m.Groups(2).Value
         Dim WDFont As String = "Symbol" 'm.Groups(2).Value
         Dim WDHexName As String = m.Groups(3).Value.Replace("&#x", "").Replace(";", "")
-        'System.Configuration.ConfigurationSettings.AppSettings("EntityPath") '"D:\Suresh\EntWord2Indd\Entities.xml"
 
         Dim EntityXmlDoc As New XmlDocument
         Try

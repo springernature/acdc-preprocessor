@@ -29,19 +29,27 @@ namespace Acdc.Preprocessor.Core
                     }
                 }
             }
-            foreach (var document in documents)
-            {
-             
-                //foreach (var item in document)
-                //{
-                //    if (document[Broker.Linkcloud].ToString() == documentName)
-                //    {
-                //        return GetLink(document, method);
-                //    }
-                //}
-                
-            }
+          
             return string.Empty;
+        }
+
+        public static List<string> GetImagesLinkFromBrokerMessage(JObject message, string documentName, string method)
+        {
+            List<string> result = new List<string>();
+            var documents = message["documents_s200"];
+
+            if (documents != null)
+            {
+                foreach (var item in documents)
+                {
+                    if (item["document"].ToString() == documentName)
+                    {
+                        return GetImageLink(item, method);
+                    }
+                }
+            }
+
+            return result;
         }
         public static JObject GetMessage(JObject brokerMessage, bool isSuccess, AppSettings appSettings,string tempstoragePath=null)
         {
@@ -66,10 +74,20 @@ namespace Acdc.Preprocessor.Core
             }
             return string.Empty;
         }
+        public static List<String> GetImageLink(JToken document, string method)
+        {
+            List<String> result = new List<string>();
+            foreach (var link in document[Broker.Linkcloud])
+            {
+                if (link[Broker.Method].ToString() == method && link["rel"].ToString() == "online_images")
+                    result.Add(link[Broker.Href].ToString());
+            }
+            return result;
+        }
         private static void AddErrors(string exceptionMessage, string stackTrace, JArray errors)
         {
             var source = new JObject(
-              new JProperty(Broker.Module, Broker.AcdcMetaSync),
+              new JProperty(Broker.Module, Broker.AcdcPreprocessor),
               new JProperty(Broker.HostName, System.Environment.MachineName)
             );
 
