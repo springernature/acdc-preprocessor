@@ -52,8 +52,8 @@ Public Class clsPreprocMain
 
             XmlStr = RemoveIndentSpace(XmlStr)
             XmlStr = XmlStr.Replace(" ", " ")
-            '' XmlStr = Regex.Replace(XmlStr, "\s{2,}", "", RegexOptions.Singleline)
-            ' XmlStr = Regex.Replace(XmlStr, "\n", "", RegexOptions.Singleline)
+            XmlStr = Regex.Replace(XmlStr, "\s{2,}", "", RegexOptions.Singleline)
+            XmlStr = Regex.Replace(XmlStr, "\n", "", RegexOptions.Singleline)
             'XmlStr = Regex.Replace(XmlStr, "\r", "", RegexOptions.Singleline)
             'XmlStr = Regex.Replace(XmlStr, ChrW(13), "", RegexOptions.Singleline)
             'XmlStr = XmlStr.Replace(vbNewLine, "")
@@ -647,7 +647,7 @@ Public Class clsPreprocMain
     End Function
 
     Private Function ClearDataPart(ByVal datapart As String) As String
-        Return Regex.Replace(datapart, "<\?([^<>]+?)\?>", "<cs_preproc>$1</cd_preproc>", RegexOptions.Singleline)
+        Return Regex.Replace(datapart, "<\?([^<>]+?)\?>", "<cd_preproc>$1</cd_preproc>", RegexOptions.Singleline)
     End Function
 
 

@@ -1332,7 +1332,14 @@ Module MDLFunction
 
 
                             If (LinksourcePrefix = "Fig" Or LinksourcePrefix = "Tab" Or LinksourcePrefix = "Sch" Or LinksourcePrefix = "Str") Then
-                                SourceNds(i).ChildNodes(0).Attributes.Append(srattribute)
+                                If (LinksourcePrefix! = "Tab") Then
+                                    SourceNds(i).ChildNodes(0).Attributes.Append(srattribute)
+
+                                Else
+                                    SourceNds(i).Item("MediaObject").Attributes.Append(srattribute)
+                                End If
+
+
                             Else
                                 SourceNds(i).Attributes.Append(srattribute)
                             End If

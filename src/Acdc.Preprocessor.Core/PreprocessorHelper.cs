@@ -258,12 +258,19 @@ namespace Acdc.Preprocessor.Core
         public static string CreateFolderStructure(string workingFolder,string reuestID)
         {
             string folderPath = Path.Combine(workingFolder,reuestID);
-            if (Directory.Exists(folderPath))
-                CleanFolder(folderPath);
+            try
+            {
+                if (Directory.Exists(folderPath))
+                    CleanFolder(folderPath);
 
-            CreateFolder(folderPath);
+                CreateFolder(folderPath);
 
-            return folderPath;
+                return folderPath;
+            }
+            catch (Exception e)
+            {
+                throw new PreprocessorException("Unable to created reuired folder structure:: "+ folderPath+". "+e.Message.ToString());
+            }
 
 
         }
