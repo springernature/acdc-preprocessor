@@ -53,18 +53,6 @@ call .\publish.cmd
 echo error %ERRORLEVEL%
 if %errorlevel% neq 0 goto build_fail
 
-echo ------------------------------------------------------------------------
-echo Unit testing started
-call .\acdc-preprocessor-sonar.cmd
-echo error %ERRORLEVEL%
-if %errorlevel% neq 0 goto build_fail
-
-echo ------------------------------------------------------------------------
-
-echo
-call .\sonarqube-scan.cmd
-echo error %ERRORLEVEL%
-if %errorlevel% neq 0 goto build_fail
 
 echo ------------------------------------------------------------------------
 echo
