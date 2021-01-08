@@ -1,0 +1,1 @@
+dotnet test ./src/ImageExtraction.Core.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Exclude=\"[ImageExtraction.Common]*,[ImageExtraction.Console]*,[ImageExtraction.Settings]*,[Infrastructure.Logging]*,[MessageQueue]*,[ImageExtraction.Core/MathTypeEquationConvertion]*\"
