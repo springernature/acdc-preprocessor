@@ -94,7 +94,7 @@ Public Class clsFigureConversion
         EquationPathXpath = FigureSettingNode.SelectSingleNode(".//EquationPathXpath").InnerText
         Try
             Dim UpdateStr As Boolean = False
-            UpdateStr = UpdateDataBaseString(DatabaseString)
+            '  UpdateStr = UpdateDataBaseString(DatabaseString)
             Try
                 If (UpdateStr = True) Then
                     DatabaseString = DatabaseString.Replace("dbcrest", "newdbcrest")
@@ -123,7 +123,7 @@ Public Class clsFigureConversion
                         If (ACDCLayout = True) Then
                             hPath = ACDC_Graphics
                         Else
-                            hPath = GetPathFromHardDrivePath(inputxml)
+                            ''   hPath = GetPathFromHardDrivePath(inputxml)
                         End If
                     Catch ex As Exception
 
@@ -444,80 +444,80 @@ Public Class clsFigureConversion
         '====================================================END======================================================
         '=============================================================================================================
     End Sub
-    Public Function GetPath(ByVal inputxml As String)
-        '=============================================================================================================
-        '=============================================================================================================
-        'FUNCTION NAME:GetPath
-        'PARAMETER    :inputxml
-        'AIM          :This function return harddrive path
-        '=============================================================================================================
-        '=============================================================================================================
-        Try
-            Dim figurepath As String = ""
-            Dim harddrivepath As String = ""
-            Dim fsConn As String = ""
-            fsConn = DatabaseString
-            Dim mconn As New MySqlConnection(fsConn)
-            Try
-                mconn.Open()
-                Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-                Dim cdm As New MySqlCommand("Select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
-                Dim reader As MySqlDataReader
-                reader = cdm.ExecuteReader
-                If reader.HasRows = True Then
-                    While reader.Read()
-                        harddrivepath = reader("HardDrivePath").ToString()
-                        Return harddrivepath
-                    End While
-                End If
-                mconn.Close()
-            Catch ex As Exception
+    'Public Function GetPath(ByVal inputxml As String)
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    'FUNCTION NAME:GetPath
+    '    'PARAMETER    :inputxml
+    '    'AIM          :This function return harddrive path
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    Try
+    '        Dim figurepath As String = ""
+    '        Dim harddrivepath As String = ""
+    '        Dim fsConn As String = ""
+    '        fsConn = DatabaseString
+    '        Dim mconn As New MySqlConnection(fsConn)
+    '        Try
+    '            mconn.Open()
+    '            Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+    '            Dim cdm As New MySqlCommand("Select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
+    '            Dim reader As MySqlDataReader
+    '            reader = cdm.ExecuteReader
+    '            If reader.HasRows = True Then
+    '                While reader.Read()
+    '                    harddrivepath = reader("HardDrivePath").ToString()
+    '                    Return harddrivepath
+    '                End While
+    '            End If
+    '            mconn.Close()
+    '        Catch ex As Exception
 
-            End Try
-        Catch ex As Exception
+    '        End Try
+    '    Catch ex As Exception
 
-        End Try
-        '====================================================END======================================================
-        '=============================================================================================================
-    End Function
-    Public Function GetHarddrivepath(ByVal inputxml As String)
-        '=============================================================================================================
-        '=============================================================================================================
-        'FUNCTION NAME:GetHarddrivepath
-        'PARAMETER    :inputxml
-        'AIM          :This function return harddrive path
-        '=============================================================================================================
-        '=============================================================================================================
-        Dim fsConn As String = ""
-        fsConn = DatabaseString
-        Dim HardDrivePath As String = ""
-        Dim mconn As New MySqlConnection(fsConn)
-        Try
-            mconn.Open()
-            Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-            Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
-            Dim reader As MySqlDataReader
-            reader = cdm.ExecuteReader
-            If reader.HasRows = True Then
-                While reader.Read()
-                    HardDrivePath = reader("HardDrivePath").ToString()
+    '    End Try
+    '    '====================================================END======================================================
+    '    '=============================================================================================================
+    'End Function
+    'Public Function GetHarddrivepath(ByVal inputxml As String)
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    'FUNCTION NAME:GetHarddrivepath
+    '    'PARAMETER    :inputxml
+    '    'AIM          :This function return harddrive path
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    Dim fsConn As String = ""
+    '    fsConn = DatabaseString
+    '    Dim HardDrivePath As String = ""
+    '    Dim mconn As New MySqlConnection(fsConn)
+    '    Try
+    '        mconn.Open()
+    '        Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+    '        Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
+    '        Dim reader As MySqlDataReader
+    '        reader = cdm.ExecuteReader
+    '        If reader.HasRows = True Then
+    '            While reader.Read()
+    '                HardDrivePath = reader("HardDrivePath").ToString()
 
-                End While
-            End If
-            mconn.Close()
-            mconn.Dispose()
-        Catch ex As Exception
+    '            End While
+    '        End If
+    '        mconn.Close()
+    '        mconn.Dispose()
+    '    Catch ex As Exception
 
-        End Try
+    '    End Try
 
-        Dim OldDrive As String = System.Configuration.ConfigurationSettings.AppSettings("OldDrive").ToString()
-        'EntityPathxml = "" 'System.Configuration.ConfigurationSettings.AppSettings("NewGraphicsPath").ToString()
+    '    Dim OldDrive As String = System.Configuration.ConfigurationSettings.AppSettings("OldDrive").ToString()
+    '    'EntityPathxml = "" 'System.Configuration.ConfigurationSettings.AppSettings("NewGraphicsPath").ToString()
 
-        HardDrivePath = HardDrivePath.Replace(OldDrive, NewGraphicsPath)
-        Return HardDrivePath
-        '====================================================END======================================================
-        '=============================================================================================================
-    End Function
+    '    HardDrivePath = HardDrivePath.Replace(OldDrive, NewGraphicsPath)
+    '    Return HardDrivePath
+    '    '====================================================END======================================================
+    '    '=============================================================================================================
+    'End Function
     Public Function GetJobName(ByVal FigureConversionFile As String, ByVal inputxml As String)
         '=============================================================================================================
         '=============================================================================================================
@@ -534,63 +534,63 @@ Public Class clsFigureConversion
 
         End Try
         Dim HardDrivePath As String = ""
-        Dim mconn As New MySqlConnection(fsConn)
-        Try
-            mconn.Open()
-            Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-            Dim cdm As New MySqlCommand("select jobsheetid from jobsheetinfo where JobType='Journal' and DOI = '" + str + "'", mconn)
-            Dim reader As MySqlDataReader
-            reader = cdm.ExecuteReader
-            If reader.HasRows = True Then
-                While reader.Read()
-                    JobSheetID = reader("jobsheetid").ToString()
-                End While
-            End If
-            mconn.Close()
-            mconn.Dispose()
-        Catch ex As Exception
+        'Dim mconn As New MySqlConnection(fsConn)
+        'Try
+        '    mconn.Open()
+        '    Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+        '    Dim cdm As New MySqlCommand("select jobsheetid from jobsheetinfo where JobType='Journal' and DOI = '" + str + "'", mconn)
+        '    Dim reader As MySqlDataReader
+        '    reader = cdm.ExecuteReader
+        '    If reader.HasRows = True Then
+        '        While reader.Read()
+        '            JobSheetID = reader("jobsheetid").ToString()
+        '        End While
+        '    End If
+        '    mconn.Close()
+        '    mconn.Dispose()
+        'Catch ex As Exception
 
-        End Try
+        'End Try
         Return JobSheetID
         '====================================================END======================================================
         '=============================================================================================================
     End Function
-    Public Function GetPathFromHardDrivePath(ByVal inputxml As String) As String
-        '=============================================================================================================
-        '=============================================================================================================
-        'FUNCTION NAME:GetPathFromHardDrivePath
-        'PARAMETER    :inputxml
-        'AIM          :
-        '=============================================================================================================
-        '=============================================================================================================
-        Try
-            Dim figurepath As String = ""
-            Dim harddrivepath As String = ""
-            Try
-                harddrivepath = GetHarddrivepath(inputxml)
-            Catch ex As Exception
+    ''Public Function GetPathFromHardDrivePath(ByVal inputxml As String) As String
+    ''    '=============================================================================================================
+    ''    '=============================================================================================================
+    ''    'FUNCTION NAME:GetPathFromHardDrivePath
+    ''    'PARAMETER    :inputxml
+    ''    'AIM          :
+    ''    '=============================================================================================================
+    ''    '=============================================================================================================
+    ''    Try
+    ''        Dim figurepath As String = ""
+    ''        Dim harddrivepath As String = ""
+    ''        Try
+    ''            harddrivepath = GetHarddrivepath(inputxml)
+    ''        Catch ex As Exception
 
-            End Try
+    ''        End Try
 
-            Try
-                Dim dirInfo As New System.IO.DirectoryInfo(harddrivepath)
-                figurepath = dirInfo.Parent.Parent.FullName + "\Graphics"
+    ''        Try
+    ''            Dim dirInfo As New System.IO.DirectoryInfo(harddrivepath)
+    ''            figurepath = dirInfo.Parent.Parent.FullName + "\Graphics"
 
-                If (System.IO.Directory.Exists(figurepath)) Then
-                    If (System.IO.Directory.Exists(figurepath)) Then
-                        Return figurepath
-                    End If
-                End If
-            Catch ex As Exception
+    ''            If (System.IO.Directory.Exists(figurepath)) Then
+    ''                If (System.IO.Directory.Exists(figurepath)) Then
+    ''                    Return figurepath
+    ''                End If
+    ''            End If
+    ''        Catch ex As Exception
 
-            End Try
+    ''        End Try
 
-        Catch ex As Exception
+    ''    Catch ex As Exception
 
-        End Try
-        '====================================================END======================================================
-        '=============================================================================================================
-    End Function
+    ''    End Try
+    ''    '====================================================END======================================================
+    ''    '=============================================================================================================
+    ''End Function
     Private Function getHiresImagePath(ByVal HiresWorkingArea As String, ByVal figIndex As String, ByVal prefix As String) As String
         '=============================================================================================================
         '=============================================================================================================
@@ -699,142 +699,142 @@ Public Class clsFigureConversion
         '====================================================END======================================================
         '=============================================================================================================
     End Sub
-    Public Function UpdateDataBaseString(ByVal DatabaseString As String)
-        '=============================================================================================================
-        '=============================================================================================================
-        'FUNCTION NAME:UpdateDataBaseString
-        'PARAMETER    :DatabaseString
-        'AIM          :
-        '=============================================================================================================
-        '=============================================================================================================
-        Dim ChapterDoi As String = XDoc.SelectSingleNode(".//Article/@ID").Value
-        Dim kkChapterID = ""
-        Dim IsbnOrBookid As String = ""
-        Try
-            Dim XmlName As String = System.IO.Path.GetFileName(FInputXml)
-            XmlName = XmlName.Replace(".xml", "")
-            XmlName = XmlName.Replace("_Chapter", "")
-            IsbnOrBookid = Mid(XmlName, 1, XmlName.LastIndexOf("_"))
-            kkChapterID = "_" + XmlName.Split("_")(XmlName.Split("_").Length - 1)
-        Catch ex As Exception
+    'Public Function UpdateDataBaseString(ByVal DatabaseString As String)
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    'FUNCTION NAME:UpdateDataBaseString
+    '    'PARAMETER    :DatabaseString
+    '    'AIM          :
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    Dim ChapterDoi As String = XDoc.SelectSingleNode(".//Article/@ID").Value
+    '    Dim kkChapterID = ""
+    '    Dim IsbnOrBookid As String = ""
+    '    Try
+    '        Dim XmlName As String = System.IO.Path.GetFileName(FInputXml)
+    '        XmlName = XmlName.Replace(".xml", "")
+    '        XmlName = XmlName.Replace("_Chapter", "")
+    '        IsbnOrBookid = Mid(XmlName, 1, XmlName.LastIndexOf("_"))
+    '        kkChapterID = "_" + XmlName.Split("_")(XmlName.Split("_").Length - 1)
+    '    Catch ex As Exception
 
-        End Try
-        Try
-            Dim UpdateStr As Boolean = False
-            Dim JobSheetID As String = ""
-            Try
-                Dim fsConn As String = ""
-                fsConn = DatabaseString
-                Dim mconn As New MySqlConnection(fsConn)
-                Try
-                    mconn.Open()
-                    Dim str As String = ""
-                    If (IsNothing(XDoc.SelectSingleNode(".//Article[@ID]")) = False) Then
-                        str = XDoc.SelectSingleNode(".//Article/@ID").Value
-                    End If
-                    If (IsNothing(XDoc.SelectSingleNode(".//ChapterDOI")) = False) Then
-                        'str = XDoc.SelectSingleNode(".//ChapterDOI").InnerText
-                        'str = str.Replace("10.1007/", "")
-                    ElseIf (True) Then
-                        'str = XDoc.SelectSingleNode(".//ChapterDOI").InnerText
-                        'str = str.Replace("10.1007/", "")
-                        'ChapterDOI
-                    End If
+    '    End Try
+    '    Try
+    '        Dim UpdateStr As Boolean = False
+    '        Dim JobSheetID As String = ""
+    '        Try
+    '            Dim fsConn As String = ""
+    '            fsConn = DatabaseString
+    '            Dim mconn As New MySqlConnection(fsConn)
+    '            Try
+    '                mconn.Open()
+    '                Dim str As String = ""
+    '                If (IsNothing(XDoc.SelectSingleNode(".//Article[@ID]")) = False) Then
+    '                    str = XDoc.SelectSingleNode(".//Article/@ID").Value
+    '                End If
+    '                If (IsNothing(XDoc.SelectSingleNode(".//ChapterDOI")) = False) Then
+    '                    'str = XDoc.SelectSingleNode(".//ChapterDOI").InnerText
+    '                    'str = str.Replace("10.1007/", "")
+    '                ElseIf (True) Then
+    '                    'str = XDoc.SelectSingleNode(".//ChapterDOI").InnerText
+    '                    'str = str.Replace("10.1007/", "")
+    '                    'ChapterDOI
+    '                End If
 
 
-                    'Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + IsbnOrBookid + "' OR Concat(JobSheetID,'_','')='" + IsbnOrBookid + kkChapterID + "' Or (JobSheetID='" + IsbnOrBookid + "' AND ChapterID='" + kkChapterID.replace("_", "") + "')", mconn)
-                    Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + ChapterDoi + "'", mconn)
-                    Dim reader As MySqlDataReader
-                    reader = cdm.ExecuteReader
-                    If reader.HasRows = True Then
-                        While reader.Read()
-                            JobSheetID = reader("JobSheetid").ToString()
-                        End While
-                    End If
-                    mconn.Close()
-                    mconn.Dispose()
-                Catch ex As Exception
+    '                'Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + IsbnOrBookid + "' OR Concat(JobSheetID,'_','')='" + IsbnOrBookid + kkChapterID + "' Or (JobSheetID='" + IsbnOrBookid + "' AND ChapterID='" + kkChapterID.replace("_", "") + "')", mconn)
+    '                Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + ChapterDoi + "'", mconn)
+    '                Dim reader As MySqlDataReader
+    '                reader = cdm.ExecuteReader
+    '                If reader.HasRows = True Then
+    '                    While reader.Read()
+    '                        JobSheetID = reader("JobSheetid").ToString()
+    '                    End While
+    '                End If
+    '                mconn.Close()
+    '                mconn.Dispose()
+    '            Catch ex As Exception
 
-                End Try
-            Catch ex As Exception
+    '            End Try
+    '        Catch ex As Exception
 
-            End Try
-            Try
-                If (JobSheetID = "") Then
-                    UpdateStr = True
-                End If
-            Catch ex As Exception
+    '        End Try
+    '        Try
+    '            If (JobSheetID = "") Then
+    '                UpdateStr = True
+    '            End If
+    '        Catch ex As Exception
 
-            End Try
-            Return UpdateStr
-        Catch ex As Exception
+    '        End Try
+    '        Return UpdateStr
+    '    Catch ex As Exception
 
-        End Try
-        '====================================================END======================================================
-        '=============================================================================================================
-    End Function
+    '    End Try
+    '    '====================================================END======================================================
+    '    '=============================================================================================================
+    'End Function
     Protected Overrides Sub Finalize()
         MyBase.Finalize()
     End Sub
-    Public Function GetNumberingStyle(ByVal FigureConversionFile As String, ByVal inputxml As String)
-        '=============================================================================================================
-        '=============================================================================================================
-        'FUNCTION NAME:GetNumberingStyle
-        'PARAMETER    :FigureConversionFile,inputxml
-        'AIM          :
-        '=============================================================================================================
-        '=============================================================================================================
-        Dim fsConn As String = ""
-        Dim JobSheetID As String = ""
-        Dim JournalName As String = "JournalName"
-        Try
-            Initialize(FigureConversionFile)
-            fsConn = DatabaseString
-        Catch ex As Exception
+    ''Public Function GetNumberingStyle(ByVal FigureConversionFile As String, ByVal inputxml As String)
+    ''    '=============================================================================================================
+    ''    '=============================================================================================================
+    ''    'FUNCTION NAME:GetNumberingStyle
+    ''    'PARAMETER    :FigureConversionFile,inputxml
+    ''    'AIM          :
+    ''    '=============================================================================================================
+    ''    '=============================================================================================================
+    ''    Dim fsConn As String = ""
+    ''    Dim JobSheetID As String = ""
+    ''    Dim JournalName As String = "JournalName"
+    ''    Try
+    ''        Initialize(FigureConversionFile)
+    ''        fsConn = DatabaseString
+    ''    Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            Try
-                mconn.Open()
-                Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-                Dim cdm As New MySqlCommand("select JobSheetid from jobsheetinfo where DOI = '" + str + "'", mconn)
-                Dim reader As MySqlDataReader
-                reader = cdm.ExecuteReader
-                If reader.HasRows = True Then
-                    While reader.Read()
-                        JobSheetID = reader("JobSheetid").ToString()
-                    End While
-                End If
-                mconn.Close()
-                mconn.Dispose()
-            Catch ex As Exception
+    ''    End Try
+    ''    Try
+    ''        Dim mconn As New MySqlConnection(fsConn)
+    ''        Try
+    ''            mconn.Open()
+    ''            Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+    ''            Dim cdm As New MySqlCommand("select JobSheetid from jobsheetinfo where DOI = '" + str + "'", mconn)
+    ''            Dim reader As MySqlDataReader
+    ''            reader = cdm.ExecuteReader
+    ''            If reader.HasRows = True Then
+    ''                While reader.Read()
+    ''                    JobSheetID = reader("JobSheetid").ToString()
+    ''                End While
+    ''            End If
+    ''            mconn.Close()
+    ''            mconn.Dispose()
+    ''        Catch ex As Exception
 
-            End Try
-        Catch ex As Exception
+    ''        End Try
+    ''    Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            mconn.Open()
-            Dim str1 As String = System.IO.Path.GetFileName(inputxml).Split("_")(2)
-            Dim cdm As New MySqlCommand("select NumberingStyle from tlbarticlechapterpartsubpart where parentid = '" + JobSheetID + "' and id='" + str1 + "'", mconn)
-            Dim reader As MySqlDataReader
-            reader = cdm.ExecuteReader
-            If reader.HasRows = True Then
-                While reader.Read()
-                    JournalName = reader("NumberingStyle").ToString()
-                End While
-            End If
-            mconn.Close()
-            mconn.Dispose()
-        Catch ex As Exception
+    ''    End Try
+    ''    Try
+    ''        Dim mconn As New MySqlConnection(fsConn)
+    ''        mconn.Open()
+    ''        Dim str1 As String = System.IO.Path.GetFileName(inputxml).Split("_")(2)
+    ''        Dim cdm As New MySqlCommand("select NumberingStyle from tlbarticlechapterpartsubpart where parentid = '" + JobSheetID + "' and id='" + str1 + "'", mconn)
+    ''        Dim reader As MySqlDataReader
+    ''        reader = cdm.ExecuteReader
+    ''        If reader.HasRows = True Then
+    ''            While reader.Read()
+    ''                JournalName = reader("NumberingStyle").ToString()
+    ''            End While
+    ''        End If
+    ''        mconn.Close()
+    ''        mconn.Dispose()
+    ''    Catch ex As Exception
 
-        End Try
-        Return JournalName
-        '====================================================END======================================================
-        '=============================================================================================================
-    End Function
+    ''    End Try
+    ''    Return JournalName
+    ''    '====================================================END======================================================
+    ''    '=============================================================================================================
+    ''End Function
     Public Function GetRunningHeadStyle(ByVal FigureConversionFile As String, ByVal inputxml As String)
         '=============================================================================================================
         '=============================================================================================================
@@ -846,29 +846,29 @@ Public Class clsFigureConversion
         Dim fsConn As String = ""
         Dim JobSheetID As String = ""
         Dim RHStyle As String = ""
-        Try
-            Initialize(FigureConversionFile)
-            fsConn = DatabaseString
-        Catch ex As Exception
+        'Try
+        '    Initialize(FigureConversionFile)
+        '    fsConn = DatabaseString
+        'Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            mconn.Open()
-            Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-            Dim cdm As New MySqlCommand("SELECT * FROM tlbtechnicalinfo as t1 INNER JOIN tlbproductionInfo as t2 INNER JOIN jobsheetinfo as t3 WHERE t1.productioninfoid=t2.ID AND t2.Jobsheetid=t3.Jobid AND t3.DOI='" + str + "'", mconn)
-            Dim reader As MySqlDataReader
-            reader = cdm.ExecuteReader
-            If reader.HasRows = True Then
-                While reader.Read()
-                    RHStyle = reader("TypesettingRunningHead").ToString()
-                End While
-            End If
-            mconn.Close()
-            mconn.Dispose()
-        Catch ex As Exception
+        'End Try
+        'Try
+        '    Dim mconn As New MySqlConnection(fsConn)
+        '    mconn.Open()
+        '    Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+        '    Dim cdm As New MySqlCommand("SELECT * FROM tlbtechnicalinfo as t1 INNER JOIN tlbproductionInfo as t2 INNER JOIN jobsheetinfo as t3 WHERE t1.productioninfoid=t2.ID AND t2.Jobsheetid=t3.Jobid AND t3.DOI='" + str + "'", mconn)
+        '    Dim reader As MySqlDataReader
+        '    reader = cdm.ExecuteReader
+        '    If reader.HasRows = True Then
+        '        While reader.Read()
+        '            RHStyle = reader("TypesettingRunningHead").ToString()
+        '        End While
+        '    End If
+        '    mconn.Close()
+        '    mconn.Dispose()
+        'Catch ex As Exception
 
-        End Try
+        'End Try
         Return RHStyle
         '====================================================END======================================================
         '=============================================================================================================
@@ -884,56 +884,56 @@ Public Class clsFigureConversion
         Dim fsConn As String = ""
         Dim JobSheetID As String = ""
         Dim JournalTitle As String = "JournalName"
-        Try
-            Initialize(FigureConversionFile)
-            fsConn = DatabaseString
-        Catch ex As Exception
+        'Try
+        '    Initialize(FigureConversionFile)
+        '    fsConn = DatabaseString
+        'Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            Try
-                mconn.Open()
-                Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-                Dim cdm As New MySqlCommand("select JobSheetid from jobsheetinfo where DOI = '" + str + "'", mconn)
-                Dim reader As MySqlDataReader
-                reader = cdm.ExecuteReader
-                If reader.HasRows = True Then
-                    While reader.Read()
-                        JobSheetID = reader("JobSheetid").ToString()
-                    End While
-                End If
-                mconn.Close()
-                mconn.Dispose()
-            Catch ex As Exception
+        'End Try
+        'Try
+        '    Dim mconn As New MySqlConnection(fsConn)
+        '    Try
+        '        mconn.Open()
+        '        Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+        '        Dim cdm As New MySqlCommand("select JobSheetid from jobsheetinfo where DOI = '" + str + "'", mconn)
+        '        Dim reader As MySqlDataReader
+        '        reader = cdm.ExecuteReader
+        '        If reader.HasRows = True Then
+        '            While reader.Read()
+        '                JobSheetID = reader("JobSheetid").ToString()
+        '            End While
+        '        End If
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    Catch ex As Exception
 
-            End Try
-        Catch ex As Exception
+        '    End Try
+        'Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            mconn.Open()
-            Dim cdm As New MySqlCommand("select JournalFullName from tlbjournalinfo where JournalID = '" + JobSheetID + "'", mconn)
-            Dim reader As MySqlDataReader
-            reader = cdm.ExecuteReader
-            If reader.HasRows = True Then
-                While reader.Read()
-                    JournalTitle = reader("JournalFullName").ToString()
-                End While
-            End If
-            mconn.Close()
-            mconn.Dispose()
-        Catch ex As Exception
+        'End Try
+        'Try
+        'Dim mconn As New MySqlConnection(fsConn)
+        '    mconn.Open()
+        '    Dim cdm As New MySqlCommand("select JournalFullName from tlbjournalinfo where JournalID = '" + JobSheetID + "'", mconn)
+        '    Dim reader As MySqlDataReader
+        '    reader = cdm.ExecuteReader
+        '    If reader.HasRows = True Then
+        '        While reader.Read()
+        '            JournalTitle = reader("JournalFullName").ToString()
+        '        End While
+        '    End If
+        '    mconn.Close()
+        '    mconn.Dispose()
+        'Catch ex As Exception
 
-        End Try
+        'End Try
         Try
-            If (ACDCLayout = True) Then
-                JournalTitle = ""
+            'If (ACDCLayout = True) Then
+            JournalTitle = ""
                 If (IsNothing(ACDCXdoc.SelectSingleNode(".//JournalTitle")) = False) Then
                     JournalTitle = ACDCXdoc.SelectSingleNode(".//JournalTitle").InnerXml
                 End If
-            End If
+            'End If
         Catch ex As Exception
 
         End Try
@@ -1004,30 +1004,30 @@ Public Class clsFigureConversion
         Catch ex As Exception
 
         End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            Try
-                mconn.Open()
-                Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-                Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
-                Dim reader As MySqlDataReader
-                reader = cdm.ExecuteReader
-                If reader.HasRows = True Then
-                    While reader.Read()
-                        xmlPath = reader("HardDrivePath").ToString()
-                        If (xmlPath <> "") Then
-                            Return xmlPath
-                        End If
-                    End While
-                End If
-                mconn.Close()
-                mconn.Dispose()
-            Catch ex As Exception
+        'Try
+        '    Dim mconn As New MySqlConnection(fsConn)
+        '    Try
+        '        mconn.Open()
+        '        Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+        '        Dim cdm As New MySqlCommand("select HardDrivePath from jobsheetinfo where DOI = '" + str + "'", mconn)
+        '        Dim reader As MySqlDataReader
+        '        reader = cdm.ExecuteReader
+        '        If reader.HasRows = True Then
+        '            While reader.Read()
+        '                xmlPath = reader("HardDrivePath").ToString()
+        '                If (xmlPath <> "") Then
+        '                    Return xmlPath
+        '                End If
+        '            End While
+        '        End If
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    Catch ex As Exception
 
-            End Try
-        Catch ex As Exception
+        '    End Try
+        'Catch ex As Exception
 
-        End Try
+        'End Try
         Return xmlPath
         '====================================================END======================================================
         '=============================================================================================================
@@ -1044,142 +1044,142 @@ Public Class clsFigureConversion
         Dim jobid As String = ""
         Dim ProdID As String = ""
         Dim colorinprint As Boolean = False
-        Try
-            Initialize(FigureConversionFile)
-            fsConn = DatabaseString
-        Catch ex As Exception
+        'Try
+        '    Initialize(FigureConversionFile)
+        '    fsConn = DatabaseString
+        'Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            Try
-                mconn.Open()
-                Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-                Dim cdm As New MySqlCommand("select jobid from jobsheetinfo where DOI = '" + str + "'", mconn)
-                Dim reader As MySqlDataReader
-                reader = cdm.ExecuteReader
-                If reader.HasRows = True Then
-                    While reader.Read()
-                        jobid = reader("jobid").ToString()
-                    End While
-                End If
-                reader.Close()
-                mconn.Close()
-                mconn.Dispose()
-            Catch ex As Exception
-            Finally
-                mconn.Close()
-                mconn.Dispose()
-            End Try
-        Catch ex As Exception
+        'End Try
+        'Try
+        '    Dim mconn As New MySqlConnection(fsConn)
+        '    Try
+        '        mconn.Open()
+        '        Dim str As String = XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+        '        Dim cdm As New MySqlCommand("select jobid from jobsheetinfo where DOI = '" + str + "'", mconn)
+        '        Dim reader As MySqlDataReader
+        '        reader = cdm.ExecuteReader
+        '        If reader.HasRows = True Then
+        '            While reader.Read()
+        '                jobid = reader("jobid").ToString()
+        '            End While
+        '        End If
+        '        reader.Close()
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    Catch ex As Exception
+        '    Finally
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    End Try
+        'Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            Try
-                mconn.Open()
-                Dim cdm As New MySqlCommand("select id from tlbproductioninfo where jobsheetid = '" + jobid + "'", mconn)
-                Dim reader As MySqlDataReader
-                reader = cdm.ExecuteReader
-                If reader.HasRows = True Then
-                    While reader.Read()
-                        ProdID = reader("id").ToString()
-                    End While
-                End If
-                reader.Close()
-                mconn.Close()
-                mconn.Dispose()
-            Catch ex As Exception
-            Finally
-                mconn.Close()
-                mconn.Dispose()
-            End Try
-        Catch ex As Exception
+        'End Try
+        'Try
+        '    Dim mconn As New MySqlConnection(fsConn)
+        '    Try
+        '        mconn.Open()
+        '        Dim cdm As New MySqlCommand("select id from tlbproductioninfo where jobsheetid = '" + jobid + "'", mconn)
+        '        Dim reader As MySqlDataReader
+        '        reader = cdm.ExecuteReader
+        '        If reader.HasRows = True Then
+        '            While reader.Read()
+        '                ProdID = reader("id").ToString()
+        '            End While
+        '        End If
+        '        reader.Close()
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    Catch ex As Exception
+        '    Finally
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    End Try
+        'Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            Try
-                mconn.Open()
-                Dim cdm As New MySqlCommand("select colorinprint from tlbdiscreteobjecttechnicalinfo where prodinfoid = '" + ProdID + "'", mconn)
-                Dim reader As MySqlDataReader
-                reader = cdm.ExecuteReader
-                If reader.HasRows = True Then
-                    While reader.Read()
-                        If (reader("colorinprint").ToString().ToLower = "yes") Then
-                            colorinprint = True
-                            Exit While
-                        Else
-                            colorinprint = False
-                            Exit While
-                        End If
-                    End While
-                End If
-                reader.Close()
-                mconn.Close()
-                mconn.Dispose()
-            Catch ex As Exception
-            Finally
-                mconn.Close()
-                mconn.Dispose()
-            End Try
-        Catch ex As Exception
+        'End Try
+        'Try
+        'Dim mconn As New MySqlConnection(fsConn)
+        '    Try
+        '        mconn.Open()
+        '        Dim cdm As New MySqlCommand("select colorinprint from tlbdiscreteobjecttechnicalinfo where prodinfoid = '" + ProdID + "'", mconn)
+        '        Dim reader As MySqlDataReader
+        '        reader = cdm.ExecuteReader
+        '        If reader.HasRows = True Then
+        '            While reader.Read()
+        '                If (reader("colorinprint").ToString().ToLower = "yes") Then
+        '                    colorinprint = True
+        '                    Exit While
+        '                Else
+        '                    colorinprint = False
+        '                    Exit While
+        '                End If
+        '            End While
+        '        End If
+        '        reader.Close()
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    Catch ex As Exception
+        '    Finally
+        '        mconn.Close()
+        '        mconn.Dispose()
+        '    End Try
+        'Catch ex As Exception
 
-        End Try
+        'End Try
         Return colorinprint
         '====================================================END======================================================
         '=============================================================================================================
     End Function
-    Public Function GetTechnicalPrefixInfo(ByVal FigureConversionFile As String, ByVal inputxml As String)
-        '=============================================================================================================
-        '=============================================================================================================
-        'FUNCTION NAME:GetTechnicalPrefixInfo
-        'PARAMETER    :FigureConversionFile,inputxml
-        'AIM          :
-        '=============================================================================================================
-        '=============================================================================================================
-        Dim fsConn As String = ""
-        Try
-            Initialize(FigureConversionFile)
-            fsConn = DatabaseString
-        Catch ex As Exception
+    'Public Function GetTechnicalPrefixInfo(ByVal FigureConversionFile As String, ByVal inputxml As String)
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    'FUNCTION NAME:GetTechnicalPrefixInfo
+    '    'PARAMETER    :FigureConversionFile,inputxml
+    '    'AIM          :
+    '    '=============================================================================================================
+    '    '=============================================================================================================
+    '    Dim fsConn As String = ""
+    '    Try
+    '        Initialize(FigureConversionFile)
+    '        fsConn = DatabaseString
+    '    Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            mconn.Open()
-            Dim cdm As New MySqlCommand("select Id from tlbproductioninfo where jobsheetid = '" + CrestJobsheetid + "'", mconn)
-            Dim reader As MySqlDataReader
-            reader = cdm.ExecuteReader
-            If reader.HasRows = True Then
-                While reader.Read()
-                    ProductionInfoId = reader("Id").ToString
-                End While
-            End If
-            mconn.Close()
-            mconn.Dispose()
-        Catch ex As Exception
+    '    End Try
+    '    Try
+    '        Dim mconn As New MySqlConnection(fsConn)
+    '        mconn.Open()
+    '        Dim cdm As New MySqlCommand("select Id from tlbproductioninfo where jobsheetid = '" + CrestJobsheetid + "'", mconn)
+    '        Dim reader As MySqlDataReader
+    '        reader = cdm.ExecuteReader
+    '        If reader.HasRows = True Then
+    '            While reader.Read()
+    '                ProductionInfoId = reader("Id").ToString
+    '            End While
+    '        End If
+    '        mconn.Close()
+    '        mconn.Dispose()
+    '    Catch ex As Exception
 
-        End Try
-        Try
-            Dim mconn As New MySqlConnection(fsConn)
-            mconn.Open()
-            Dim cdm As New MySqlCommand("select AuthorInfoCapturePrefix from tlbtechnicalinfo where ProductionInfoId = '" + ProductionInfoId + "'", mconn)
-            Dim reader As MySqlDataReader
-            reader = cdm.ExecuteReader
-            If reader.HasRows = True Then
-                While reader.Read()
-                    AuthorInfoCapturePrefix = reader("AuthorInfoCapturePrefix").ToString
-                End While
-            End If
-            mconn.Close()
-            mconn.Dispose()
-        Catch ex As Exception
+    '    End Try
+    '    Try
+    '        Dim mconn As New MySqlConnection(fsConn)
+    '        mconn.Open()
+    '        Dim cdm As New MySqlCommand("select AuthorInfoCapturePrefix from tlbtechnicalinfo where ProductionInfoId = '" + ProductionInfoId + "'", mconn)
+    '        Dim reader As MySqlDataReader
+    '        reader = cdm.ExecuteReader
+    '        If reader.HasRows = True Then
+    '            While reader.Read()
+    '                AuthorInfoCapturePrefix = reader("AuthorInfoCapturePrefix").ToString
+    '            End While
+    '        End If
+    '        mconn.Close()
+    '        mconn.Dispose()
+    '    Catch ex As Exception
 
-        End Try
-        '====================================================END======================================================
-        '=============================================================================================================
-    End Function
+    '    End Try
+    '    '====================================================END======================================================
+    '    '=============================================================================================================
+    'End Function
     '====================================================END======================================================
     '=============================================================================================================
 End Class
