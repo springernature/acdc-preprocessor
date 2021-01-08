@@ -10,12 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="MySql.Data">
-      <HintPath>bin\Debug\netcoreapp3.1\MySql.Data.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="File\ConfigFilePaths.vb">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
