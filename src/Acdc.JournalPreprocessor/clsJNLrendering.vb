@@ -83,18 +83,8 @@ Public Class clsJNLrendering
             LayoutnameDB = LayoutnameDB.Trim
             If (layoutname.Trim.Contains(LayoutnameDB.Trim) = True And LayoutnameDB <> "") Then
             Else
-                If (LayoutnameDB = "" And ACDCLayout = False) Then
-                    CLog.LogMessages("Database is not updated for this layout.unable to get layout name in trace workflow")
-                    ''End
-                Else
-                    If (LayoutnameDB = "" And ACDCLayout = True) Then
-                        CLog.LogMessages("Layout name is incorrect" + LayoutnameDB + ".""")
-                    Else
-                        CLog.LogMessages("Wrong Layout is selected. Correct layout is " + LayoutnameDB + ".""")
-                    End If
+                CLog.LogMessages("Layout information is wrong.")
 
-                    ''End
-                End If
             End If
             'Else
             '    CLog.LogMessages("NOT Exists(""config.xml"")")

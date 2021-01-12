@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acdc.Preprocessor.RMQ.Commu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acdc.Preprocessor.Core", "Acdc.Preprocessor.Core\Acdc.Preprocessor.Core.csproj", "{F74A264B-8B11-4554-8C0E-4415111B48C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acdc.Preprocessor.CMS.Communicator", "Acdc.Preprocessor.CMS.Communicator\Acdc.Preprocessor.CMS.Communicator.csproj", "{115AA03B-C612-4283-BD13-94ABED539674}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acdc.Preprocessor.CMS.Communicator", "Acdc.Preprocessor.CMS.Communicator\Acdc.Preprocessor.CMS.Communicator.csproj", "{115AA03B-C612-4283-BD13-94ABED539674}"
 EndProject
-Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Acdc.JournalPreprocessor", "Acdc.JournalPreprocessor\Acdc.JournalPreprocessor.vbproj", "{E065C901-2E3C-4856-A0D0-75AADF5E1129}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Acdc.JournalPreprocessor", "Acdc.JournalPreprocessor\Acdc.JournalPreprocessor.vbproj", "{E065C901-2E3C-4856-A0D0-75AADF5E1129}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

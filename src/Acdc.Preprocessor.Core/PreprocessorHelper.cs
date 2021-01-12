@@ -119,6 +119,8 @@ namespace Acdc.Preprocessor.Core
                 {
                     isPGXml = false;
                     LoggerCF.GetInstance().LogError("Error: Mandatory Field Layout Name is not updated in configuration");
+                    throw new PreprocessorException("Layout(Large/Medium/Smallcondensed/Smallextended) information is mandatory for PG xml Creating.Layout information is missing in jobsheet.");
+
                 }
                 finalString += "<HardDrivePath/>" + Environment.NewLine + "<UserHomeDrivePath/>" + Environment.NewLine + "<LogFileName/>";
 
