@@ -105,7 +105,7 @@ Public Class clsPreprocMain
             'For Equal Symbol end
             sr.Close()
 
-            Dim sw As New StreamWriter("s:\tt.xml", False, System.Text.Encoding.GetEncoding(1252))
+            Dim sw As New StreamWriter("d:\tt.xml", False, System.Text.Encoding.GetEncoding(1252))
             sw.Write(XmlStr)
             sw.Close()
             NTable = New NameTable
@@ -173,13 +173,13 @@ Public Class clsPreprocMain
 
             sxDoc.LoadXml(XmlStr)
 
-            xWrite = XmlWriter.Create("s:\coversIndentXml.xml", xWriteSettings)
+            xWrite = XmlWriter.Create("d:\coversIndentXml.xml", xWriteSettings)
 
             sxDoc.WriteTo(xWrite)
 
             xWrite.Close()
             Dim finalxdoc As New XmlDocument
-            finalxdoc.Load("s:\coversIndentXml.xml")
+            finalxdoc.Load("d:\coversIndentXml.xml")
 
 
             Return finalxdoc.OuterXml

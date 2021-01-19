@@ -1333,8 +1333,11 @@ Module MDLFunction
 
                             If (LinksourcePrefix = "Fig" Or LinksourcePrefix = "Tab" Or LinksourcePrefix = "Sch" Or LinksourcePrefix = "Str") Then
                                 If (LinksourcePrefix! = "Tab") Then
-                                    SourceNds(i).ChildNodes(0).Attributes.Append(srattribute)
-
+                                    If (IsNothing(SourceNds(i).Item("Caption")) = False) Then
+                                        SourceNds(i).Item("Caption").Attributes.Append(srattribute)
+                                    Else
+                                        SourceNds(i).Item("tgroup").Attributes.Append(srattribute)
+                                    End If
                                 Else
                                     SourceNds(i).Item("MediaObject").Attributes.Append(srattribute)
                                 End If
@@ -1362,7 +1365,7 @@ Module MDLFunction
         Catch ex As Exception
             CLog.LogMessages("Error in Hyperlink()" + vbNewLine)
             CLog.LogMessages(ex.Message.ToString + vbNewLine)
-            Throw
+            Throw New PreprocessorInnerException("Unable to add Hyperlink. " + ex.Message.ToString())
         End Try
         '====================================================END======================================================
         '=============================================================================================================
