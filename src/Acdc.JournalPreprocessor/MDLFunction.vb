@@ -3445,7 +3445,7 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
 
         Fn_AddLangtoArticleInfo()
 
-        oReq.oFigObj.GetJobName(FigureConversionFile, INXMLName)
+        '' oReq.oFigObj.GetJobName(FigureConversionFile, INXMLName)
 
         Fn_CreateJournalTitleFrame()
 
@@ -3705,84 +3705,7 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
         '=============================================================================================================
     End Function
 
-    Public Function CreateLastPageOpenChoiceNode(Optional ByVal Alreadyexist As Boolean = False)
-        '=============================================================================================================
-        '=============================================================================================================
-        'FUNCTION NAME:CreateLastPageOpenChoiceNode
-        'PARAMETER    :Alreadyexist
-        'AIM          :This function create last page open choice node.
-        '=============================================================================================================
-        '=============================================================================================================
-        Try
-            Dim XmlPath As String = ""
-            XmlPath = oReq.oFigObj.GetQDrivexmlPath(FigureConversionFile, INXMLName)
-            If (XmlPath <> "") Then
-                Dim dirInfo As New System.IO.DirectoryInfo(XmlPath)
-                dirInfo = dirInfo.Parent.Parent
-                If (dirInfo.FullName.ToLower.Contains("discrete object")) Then
-                    XmlPath = dirInfo.FullName.ToLower + "\xml\" + INXMLName.Split("\")(INXMLName.Split("\").Length - 1).ToLower
-                Else
-                    If (dirInfo.FullName.ToLower.Contains("article_stage")) Then
-                        XmlPath = dirInfo.FullName.ToLower + "\dispatch\" + INXMLName.Split("\")(INXMLName.Split("\").Length - 1).ToLower
-                    End If
-                End If
-            End If
-            If (Alreadyexist = True) Then
-                Dim ExistingNd As Xml.XmlNodeList = Xdoc.SelectNodes(".//Acknowledgments/FormalPara")
-                If (IsNothing(ExistingNd) = False) Then
-                    For i As Integer = 0 To ExistingNd.Count - 1
-                        Dim node As Xml.XmlNode = ExistingNd(i)
-                        If (node.SelectSingleNode(".//Heading").InnerText = "Open Access") Then
-                            If (Article_Lg.ToLower = "de") Then
-                                node.SelectSingleNode(".//Para").InnerText = "Dieser Artikel unterliegt den Bedingungen der Creative Commons Attribution Noncommercial License. Dadurch sind die nichtkommerzielle Nutzung, Verteilung und Reproduktion erlaubt, sofern der/die Originalautor/en und die Quelle angegeben sind."
-                            Else
-                                If (Article_Lg.ToLower = "en") Then
-                                    node.SelectSingleNode(".//Para").InnerText = "This article is distributed under the terms of the Creative Commons Attribution Noncommercial License which permits any noncommercial use, distribution, and reproduction in any medium, provided the original author(s) and source are credited."
-                                End If
-                            End If
-                        End If
-                    Next
-                End If
-            Else
-                Dim OpenChoiceInfoNd As Xml.XmlNode = Xdoc.CreateElement("FormalPara")
-                Dim atr As Xml.XmlAttribute = Xdoc.CreateAttribute("RenderingStyle")
-                OpenChoiceInfoNd.Attributes.Append(atr)
-                atr.Value = "Style1"
-                If (Article_Lg.ToLower = "de") Then
-                    OpenChoiceInfoNd.InnerXml = "<Heading>Open Access</Heading><Para>Dieser Artikel unterliegt den Bedingungen der Creative Commons Attribution Noncommercial License. Dadurch sind die nichtkommerzielle Nutzung, Verteilung und Reproduktion erlaubt, sofern der/die Originalautor/en und die Quelle angegeben sind.</Para>"
-                Else
-                    If (Article_Lg.ToLower = "en") Then
-                        OpenChoiceInfoNd.InnerXml = "<Heading>Open Access</Heading><Para>This article is distributed under the terms of the Creative Commons Attribution Noncommercial License which permits any noncommercial use, distribution, and reproduction in any medium, provided the original author(s) and source are credited.</Para>"
-                    End If
-                End If
 
-                If (System.IO.File.Exists(XmlPath) = True) Then
-                    ' ReplaceQDrivexml(OpenChoiceInfoNd.OuterXml, XmlPath)
-                End If
-                Dim Root As Xml.XmlNode = Xdoc.SelectSingleNode(".//Article/ArticleBackmatter/Acknowledgments")
-                If (IsNothing(Root) = True) Then
-                    Root = Xdoc.SelectSingleNode(".//Article/ArticleBackmatter")
-                    If (IsNothing(Root) = True) Then
-                        Root = Xdoc.SelectSingleNode(".//Article/Body")
-                        OpenChoiceInfoNd.InnerXml = "<ArticleBackmatter><Acknowledgments>" + OpenChoiceInfoNd.InnerXml + "</Acknowledgments></ArticleBackmatter>"
-                        Root.InsertAfter(OpenChoiceInfoNd, Root.NextSibling)
-                    Else
-                        OpenChoiceInfoNd.InnerXml = "<Acknowledgments>" + OpenChoiceInfoNd.InnerXml + "</Acknowledgments>"
-                        Root.InsertBefore(OpenChoiceInfoNd, Root.FirstChild)
-                    End If
-                Else
-                    Root.InsertAfter(OpenChoiceInfoNd, Root.LastChild)
-                End If
-            End If
-
-        Catch ex As Exception
-            CLog.LogMessages("Error in CreateLastPageOpenChoiceNode()" + vbNewLine)
-            CLog.LogMessages(ex.Message.ToString + vbNewLine)
-            Throw
-        End Try
-        '====================================================END======================================================
-        '=============================================================================================================
-    End Function
     Private Function Fn_AddImgatr_Biography()
         '=============================================================================================================
         '=============================================================================================================
