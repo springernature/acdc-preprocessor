@@ -12,6 +12,7 @@
 '====================================================================================================================
 Imports System.Text.RegularExpressions
 Public Class classAuthoraffiliation_Creation_STM
+
     Dim Xdoc As New Xml.XmlDocument
     Dim affxdoc As New Xml.XmlDocument
     Dim Article_Lg As String = ""
@@ -48,7 +49,7 @@ Public Class classAuthoraffiliation_Creation_STM
         Dim Finalxml As String = Fn_CreateAuthAffNodeFor_STM()
         '======================================================
         If (Finalxml <> "") Then
-      
+
             '======================================================
             Dim p As Xml.XmlNode = Xxdoc.CreateElement("test")
             p.InnerXml = Finalxml
@@ -146,7 +147,7 @@ Public Class classAuthoraffiliation_Creation_STM
         '=============================================================================================================
         '=============================================================================================================
         Dim Finalxml As String = "" 'cs_PrePro_AuthAff
-      
+
 
         Dim PresentedAtNd As Xml.XmlNodeList = Xdoc.SelectNodes(".//ArticleNote[@Type='PresentedAt']")
         If (IsNothing(PresentedAtNd) = False And PresentedAtNd.Count > 0) Then
@@ -231,8 +232,8 @@ Public Class classAuthoraffiliation_Creation_STM
         If (mainstr <> "") Then
             mainstr = "<cs_text type=""auth_aff_collections"">" + mainstr + "</cs_text>"
         End If
-      
-         
+
+
         '=============================================================================================================
         '=============================================================================================================
 
