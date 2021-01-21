@@ -20,7 +20,7 @@ Public Class ClsLogMessage
         'AIM          :This function write message to the given file
         '=============================================================================================================
         '=============================================================================================================
-        Dim sw As New System.IO.StreamWriter("s:\JNLPGUtility.log", True)
+        Dim sw As New System.IO.StreamWriter("d:\JNLPGUtility.log", True)
         If (str = True) Then
             sw.Write(vbNewLine + Msg)
         Else

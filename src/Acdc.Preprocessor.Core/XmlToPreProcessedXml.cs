@@ -19,7 +19,7 @@ namespace Acdc.Preprocessor.Core
             XmlAndFileName editedXml = null;
             XmlAndFileName jobsheetXml = null;
             string reuestID = string.Empty;
-            string workingFolder = @"\\SWINRONEPRD0061\Work";//"s:\Breeze-Pagination\Breeze\IN\Work";
+            string workingFolder = @"\\SWINRONEPRD0061\Work";//"d:\Breeze-Pagination\Breeze\IN\Work";
             string folderPath = null;
             try
             {

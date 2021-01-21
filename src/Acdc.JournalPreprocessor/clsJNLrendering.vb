@@ -177,7 +177,7 @@ Public Class clsJNLrendering
         End Try
 p:
         Try
-            Dim ersw As New System.IO.StreamWriter("s:\JNLPGUtility.txt")
+            Dim ersw As New System.IO.StreamWriter("d:\JNLPGUtility.txt")
             ersw.Write("-----STM Journal Preprocessor ------ : " + Now.ToString + vbNewLine + ErrorMessages + vbNewLine)
             ersw.Close()
         Catch ex As Exception

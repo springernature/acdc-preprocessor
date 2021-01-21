@@ -152,7 +152,7 @@ Public Class clsFigureConversion
                         'Added condition on 170610
                         If (BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value.Contains("\") = False) Then
                             ''BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "C:\FigNotFound.jpg"
-                            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "s:\FigNotFoundNew.jpg"
+                            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "d:\FigNotFoundNew.jpg"
                         End If
                     Next
                 Catch ex As Exception
@@ -654,10 +654,10 @@ Public Class clsFigureConversion
                 If System.IO.File.Exists(FigName) Then
                     FigureIdentiAttr.Value = FigName
                 Else
-                    FigureIdentiAttr.Value = "s:\FigNotFound.jpg"
+                    FigureIdentiAttr.Value = "d:\FigNotFound.jpg"
                     Try
                         If (FigNd.Attributes.ItemOf("Float").Value.ToLower = "no") Then
-                            FigureIdentiAttr.Value = "s:\FigNotFoundNew.jpg"
+                            FigureIdentiAttr.Value = "d:\FigNotFoundNew.jpg"
                         End If
                     Catch ex As Exception
 

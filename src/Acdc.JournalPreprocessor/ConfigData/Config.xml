@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <settings>
-<tablesettingxml>s:\Zappagination\Project\JournalAutomation\Settings\TableSettings.xml</tablesettingxml>
-<figuresettingsxml>s:\s:\Zappagination\Project\JournalAutomation\Settings\FigureSettings.xml</figuresettingsxml>
-<EquationPath>s:\Zappagination\Project\JournalAutomation\JNLPreprocessor\Graphics</EquationPath>
-<Entitysettingsxml>s:\Zappagination\Project\JournalAutomation\JNLPreprocessor\JNLPreprocessor\bin\Debug\Entities.xml</Entitysettingsxml>
+<tablesettingxml>d:\Zappagination\Project\JournalAutomation\Settings\TableSettings.xml</tablesettingxml>
+<figuresettingsxml>d:\d:\Zappagination\Project\JournalAutomation\Settings\FigureSettings.xml</figuresettingsxml>
+<EquationPath>d:\Zappagination\Project\JournalAutomation\JNLPreprocessor\Graphics</EquationPath>
+<Entitysettingsxml>d:\Zappagination\Project\JournalAutomation\JNLPreprocessor\JNLPreprocessor\bin\Debug\Entities.xml</Entitysettingsxml>
 <ACDC_Jobsheetxml>\\192.168.84.43\Breeze_Share</ACDC_Jobsheetxml>
 <ACDC_Graphics>\\192.168.84.43\Breeze_Share</ACDC_Graphics>
 <JournalSubTypeA>|501|11812|</JournalSubTypeA>
