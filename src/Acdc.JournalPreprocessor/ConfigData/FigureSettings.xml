@@ -1,6 +1,6 @@
 <Root>
 <FigureSettings>
-<BaseDirectory>d:\ZapPagination\</BaseDirectory>
+<BaseDirectory>s:\ZapPagination\</BaseDirectory>
 <FigureElementName idAttribute="ID">Figure</FigureElementName>
 <FigureRefElementName idAttribute="RefID" IDpattern="Fig(\d+)">InternalRef</FigureRefElementName>
 <FigureCaptionElement>Caption</FigureCaptionElement>
