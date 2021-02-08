@@ -12,7 +12,7 @@
 '===================================================================================================================
 '===================================================================================================================
 Public Class clsReposition
-    Private Shared repositionNo As Integer = 0
+    Public Shared repositionNo As Integer = 0
     Public Shared ReadOnly Property GetRepositionID() As String
         Get
             repositionNo += 1

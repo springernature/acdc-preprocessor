@@ -1504,7 +1504,7 @@ Module MDLFunction
             oReq.AddAttribute(".//cs:reposition/table", "aid:pstyle", "Body_Text")
             'oReq.AddTextorXml(".//Biography/FormalPara/Heading[not(.='')]", "<cs_text type='comma'>,</cs_text>", clsPreprocMain.ChildTypes.AsNextSibling, True)
             'oReq.AddTextorXml(".//cs:reposition[position()=1]", "<cs_text type='vbnewline'>" + vbNewLine + "</cs_text>", clsPreprocMain.ChildTypes.AsPreviousSibling, True)
-            oReq.AddAttribute(".//cs_repos[@cs_IsInline]", "aid:pstyle", "InlineImage")
+            oReq.AddAttribute(".//cs_repos [@cs_IsInline]", "aid:pstyle", "InlineImage")
             oReq.AddAttribute(".//*[@cs_IsInlineTable]", "aid:pstyle", "InlineTable")
             oReq.AddAttribute(".//Para[cs:reposition[@cs_IsInlineTable]]", "aid:pstyle", "InlineTable")
             oReq.DeleteAttr(".//Para[cs:reposition[@cs_IsInlineTable]]//table", "aid:pstyle")
@@ -3507,9 +3507,28 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
         'Get running head style from database add this in information afterwords in AddInformation() function 
         RunningHeadStyle = oReq.oFigObj.GetRunningHeadStyle(FigureConversionFile, INXMLName)
 
+        Fn_PlaceMottoAfterReference()
         '====================================================END======================================================
         '=============================================================================================================
     End Sub
+
+    Private Sub Fn_PlaceMottoAfterReference()
+        Dim articleNote As Xml.XmlElement = Xdoc.SelectSingleNode(".//ArticleBackmatter/ArticleNote[@Type='Misc']")
+        If (IsNothing(articleNote) = False) Then
+            Dim bibNode As Xml.XmlElement = Xdoc.SelectSingleNode(".//ArticleBackmatter/Bibliography")
+            If (IsNothing(bibNode) = False) Then
+                Dim MainNode As Xml.XmlElement = Xdoc.SelectSingleNode(".//ArticleBackmatter")
+                MainNode.InsertAfter(articleNote, MainNode.LastChild)
+
+            End If
+
+
+        End If
+
+
+
+    End Sub
+
     Private Function Fn_AddTableCharAlign()
         '=============================================================================================================
         '=============================================================================================================
@@ -6164,7 +6183,7 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
         'FUNCTION NAME:Editmetadata
         'PARAMETER    :str,chapterNds
         'AIM          :This function update metadata node
-        '=============================================================================================================
+        '==============================se===============================================================================
         '=============================================================================================================
 
         oReq.DeleteNode(".//Abstract//processing-instruction('HIDEINDEX')")

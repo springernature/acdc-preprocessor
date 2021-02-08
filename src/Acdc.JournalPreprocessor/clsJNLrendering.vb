@@ -100,6 +100,7 @@ Public Class clsJNLrendering
             oReq = New clsPreprocMain(inputxml)
             Xdoc.PreserveWhitespace = True
             Xdoc = oReq.XDoc
+            clsReposition.repositionNo = 0
             MDLFunction.Main(Xdoc)
 
             If (IsNothing(Xdoc.SelectSingleNode(".//ArticleCategory")) = False) Then
