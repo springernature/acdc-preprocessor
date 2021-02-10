@@ -3271,21 +3271,23 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
             If (IsNothing(Hnodes) = False And Hnodes.Count > 0) Then
                 For m As Integer = 0 To Hnodes.Count - 1
                     Dim Nd As Xml.XmlNode = Hnodes(m)
-                    If (Nd.NextSibling.Name.ToLower = "para") Then
-                        If ((Nd.NextSibling.OuterXml.Contains("<Para><Table") = True) And Nd.NextSibling.OuterXml.Contains("/Table></Para>") = True) Then
-                            Dim Tbnnode As Xml.XmlNode = Nd.NextSibling.SelectSingleNode(".//Table")
-                            If (IsNothing(Tbnnode.Attributes.ItemOf("Float")) = False) Then
-                                If (Tbnnode.Attributes.ItemOf("Float").Value.ToLower = "yes") Then
-                                    If (IsNothing(Nd.NextSibling.NextSibling) = False And Nd.NextSibling.NextSibling.Name.ToLower = "para") Then
-                                        Dim NoGet As Xml.XmlNode = Nd.NextSibling.NextSibling
-                                        Dim attr As Xml.XmlAttribute = Xdoc.CreateAttribute("cs_position")
-                                        attr.Value = "tb_afterHead"
-                                        NoGet.Attributes.Append(attr)
+                    If (IsNothing(Nd.NextSibling) = False) Then
+                        If (Nd.NextSibling.Name.ToLower = "para") Then
+                            If ((Nd.NextSibling.OuterXml.Contains("<Para><Table") = True) And Nd.NextSibling.OuterXml.Contains("/Table></Para>") = True) Then
+                                Dim Tbnnode As Xml.XmlNode = Nd.NextSibling.SelectSingleNode(".//Table")
+                                If (IsNothing(Tbnnode.Attributes.ItemOf("Float")) = False) Then
+                                    If (Tbnnode.Attributes.ItemOf("Float").Value.ToLower = "yes") Then
+                                        If (IsNothing(Nd.NextSibling.NextSibling) = False And Nd.NextSibling.NextSibling.Name.ToLower = "para") Then
+                                            Dim NoGet As Xml.XmlNode = Nd.NextSibling.NextSibling
+                                            Dim attr As Xml.XmlAttribute = Xdoc.CreateAttribute("cs_position")
+                                            attr.Value = "tb_afterHead"
+                                            NoGet.Attributes.Append(attr)
+                                        End If
+
                                     End If
-
                                 End If
-                            End If
 
+                            End If
                         End If
                     End If
                 Next

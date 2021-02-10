@@ -66,9 +66,17 @@ namespace Acdc.Preprocessor.Core
                 BrokerMessageHelper.SetError(brokerMessage, ex.Message, ex.StackTrace, GlobalAppSetting.appsetting.ACDC_PREPROCESSOR_APP_NAME);
                 AuditLogHelper.alert_message.Add(new AlertMessage { code = Constants.technicalException, description = ex.Message, elementref = ex.StackTrace });
                 result = false;
+                DeleteFolder(folderPath);
                 throw;
             }
             return (result, folderPath);
+        }
+        private void DeleteFolder(string tempstorage)
+        {
+            if (Directory.Exists(tempstorage))
+            {
+                Directory.Delete(tempstorage, true);
+            }
         }
 
     }
