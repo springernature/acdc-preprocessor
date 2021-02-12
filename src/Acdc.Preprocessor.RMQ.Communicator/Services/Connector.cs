@@ -96,10 +96,10 @@ namespace Acdc.Preprocessor.RMQ.Communicator
             var auditMessage = new Core.AuditMessage
             {
                 AcdcId = !string.IsNullOrEmpty(_brokerMessage["id"].ToString()) ? _brokerMessage["id"].ToString() : null,
-                PrimaryID = null,
-                SecondaryID = null,
+                PrimaryID = !string.IsNullOrEmpty(BrokerMessageHelper.GetGlobalMsId(_brokerMessage)) ? BrokerMessageHelper.GetGlobalMsId(_brokerMessage) : null,
+                SecondaryID = !string.IsNullOrEmpty(BrokerMessageHelper.GetManuscriptId(_brokerMessage)) ? BrokerMessageHelper.GetManuscriptId(_brokerMessage) : null,
                 RequestID = !string.IsNullOrEmpty(BrokerMessageHelper.GetRequestId(_brokerMessage)) ? BrokerMessageHelper.GetRequestId(_brokerMessage) : null,
-                ConsumerID = null,
+                ConsumerID = !string.IsNullOrEmpty(BrokerMessageHelper.GetConsumerId(_brokerMessage)) ? BrokerMessageHelper.GetConsumerId(_brokerMessage) : null,
                 ProductionTaskID = null,
                 JournalID = null,
                 Revision = null,
@@ -140,10 +140,10 @@ namespace Acdc.Preprocessor.RMQ.Communicator
             var auditMessage = new Core.AuditMessage
             {
                 AcdcId = !string.IsNullOrEmpty(_brokerMessage["id"].ToString()) ? _brokerMessage["id"].ToString() : null,
-                PrimaryID =  null,
-                SecondaryID =null,
-                RequestID =!string.IsNullOrEmpty(BrokerMessageHelper.GetRequestId(_brokerMessage)) ? BrokerMessageHelper.GetRequestId(_brokerMessage) : null,
-                ConsumerID =  null,
+                PrimaryID = !string.IsNullOrEmpty(BrokerMessageHelper.GetGlobalMsId(_brokerMessage)) ? BrokerMessageHelper.GetGlobalMsId(_brokerMessage) : null,
+                SecondaryID = !string.IsNullOrEmpty(BrokerMessageHelper.GetManuscriptId(_brokerMessage)) ? BrokerMessageHelper.GetManuscriptId(_brokerMessage) : null,
+                RequestID = !string.IsNullOrEmpty(BrokerMessageHelper.GetRequestId(_brokerMessage)) ? BrokerMessageHelper.GetRequestId(_brokerMessage) : null,
+                ConsumerID = !string.IsNullOrEmpty(BrokerMessageHelper.GetConsumerId(_brokerMessage)) ? BrokerMessageHelper.GetConsumerId(_brokerMessage) : null,
                 ProductionTaskID =  null,
                 JournalID = null,
                 Revision =  null,
@@ -165,10 +165,10 @@ namespace Acdc.Preprocessor.RMQ.Communicator
             var auditMessage = new Core.AuditMessage
             {
                 AcdcId = !string.IsNullOrEmpty(_brokerMessage["id"].ToString()) ? _brokerMessage["id"].ToString() : null,
-                PrimaryID = null,
-                SecondaryID =  null,
+                PrimaryID = !string.IsNullOrEmpty(BrokerMessageHelper.GetGlobalMsId(_brokerMessage)) ? BrokerMessageHelper.GetGlobalMsId(_brokerMessage) : null,
+                SecondaryID = !string.IsNullOrEmpty(BrokerMessageHelper.GetManuscriptId(_brokerMessage)) ? BrokerMessageHelper.GetManuscriptId(_brokerMessage) : null,
                 RequestID = !string.IsNullOrEmpty(BrokerMessageHelper.GetRequestId(_brokerMessage)) ? BrokerMessageHelper.GetRequestId(_brokerMessage) : null,
-                ConsumerID =  null,
+                ConsumerID = !string.IsNullOrEmpty(BrokerMessageHelper.GetConsumerId(_brokerMessage)) ? BrokerMessageHelper.GetConsumerId(_brokerMessage) : null,
                 ProductionTaskID = null,
                 JournalID = null,
                 Revision =  null,

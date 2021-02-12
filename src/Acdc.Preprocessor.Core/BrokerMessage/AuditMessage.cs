@@ -62,7 +62,7 @@ namespace Acdc.Preprocessor.Core
         [JsonProperty("alert_message")]
         public JArray AlertMessage { get; set; }
 
-        [JsonProperty("Errors")]
+        [JsonProperty("errors")]
         public JArray Errors { get; set; }
     }
 }

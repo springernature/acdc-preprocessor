@@ -10,6 +10,28 @@ namespace Acdc.Preprocessor.Core
     {
         protected BrokerMessageHelper()
         { }
+        public static string GetConsumerId(JObject message)
+        {
+            return message[Broker.Rmq]?[Broker.ConsumerId] != null ? message[Broker.Rmq][Broker.ConsumerId].ToString() : string.Empty;
+        }
+
+        public static string GetManuscriptId(JObject message)
+        {
+            return message[Broker.Metadata][Broker.ManuscriptId] != null ? message[Broker.Metadata][Broker.ManuscriptId].ToString() : string.Empty;
+        }
+
+        public static string GetGlobalMsId(JObject message)
+        {
+            string result = string.Empty;
+
+            if (message[Broker.Metadata]?[Broker.GlobalMsId] != null)
+                return message[Broker.Metadata][Broker.GlobalMsId].ToString();
+
+            if (message[Broker.Metadata]?["primary_id"] != null)
+                return message[Broker.Metadata]["primary_id"].ToString();
+
+            return result;
+        }
 
         public static string GetRequestId(JObject message)
         {
