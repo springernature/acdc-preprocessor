@@ -78,8 +78,8 @@
 	<!-- ArticleNote start -->
 	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='Misc' or @type='ESMHint' or @type='CommunicatedBy' or @type='Dedication' or @type='PresentedBy' ]</node>
 	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote/SimplePara</node>
-	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote[not(@Type='ESMHint')]/Heading</node>
-	
+	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote[not(@Type='ESMHint') and not(@Type='Misc' and @cs_position='belowreference')]/Heading</node>
+	<node override="true"  position="after" Insertionnode="emspace">.//ArticleNote[(@Type='Misc') and (@cs_position='belowreference')]/Heading</node>
 	<!-- ArticleNote end -->
 	<!-- auth_aff_collections start -->
 	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_collections']</node>
@@ -361,9 +361,10 @@
 
 
 	<!-- Article Note start -->
-	<node pstyle="Article_Note">.//ArticleNote/Heading</node>
-	<node pstyle="Article_Note_Para">.//ArticleNote/SimplePara</node>
-	<node pstyle="Article_Note">.//ArticleNote[not(child::Heading)]/SimplePara[1]</node>
+	<node pstyle="Article_Note">.//ArticleNote[not(@cs_position='belowreference')]/Heading</node>
+	<node pstyle="Article_Note_Para">.//ArticleNote[not(@cs_position='belowreference')]/SimplePara</node>
+	<node pstyle="Article_Note">.//ArticleNote[not(child::Heading) and not(@cs_position='belowreference')]/SimplePara[1]</node>
+	<node pstyle="Publisher_Note">.//ArticleNote[@Type='Misc' and  @cs_position='belowreference']</node>
 	<!-- <node pstyle="Article_Note">.//cs_text[@type='Misc' or @type='ESMHint' or @type='CommunicatedBy' or @type='Dedication' or @type='PresentedBy' ]</node> -->
 	<!-- Article Note end -->
 

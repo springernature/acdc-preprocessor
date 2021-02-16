@@ -2087,6 +2087,7 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
                 If (IsNothing(nodes) = False And nodes.Count > 0) Then
                     For i As Integer = 0 To nodes.Count - 1
                         Dim Nd As Xml.XmlNode = nodes(i)
+
                         Dim InsertionString As String = ""
                         InsertionString = CreateNodeElement(Nd.Attributes.ItemOf("Insertionnode").Value)
                         If (Nd.Attributes.ItemOf("position").Value.ToLower = "after") Then
@@ -3520,6 +3521,10 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
             Dim bibNode As Xml.XmlElement = Xdoc.SelectSingleNode(".//ArticleBackmatter/Bibliography")
             If (IsNothing(bibNode) = False) Then
                 Dim MainNode As Xml.XmlElement = Xdoc.SelectSingleNode(".//ArticleBackmatter")
+
+                Dim cs_position As Xml.XmlAttribute = Xdoc.CreateAttribute("cs_position")
+                cs_position.Value = "belowreference"
+                articleNote.Attributes.Append(cs_position)
                 MainNode.InsertAfter(articleNote, MainNode.LastChild)
 
             End If
