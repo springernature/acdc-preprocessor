@@ -41,9 +41,9 @@ namespace Acdc.Preprocessor.Core
                 string outxmlPath= PreprocessorHelper.SetOutputXmlPath(folderPath, editedXml);
 
                new clsJNLrendering(inputxmlPath, outxmlPath, "true", jobSheetXmlPath, "");
+              
 
-
-             bool isPGXml=  PreprocessorHelper.CreatePGXml(inputxmlPath, jobSheetXmlPath, folderPath);
+             bool isPGXml=  PreprocessorHelper.CreatePGXml(inputxmlPath, jobSheetXmlPath, folderPath,brokerMessage);
                 if (System.IO.File.Exists(outxmlPath) == false)
                 {
                     LoggerCF.GetInstance().LogInfo("Failed to create outxml: " + outxmlPath, brokerMessage);

@@ -70,7 +70,7 @@ namespace Acdc.Preprocessor.Core
 
         }
 
-        public static bool CreatePGXml(string inputxmlPath, string jobSheetXmlPath, string folderPath)
+        public static bool CreatePGXml(string inputxmlPath, string jobSheetXmlPath, string folderPath,JObject brokerMessage)
         {
             bool isPGXml = false;
             string finalString = string.Empty;
@@ -80,7 +80,7 @@ namespace Acdc.Preprocessor.Core
 
             
 
-            (isPGXml, finalString)= GetLayoutPGInfo(finalString, jXDoc);
+            (isPGXml, finalString)= GetLayoutPGInfo(finalString, jXDoc,brokerMessage);
 
             if (isPGXml)
             {
@@ -91,7 +91,7 @@ namespace Acdc.Preprocessor.Core
             return isPGXml;
         }
 
-        private static (bool isPGXml, string finalString) GetLayoutPGInfo(string finalString, XDocument jXDoc)
+        private static (bool isPGXml, string finalString) GetLayoutPGInfo(string finalString, XDocument jXDoc,JObject brokerMessage)
         {
             bool isPGXml = true;
 
@@ -173,11 +173,27 @@ namespace Acdc.Preprocessor.Core
                 {
                     finalString += "<TemplateName Mandatory='Yes'>/TemplateName>";
                 }
-
+                var workflow = BrokerMessageHelper.GetWorkflow(brokerMessage);
+                if(!string.IsNullOrEmpty(workflow))
+                {
+                    finalString += "<StageID>"+GetStageInfo(workflow) +"</StageID>";
+                }
+                else
+                {
+                    finalString += "<StageID>S200</StageID>";
+                }
 
             }
 
             return (isPGXml, finalString);
+        }
+
+        private static string GetStageInfo(string workflow)
+        {
+            if (workflow.ToLower().Equals("acceptance-s200"))
+                return "S200";
+            else
+                return "S300";
         }
 
         private static string FormatJournalID(XDocument jXDoc)

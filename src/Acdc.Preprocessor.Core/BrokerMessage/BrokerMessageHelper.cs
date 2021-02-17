@@ -14,7 +14,11 @@ namespace Acdc.Preprocessor.Core
         {
             return message[Broker.Rmq]?[Broker.ConsumerId] != null ? message[Broker.Rmq][Broker.ConsumerId].ToString() : string.Empty;
         }
-
+        public static string GetWorkflow(JObject message)
+        {
+            return message[Broker.Rmq]?[Broker.Workflow] != null ? message[Broker.Rmq][Broker.Workflow].ToString() : string.Empty;
+        }
+        
         public static string GetManuscriptId(JObject message)
         {
             return message[Broker.Metadata][Broker.ManuscriptId] != null ? message[Broker.Metadata][Broker.ManuscriptId].ToString() : string.Empty;
