@@ -125,15 +125,16 @@ namespace Acdc.Preprocessor.Core
                 finalString += "<HardDrivePath/>" + Environment.NewLine + "<UserHomeDrivePath/>" + Environment.NewLine + "<LogFileName/>";
 
 
-                if (journalNode.Attribute("publisher") != null)
+                string publishetName = GetPublisherNameFromJobsheet(jXDoc);
+                if(!string.IsNullOrEmpty(publishetName))
                 {
-                    finalString += "<Publisher>" + journalNode.Attribute("publisher").Value + "</Publisher>";
+                    finalString += "<Publisher>" + publishetName + "</Publisher>";
                 }
                 else
                 {
                     finalString += "<Publisher>/Publisher>";
                 }
-                
+
                 
                 if (jXDoc.Descendants("JournalID").Any())
                     finalString += "<JournalId>" + FormatJournalID(jXDoc) + "</JournalId>";
@@ -186,6 +187,23 @@ namespace Acdc.Preprocessor.Core
             }
 
             return (isPGXml, finalString);
+        }
+
+        private static string GetPublisherNameFromJobsheet(XDocument jXDoc)
+        {
+            string publisherName = string.Empty;
+            if (jXDoc.Descendants("PublisherInfo").Any())
+            {
+                XElement publisherInfo = jXDoc.Descendants("PublisherInfo").FirstOrDefault();
+                if (publisherInfo.Descendants("PublisherName").Any())
+                {
+                    publisherName = publisherInfo.Descendants("PublisherName").FirstOrDefault().Value;
+
+                }
+
+            }
+
+            return publisherName;
         }
 
         private static string GetStageInfo(string workflow)
