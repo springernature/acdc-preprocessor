@@ -3397,6 +3397,7 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
         'AIM          :This function do addition, movement, modification of node.
         '=============================================================================================================
         '=============================================================================================================
+        Fn_SplitParaWithTableAndText()
 
         Fn_GraphicalAbstract()
 
@@ -3513,6 +3514,15 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
         Fn_PlaceMottoAfterReference()
         '====================================================END======================================================
         '=============================================================================================================
+    End Sub
+
+    Private Sub Fn_SplitParaWithTableAndText()
+        Dim articleNote As Xml.XmlElement = Xdoc.SelectSingleNode(".//Para/Table")
+        If (IsNothing(articleNote) = False) Then
+
+        End If
+
+
     End Sub
 
     Private Sub Fn_PlaceMottoAfterReference()

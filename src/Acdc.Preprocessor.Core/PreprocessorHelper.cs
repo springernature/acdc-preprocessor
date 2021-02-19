@@ -177,11 +177,11 @@ namespace Acdc.Preprocessor.Core
                 var workflow = BrokerMessageHelper.GetWorkflow(brokerMessage);
                 if(!string.IsNullOrEmpty(workflow))
                 {
-                    finalString += "<StageiD>"+GetStageInfo(workflow) +"</StageiD>";
+                    finalString += "<Stageid>"+GetStageInfo(workflow) +"</Stageid>";
                 }
                 else
                 {
-                    finalString += "<StageiD>200</StageiD>";
+                    finalString += "<Stageid>200</Stageid>";
                 }
 
             }
