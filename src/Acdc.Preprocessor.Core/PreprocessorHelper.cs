@@ -177,11 +177,11 @@ namespace Acdc.Preprocessor.Core
                 var workflow = BrokerMessageHelper.GetWorkflow(brokerMessage);
                 if(!string.IsNullOrEmpty(workflow))
                 {
-                    finalString += "<StageID>"+GetStageInfo(workflow) +"</StageID>";
+                    finalString += "<StageiD>"+GetStageInfo(workflow) +"</StageiD>";
                 }
                 else
                 {
-                    finalString += "<StageID>S200</StageID>";
+                    finalString += "<StageiD>200</StageiD>";
                 }
 
             }
@@ -209,9 +209,9 @@ namespace Acdc.Preprocessor.Core
         private static string GetStageInfo(string workflow)
         {
             if (workflow.ToLower().Equals("acceptance-s200"))
-                return "S200";
+                return "200";
             else
-                return "S300";
+                return "300";
         }
 
         private static string FormatJournalID(XDocument jXDoc)
