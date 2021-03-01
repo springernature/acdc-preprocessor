@@ -1505,10 +1505,10 @@ Module MDLFunction
             'oReq.AddTextorXml(".//Biography/FormalPara/Heading[not(.='')]", "<cs_text type='comma'>,</cs_text>", clsPreprocMain.ChildTypes.AsNextSibling, True)
             'oReq.AddTextorXml(".//cs:reposition[position()=1]", "<cs_text type='vbnewline'>" + vbNewLine + "</cs_text>", clsPreprocMain.ChildTypes.AsPreviousSibling, True)
             oReq.AddAttribute(".//cs_repos [@cs_IsInline]", "aid:pstyle", "InlineImage")
-            oReq.AddAttribute(".//*[@cs_IsInlineTable]", "aid:pstyle", "InlineTable")
-            oReq.AddAttribute(".//Para[cs:reposition[@cs_IsInlineTable]]", "aid:pstyle", "InlineTable")
+            oReq.AddAttribute(".//*[@cs_IsInlineTable]", "aid:pstyle", "Body_Text")
+            oReq.AddAttribute(".//Para[cs:reposition[@cs_IsInlineTable]]", "aid:pstyle", "Body_Text")
             oReq.DeleteAttr(".//Para[cs:reposition[@cs_IsInlineTable]]//table", "aid:pstyle")
-            oReq.AddAttribute(".//Para[cs:reposition[@cs_IsInlineTable]]//table", "aid:pstyle", "InlineTable")
+            oReq.AddAttribute(".//Para[cs:reposition[@cs_IsInlineTable]]//table", "aid:pstyle", "Body_Text")
 
             oReq.AddTextorXml(".//Para[cs:reposition[@cs_IsInlineTable]]", "<cs_text type='vbnewline'>" + vbNewLine + "</cs_text>", clsPreprocMain.ChildTypes.AsNextSibling, True)
 
