@@ -278,7 +278,7 @@
 	<!-- Abstract end -->
 
 
-	<!-- AbstractSection start -->
+	<!-- AbstractSection start -->"
 	<node pstyle="Abstract_Structured_Heading">.//Abstract[AbstractSection]/Heading[not(.='')]</node>
 	<node pstyle="Abstract_Structured_Heading_De">.//Abstract[@Language='De' and child::AbstractSection]/Heading[not(.='')]</node>
 	<node pstyle="Abstract_Structured_Heading_Es">.//Abstract[@Language='Es' and child::AbstractSection]/Heading[not(.='')]</node>
@@ -289,20 +289,20 @@
 	
 	
 	
-	<node pstyle="Abstract_Structured_Text">.//Abstract[@Language='En']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_Indent">.//Abstract[@Language='En']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_Indent">.//Abstract[@Language='En']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text">.//Abstract[@Language='En']/AbstractSection[position()=1]/Para[1]</node>
 	
-	<node pstyle="Abstract_Structured_Text_De">.//Abstract[@Language='De']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_De_Indent">.//Abstract[@Language='De']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_De_Indent">.//Abstract[@Language='De']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_De">.//Abstract[@Language='De']/AbstractSection[position()=1]/Para[1]</node>
 	
-	<node pstyle="Abstract_Structured_Text_Fr">.//Abstract[@Language='Fr']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_Fr_Indent">.//Abstract[@Language='Fr']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_Fr_Indent">.//Abstract[@Language='Fr']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_Fr">.//Abstract[@Language='Fr']/AbstractSection[position()=1]/Para[1]</node>
 	
-	<node pstyle="Abstract_Structured_Text_Es">.//Abstract[@Language='Es']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_Es_Indent">.//Abstract[@Language='Es']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_Es_Indent">.//Abstract[@Language='Es']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_Es">.//Abstract[@Language='Es']/AbstractSection[position()=1]/Para[1]</node>
 	
-	<node pstyle="Abstract_Structured_Text_Nl">.//Abstract[@Language='Nl']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_Nl_Indent">.//Abstract[@Language='Nl']/AbstractSection[position()>1]/Para</node>
+	<node pstyle="Abstract_Structured_Text_Nl_Indent">.//Abstract[@Language='Nl']/AbstractSection/Para</node>
+	<node pstyle="Abstract_Structured_Text_Nl">.//Abstract[@Language='Nl']/AbstractSection[position()=1]/Para[1]</node>
 	
 	<!-- AbstractSection end -->
 
