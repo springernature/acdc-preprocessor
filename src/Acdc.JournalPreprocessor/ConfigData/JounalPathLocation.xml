@@ -257,16 +257,16 @@
 	<node pstyle="Abstract_UNstructured_Heading_Fr">.//Abstract[@Language='Fr' and not(child::AbstractSection)]/Heading</node>
 	<node pstyle="Abstract_UNstructured_Heading_Nl">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Heading</node>
 	
-	<node pstyle="Abstract_UNstructured_Heading_Text">.//Abstract[@Language='En' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Text">.//Abstract[@Language='En' and not(child::AbstractSection)]/Para</node>
 	<node pstyle="Abstract_UNstructured_Text_Indent">.//Abstract[@Language='En' and not(child::AbstractSection)]/Para[position()>1]</node>
 	
-	<node pstyle="Abstract_UNstructured_Heading_Text_De">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Text_De">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para</node>
 	<node pstyle="Abstract_UNstructured_Text_De_Indent">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para[position()>1]</node>
-	<node pstyle="Abstract_UNstructured_Heading_Text_Nl">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Text_Nl">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para</node>
 	<node pstyle="Abstract_UNstructured_Text_Nl_Indent">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para[position()>1]</node>
 	
-	<node pstyle="Abstract_UNstructured_Heading_Text_Fr">.//Abstract[@Language='Fr' and not(child::AbstractSection)]/Para</node>
-	<node pstyle="Abstract_UNstructured_Heading_Text_Es">.//Abstract[@Language='Es' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Text_Fr">.//Abstract[@Language='Fr' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Text_Es">.//Abstract[@Language='Es' and not(child::AbstractSection)]/Para</node>
 	<node pstyle="Abstract_UNstructured_Text_Fr_Indent">.//Abstract[@Language='Fr' and not(child::AbstractSection)]/Para[position()>1]</node>
 	<node pstyle="Abstract_UNstructured_Text_Es_Indent">.//Abstract[@Language='Es' and not(child::AbstractSection)]/Para[position()>1]</node>
 	<node pstyle="Abstract_UNstructured_Text_De_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='De']/Para[1]</node>
@@ -290,19 +290,19 @@
 	
 	
 	<node pstyle="Abstract_Structured_Text_Indent">.//Abstract[@Language='En']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text">.//Abstract[@Language='En']/AbstractSection[position()=1]/Para[1]</node>
+	<node pstyle="Abstract_Structured_Text">.//Abstract[@Language='En']/AbstractSection/Para[1]</node>
 	
 	<node pstyle="Abstract_Structured_Text_De_Indent">.//Abstract[@Language='De']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_De">.//Abstract[@Language='De']/AbstractSection[position()=1]/Para[1]</node>
+	<node pstyle="Abstract_Structured_Text_De">.//Abstract[@Language='De']/AbstractSection/Para[1]</node>
 	
 	<node pstyle="Abstract_Structured_Text_Fr_Indent">.//Abstract[@Language='Fr']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_Fr">.//Abstract[@Language='Fr']/AbstractSection[position()=1]/Para[1]</node>
+	<node pstyle="Abstract_Structured_Text_Fr">.//Abstract[@Language='Fr']/AbstractSection/Para[1]</node>
 	
 	<node pstyle="Abstract_Structured_Text_Es_Indent">.//Abstract[@Language='Es']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_Es">.//Abstract[@Language='Es']/AbstractSection[position()=1]/Para[1]</node>
+	<node pstyle="Abstract_Structured_Text_Es">.//Abstract[@Language='Es']/AbstractSection/Para[1]</node>
 	
 	<node pstyle="Abstract_Structured_Text_Nl_Indent">.//Abstract[@Language='Nl']/AbstractSection/Para</node>
-	<node pstyle="Abstract_Structured_Text_Nl">.//Abstract[@Language='Nl']/AbstractSection[position()=1]/Para[1]</node>
+	<node pstyle="Abstract_Structured_Text_Nl">.//Abstract[@Language='Nl']/AbstractSection/Para[1]</node>
 	
 	<!-- AbstractSection end -->
 
@@ -324,7 +324,7 @@
 
 	<!-- KeywordGroup start -->
 	<node pstyle="Keyword_Text_De">.//KeywordGroup[@Language='De']</node>
-	<node pstyle="Keyword_Text_En">.//KeywordGroup[@Language='En']</node>
+	<node pstyle="Keyword_Text">.//KeywordGroup[@Language='En']</node>
 	<node pstyle="Keyword_Text_Fr">.//KeywordGroup[@Language='Fr']</node>
 	<node pstyle="Keyword_Text_Es">.//KeywordGroup[@Language='Es']</node>
 	<node pstyle="Keyword_Text_Nl">.//KeywordGroup[@Language='Nl']</node>
