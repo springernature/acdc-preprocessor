@@ -119,40 +119,39 @@ Public Class clsFigureConversion
                         'get image path from hard drive if its null then get path on mentioned location
                         '  hPath = GetPathFromHardDrivePath(inputxml)
 
-
-                        If (ACDCLayout = True) Then
-                            hPath = ACDC_Graphics
-                        Else
-                            hPath = GetPathFromHardDrivePath(inputxml)
-                        End If
+                        hPath = Path.GetDirectoryName(inputxml).Replace("InputXml", "Graphics\Web")
+                        'If (ACDCLayout = True) Then
+                        '    hPath = ACDC_Graphics
+                        'Else
+                        '    hPath = GetPathFromHardDrivePath(inputxml)
+                        'End If
                     Catch ex As Exception
 
                     End Try
-                    If hPath <> "" Then
-                        'hPath = hPath + "\Print"
-                        hPath = hPath + "\Web"
-                    End If
-                    For i As Integer = 0 To BiographyNd.Count - 1
-                        Try
-                            Dim InnerNode As Xml.XmlNode = BiographyNd(i)
-                            Dim AllNewImages() As String = System.IO.Directory.GetFiles(hPath)
-                            For Each fl As String In AllNewImages
-                                Dim finf As New System.IO.FileInfo(fl)
-                                Dim str As String = "" 'XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
-                                Dim initial_letter As String = BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value
-                                str = initial_letter.ToLower
-                                str = str.Split(".")(0)
-                                If (finf.Name.ToLower.Contains(str + ".eps") Or finf.Name.ToLower.Contains(str + ".tif") Or finf.Name.ToLower.Contains(str + ".jpg") Or finf.Name.ToLower.Contains(str + ".jpeg")) Then
-                                    BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = fl
-                                End If
-                            Next
-                        Catch ex As Exception
 
-                        End Try
+                    For i As Integer = 0 To BiographyNd.Count - 1
+                        'Try
+                        '    Dim InnerNode As Xml.XmlNode = BiographyNd(i)
+                        '    Dim AllNewImages() As String = System.IO.Directory.GetFiles(hPath)
+                        '    For Each fl As String In AllNewImages
+                        '        Dim finf As New System.IO.FileInfo(fl)
+                        '        Dim str As String = "" 'XDoc.SelectSingleNode(".//Article[@ID]").Attributes.ItemOf("ID").Value
+                        '        Dim initial_letter As String = BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value
+                        '        ' str = initial_letter.ToLower
+                        '        ' str = str.Split(".")(0)
+                        '        Dim FigPathforXML As String = getHiresImagePath(hPath, initial_letter, "")
+                        '        If (finf.Name.ToLower.Contains(str + ".eps") Or finf.Name.ToLower.Contains(str + ".tif") Or finf.Name.ToLower.Contains(str + ".jpg") Or finf.Name.ToLower.Contains(str + ".jpeg")) Then
+                        '            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = fl
+                        '        End If
+                        '    Next
+                        'Catch ex As Exception
+
+                        'End Try
                         'Added condition on 170610
-                        If (BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value.Contains("\") = False) Then
-                            ''BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "C:\FigNotFound.jpg"
-                            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "s:\FigNotFoundNew.jpg"
+                        If (BiographyNd(i).SelectSingleNode(".//ImageObject").Attributes.ItemOf("FileRef").Value.Contains("\") = False) Then
+                            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = "s:\AuthorFigNotFoundNew.jpg"
+                        Else
+                            BiographyNd(i).Attributes.ItemOf("cs_Authorimagepath").Value = BiographyNd(i).SelectSingleNode(".//ImageObject").Attributes.ItemOf("FileRef").Value
                         End If
                     Next
                 Catch ex As Exception
@@ -657,7 +656,7 @@ Public Class clsFigureConversion
                     FigureIdentiAttr.Value = "s:\FigNotFound.jpg"
                     Try
                         If (FigNd.Attributes.ItemOf("Float").Value.ToLower = "no") Then
-                            FigureIdentiAttr.Value = "s:\FigNotFoundNew.jpg"
+                            FigureIdentiAttr.Value = "s:\FigNotFound.jpg"
                         End If
                     Catch ex As Exception
 

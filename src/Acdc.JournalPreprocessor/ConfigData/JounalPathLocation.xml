@@ -162,7 +162,7 @@
 	<node override="true"  position="after" Insertionnode="vbnewline">.//Acknowledgments/SimplePara[not(.='')]</node>
 	<!-- Acknowledgments end -->
 	<!-- Formal para start -->
-	<node override="true"  position="after" Insertionnode="emspace">.//FormalPara/Heading[not(.='')]</node>
+	<node override="true"  position="after" Insertionnode="enspace">.//FormalPara/Heading[not(.='')]</node>
 	<!-- <node override="false"  position="after" Insertionnode="indentohere">.//FormalPara[@RenderingStyle='Style2']/Heading[not(.='')]</node> -->
 
 <!-- <node override="true"  position="after" Insertionnode="vbnewline">.//cs_text[@type='vbgabler_historydt']</node>
