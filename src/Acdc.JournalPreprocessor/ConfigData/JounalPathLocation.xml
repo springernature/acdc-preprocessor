@@ -79,7 +79,7 @@
 	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='Misc' or @type='ESMHint' or @type='CommunicatedBy' or @type='Dedication' or @type='PresentedBy' ]</node>
 	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote/SimplePara</node>
 	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote[not(@Type='ESMHint') and not(@Type='Misc' and @cs_position='belowreference')]/Heading</node>
-	<node override="true"  position="after" Insertionnode="emspace">.//ArticleNote[(@Type='Misc') and (@cs_position='belowreference')]/Heading</node>
+	<node override="true"  position="after" Insertionnode="enspace">.//ArticleNote[(@Type='Misc') and (@cs_position='belowreference')]/Heading</node>
 	<!-- ArticleNote end -->
 	<!-- auth_aff_collections start -->
 	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_collections']</node>
