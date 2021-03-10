@@ -1744,7 +1744,7 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
             If (LayoutnameDB.ToLower = "springervienna") Then
                 oReq.AddTextorXml(".//Acknowledgments/Heading[not(.='')]", "<cs_text type='vbnewline'>" + vbNewLine + "</cs_text>", clsPreprocMain.ChildTypes.AsNextSibling, True)
             Else
-                oReq.AddTextorXml(".//Acknowledgments/Heading[not(.='')]", "<cs_text type='emspace'>&#8195;</cs_text>", clsPreprocMain.ChildTypes.AsNextSibling, True)
+                oReq.AddTextorXml(".//Acknowledgments/Heading[not(.='')]", "<cs_text type='enspace'>&#8194;</cs_text>", clsPreprocMain.ChildTypes.AsNextSibling, True)
             End If
             oReq.AddAttribute(".//cs_text[@type='endnote']", "aid:pstyle", "Head_1")
             If (LayoutnameDB.ToLower.Contains("large") = False) Then '    If (LayoutnameDB.ToLower = "springervienna" Or LayoutnameDB.ToLower = "vsandgabler" Or LayoutnameDB.ToLower = "vs-verlag") Then

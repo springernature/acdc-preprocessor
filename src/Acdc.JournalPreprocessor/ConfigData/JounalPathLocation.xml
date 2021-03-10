@@ -80,6 +80,14 @@
 	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote/SimplePara</node>
 	<node override="false"  position="after" Insertionnode="vbnewline">.//ArticleNote[not(@Type='ESMHint') and not(@Type='Misc' and @cs_position='belowreference')]/Heading</node>
 	<node override="true"  position="after" Insertionnode="enspace">.//ArticleNote[(@Type='Misc') and (@cs_position='belowreference')]/Heading</node>
+	<node override="true"  position="after" Insertionnode="enspace">.//FundingInformation/Heading[not(.='')]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//FundingInformation/SimplePara</node>
+
+	<!--  AuthorContribution start  -->
+	<node override="true"  position="after" Insertionnode="enspace">.//AuthorContribution/Heading[not(.='')]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//AuthorContribution/SimplePara</node>
+	<!-- AuthorContribution end  -->
+	
 	<!-- ArticleNote end -->
 	<!-- auth_aff_collections start -->
 	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_collections']</node>
@@ -158,7 +166,7 @@
 	<node override="true"  position="after" Insertionnode="vbnewline">.//AbbreviationGroup//Heading[not(.='')]</node>
 	<!-- DefinitionListEntry end -->
 	<!-- Acknowledgments start -->
-	<!-- <node override="true"  position="after" Insertionnode="vbnewline">.//Acknowledgments/Heading[not(.='')]</node> -->
+	<!--<node override="true"  position="after" Insertionnode="enspace">.//Acknowledgments/Heading[not(.='')]</node>-->
 	<node override="true"  position="after" Insertionnode="vbnewline">.//Acknowledgments/SimplePara[not(.='')]</node>
 	<!-- Acknowledgments end -->
 	<!-- Formal para start -->
@@ -363,11 +371,11 @@
 		<!-- Formal Para end -->
 
 	<!-- Acknowledgments start -->
-	<node pstyle="Acknowledgement">.//Acknowledgments/Heading</node>
-	<node pstyle="Acknowledgments_Text_Indent">.//Acknowledgments/SimplePara</node>
+	<node pstyle="Acknowledgements">.//Acknowledgments//Heading</node>
+	<!--<node pstyle="Acknowledgments_Text_Indent">.//Acknowledgments/SimplePara</node>
 	<node pstyle="Acknowledgments_Text_Plain">.//Acknowledgments/SimplePara[1]</node>
 
-	<node pstyle="Acknowledgments_Text_Indent">.//Acknowledgments/FormalPara/Para</node>
+	<node pstyle="Acknowledgments_Text_Indent">.//Acknowledgments/FormalPara/Para</node>-->
 	<node pstyle="Acknowledgments_Text">.//Acknowledgments/FormalPara/Para[1]</node>
 	<!-- Acknowledgments end -->
 	
@@ -723,11 +731,18 @@
 	<!-- Ethics start -->
 	<node pstyle="Interessenkonflict_Head">.//Ethics/Heading[not(.='')]</node>
 	<node pstyle="Interessenkonflict_Para">.//Ethics//SimplePara</node>
+	
 
 	<node pstyle="Interessenkonflict">.//Ethics//FormalPara/Heading[not(.='')]</node>
 	<node pstyle="Interessenkonflict">.//Ethics//Para</node>
 	<node pstyle="Interessenkonflict_Para">.//Ethics//Para[position()>1]</node>
 	<!-- Ethics end -->
+	
+	<!--Funding Start  -->
+	<node pstyle="Funding">.//FundingInformation</node>
+	<node pstyle="Author_Contribution">.//AuthorContribution</node>
+	
+	<!--  Funding End  -->
 
     <!-- Undefined Start -->
 	<node pstyle="Undefine">.//cs_text[@type='undefined']</node>
