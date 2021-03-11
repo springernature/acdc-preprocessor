@@ -192,9 +192,9 @@
  <!-- enter before running title/footer/atriclecategory end -->
 
      <!-- Ethics Start -->
-	<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/Heading[not(.='')]</node>
-	<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/SimplePara</node>
-<!-- 	<node override="true"  position="after" Insertionnode="emspace">.//Ethics/FormalPara/Heading</node> -->
+	<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/Heading[not(ancestor::FormalPara) and not(.='')]</node>
+	<!--<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/SimplePara</node>-->
+ 	<node override="true"  position="after" Insertionnode="enspace">.//Ethics/FormalPara/Heading</node> 
 	<!-- Ethics End -->
 
 	<!-- open choice start -->
@@ -734,13 +734,16 @@
 	<!-- Abstract Orderedlist end --> 
 
 	<!-- Ethics start -->
-	<node pstyle="Interessenkonflict_Head">.//Ethics/Heading[not(.='')]</node>
-	<node pstyle="Interessenkonflict_Para">.//Ethics//SimplePara</node>
+
+	<node pstyle="Head_1 ">.//Ethics/Heading[not(.='')]</node>
+	<node pstyle="Ethics_Declarations ">.//Ethics//FormalPara</node>
+	<!--<node pstyle="Interessenkonflict_Head">.//Ethics/Heading[not(.='')]</node>
+	<node pstyle="Interessenkonflict_Para">.//Ethics//SimplePara</node>-->
 	
 
-	<node pstyle="Interessenkonflict">.//Ethics//FormalPara/Heading[not(.='')]</node>
+	<!--<node pstyle="Interessenkonflict">.//Ethics//FormalPara/Heading[not(.='')]</node>
 	<node pstyle="Interessenkonflict">.//Ethics//Para</node>
-	<node pstyle="Interessenkonflict_Para">.//Ethics//Para[position()>1]</node>
+	<node pstyle="Interessenkonflict_Para">.//Ethics//Para[position()>1]</node>-->
 	<!-- Ethics end -->
 	
 	<!--Funding start  -->
