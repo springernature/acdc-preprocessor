@@ -194,7 +194,7 @@
      <!-- Ethics Start -->
 	<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/Heading[not(ancestor::FormalPara) and not(.='')]</node>
 	<!--<node override="true"  position="after" Insertionnode="vbnewline">.//Ethics/SimplePara</node>-->
- 	<node override="true"  position="after" Insertionnode="enspace">.//Ethics/FormalPara/Heading</node> 
+ 	<!--<node override="true"  position="after" Insertionnode="enspace">.//Ethics/FormalPara/Heading</node>--> 
 	<!-- Ethics End -->
 
 	<!-- open choice start -->
@@ -735,8 +735,8 @@
 
 	<!-- Ethics start -->
 
-	<node pstyle="Head_1 ">.//Ethics/Heading[not(.='')]</node>
-	<node pstyle="Ethics_Declarations ">.//Ethics//FormalPara</node>
+	<node pstyle="Head_1">.//Ethics/Heading[not(.='')]</node>
+	<node pstyle="Ethics_Declarations">.//Ethics//FormalPara</node>
 	<!--<node pstyle="Interessenkonflict_Head">.//Ethics/Heading[not(.='')]</node>
 	<node pstyle="Interessenkonflict_Para">.//Ethics//SimplePara</node>-->
 	
