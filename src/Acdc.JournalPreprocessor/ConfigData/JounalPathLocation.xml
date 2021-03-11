@@ -88,6 +88,11 @@
 	<node override="true"  position="after" Insertionnode="vbnewline">.//AuthorContribution/SimplePara</node>
 	<!-- AuthorContribution end  -->
 	
+	<!--  DataAvailability start  -->
+	<node override="true"  position="after" Insertionnode="enspace">.//DataAvailability/Heading[not(.='')]</node>
+	<node override="true"  position="after" Insertionnode="vbnewline">.//DataAvailability/SimplePara</node>
+	<!--  DataAvailability end  -->
+	
 	<!-- ArticleNote end -->
 	<!-- auth_aff_collections start -->
 	<node override="false"  position="after" Insertionnode="vbnewline">.//cs_text[@type='auth_collections']</node>
@@ -738,13 +743,21 @@
 	<node pstyle="Interessenkonflict_Para">.//Ethics//Para[position()>1]</node>
 	<!-- Ethics end -->
 	
-	<!--Funding Start  -->
+	<!--Funding start  -->
 	<node pstyle="Funding">.//FundingInformation</node>
-	<node pstyle="Author_Contribution">.//AuthorContribution</node>
-	
-	<!--  Funding End  -->
+	<!--  Funding end  -->
 
-    <!-- Undefined Start -->
+	<!--AuthorContribution start  -->
+	<node pstyle="Author_Contribution">.//AuthorContribution</node>
+	<!--  AuthorContribution end  -->
+	
+	<!--  DataAvailability start  -->
+	<node pstyle="Data_Availability">.//DataAvailability[@Type='Data']</node>
+	<node pstyle="Code_Availability">.//DataAvailability[@Type='Code']</node>
+	<node pstyle="Materials_Availability">.//DataAvailability[@Type='Materials']</node>
+	<!--  DataAvailability end  -->
+	
+	<!-- Undefined Start -->
 	<node pstyle="Undefine">.//cs_text[@type='undefined']</node>
 	<!-- Undefined End -->
 
