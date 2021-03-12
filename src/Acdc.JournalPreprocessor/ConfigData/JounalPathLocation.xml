@@ -286,7 +286,7 @@
 	<node pstyle="Abstract_UNstructured_Text_En_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='En']/Para[1]</node>
 	<node pstyle="Abstract_UNstructured_Text_Fr_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='Fr']/Para[1]</node>
 	<node pstyle="Abstract_UNstructured_Text_Es_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='Es']/Para[1]</node>
-	<node pstyle="Abstract_UNstructured_Heading_Text_De">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para</node>
+	<node pstyle="Abstract_UNstructured_Text_De">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para</node>
 	<node pstyle="Abstract_UNstructured_Text_De_Indent">.//Abstract[@Language='De' and not(child::AbstractSection)]/Para[position()>1]</node>
 	<!-- Abstract end -->
 
@@ -329,7 +329,7 @@
 
 	<!-- Graphical Abstract end -->
 	<!-- Abstract Nl start -->
-	<node pstyle="Abstract_UNstructured_Heading">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Heading</node>
+	
 	<node pstyle="Abstract_UNstructured_Text_Nl">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para</node>
 	<node pstyle="Abstract_UNstructured_Nl_Indent">.//Abstract[@Language='Nl' and not(child::AbstractSection)]/Para[position()>1]</node>
 	<node pstyle="Abstract_UNstructured_Text_Nl_No space">.//cs_text[@type='abstract_keyword' and (child::ArticleTitle)]/ArticleTitle/following-sibling::Abstract[@Language='Nl']/Para[1]</node>

@@ -4242,6 +4242,45 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
                             Abstract_CombinedNds.AppendChild(DefinitionList_En)
                         End If
 
+                        Dim ArticleTitle_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//ArticleTitle[parent::ArticleInfo and @Language='Nl' and not(.='')]")
+                        If (IsNothing(ArticleTitle_Nl) = False) Then
+                            Abstract_CombinedNds.InnerXml += Regex.Replace(ArticleTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                        End If
+                        Dim ArticleSubTitle_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//ArticleSubTitle[parent::ArticleInfo and @Language='Nl' and not(.='')]")
+                        If (IsNothing(ArticleSubTitle_Nl) = False) Then
+                            If (LayoutnameDB.ToLower.Contains("large") = False And LayoutnameDB.ToLower.Contains("large") = False) Then ' If (LayoutnameDB.ToLower = "springervienna") Then
+                                Abstract_CombinedNds.InnerXml += "<cs_text type='space'> </cs_text><cs_text type='endash'>&#8211;</cs_text><cs_text type='space'> </cs_text>" + Regex.Replace(ArticleSubTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                            Else
+                                If (LayoutnameDB.ToLower = "vsandgabler" Or LayoutnameDB.ToLower = "vs-verlag") Then
+                                    Abstract_CombinedNds.InnerXml += "<cs_text type='space'> </cs_text><cs_text type='endash'>&#8211;</cs_text><cs_text type='space'> </cs_text>" + Regex.Replace(ArticleSubTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                                Else
+                                    Abstract_CombinedNds.InnerXml += "<cs_text type='vbnewline'>" + vbNewLine + "</cs_text>" + Regex.Replace(ArticleSubTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                                End If
+                            End If
+
+                        Else
+                            If (IsNothing(ArticleTitle_Nl) = False) Then
+                                Abstract_CombinedNds.InnerXml += vbNewLine
+                            End If
+                        End If
+                        Dim Abstract_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//Abstract[@Language='Nl' and not(.='')]")
+                        If (IsNothing(Abstract_Nl) = False) Then
+                            Abstract_CombinedNds.InnerXml += Abstract_Nl.OuterXml
+                        End If
+
+                        Dim Keyword_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//KeywordGroup[@Language='Nl'and not(.='')]")
+                        If (IsNothing(Keyword_Nl) = False) Then
+                            Abstract_CombinedNds.InnerXml += Keyword_Nl.OuterXml
+                        End If
+
+                        'abbrevation
+                        Dim DefinitionList_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//DefinitionList[@Language='Nl'and not(.='')]")
+                        If (IsNothing(DefinitionList_Nl) = False) Then
+                            Abstract_CombinedNds.AppendChild(DefinitionList_Nl)
+                        End If
+
+
+
                         Dim ArticleTitle_Fr As Xml.XmlNode = Xdoc.SelectSingleNode(".//ArticleTitle[parent::ArticleInfo and @Language='Fr' and not(.='')]")
                         If (IsNothing(ArticleTitle_Fr) = False) Then
                             Abstract_CombinedNds.InnerXml += Regex.Replace(ArticleTitle_Fr.OuterXml, "\s+</", "</", RegexOptions.Singleline)
@@ -4451,6 +4490,41 @@ prv:            Dim MainNode1 As Xml.XmlNodeList = Xdoc.SelectNodes(".//cs_text[
                             If (IsNothing(Keyword_Fr) = False) Then
                                 Abstract_CombinedNds.InnerXml += Keyword_Fr.OuterXml
                             End If
+                            Dim ArticleTitle_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//ArticleTitle[parent::ArticleInfo and @Language='Nl' and not(.='')]")
+                            If (IsNothing(ArticleTitle_Nl) = False) Then
+                                Abstract_CombinedNds.InnerXml += Regex.Replace(ArticleTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                            End If
+
+                            Dim ArticleSubTitle_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//ArticleSubTitle[parent::ArticleInfo and @Language='Nl' and not(.='')]")
+                            If (IsNothing(ArticleSubTitle_Nl) = False) Then
+                                If (LayoutnameDB.ToLower.Contains("large") = False And LayoutnameDB.ToLower.Contains("large") = False) Then ' If (LayoutnameDB.ToLower = "springervienna") Then
+                                    Abstract_CombinedNds.InnerXml += "<cs_text type='space'> </cs_text><cs_text type='endash'>&#8211;</cs_text><cs_text type='space'> </cs_text>" + Regex.Replace(ArticleSubTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                                Else
+                                    If (LayoutnameDB.ToLower = "vsandgabler" Or LayoutnameDB.ToLower = "vs-verlag") Then
+                                        Abstract_CombinedNds.InnerXml += "<cs_text type='space'> </cs_text><cs_text type='endash'>&#8211;</cs_text><cs_text type='space'> </cs_text>" + Regex.Replace(ArticleSubTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                                    Else
+                                        Abstract_CombinedNds.InnerXml += "<cs_text type='vbnewline'>" + vbNewLine + "</cs_text>" + Regex.Replace(ArticleSubTitle_Nl.OuterXml, "\s+</", "</", RegexOptions.Singleline)
+                                    End If
+                                End If
+
+                            Else
+                                If (IsNothing(ArticleTitle_Nl) = False) Then
+                                    Abstract_CombinedNds.InnerXml += vbNewLine
+                                End If
+                            End If
+
+
+
+                            Dim Abstract_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//Abstract[@Language='Nl' and not(.='')]")
+                            If (IsNothing(Abstract_Nl) = False) Then
+                                Abstract_CombinedNds.InnerXml += Abstract_Nl.OuterXml
+
+                            End If
+                            Dim Keyword_Nl As Xml.XmlNode = Xdoc.SelectSingleNode(".//KeywordGroup[@Language='Nl'and not(.='')]")
+                            If (IsNothing(Keyword_Nl) = False) Then
+                                Abstract_CombinedNds.InnerXml += Keyword_Nl.OuterXml
+                            End If
+
                             'spanish
                             Dim ArticleTitle_Es As Xml.XmlNode = Xdoc.SelectSingleNode(".//ArticleTitle[parent::ArticleInfo and @Language='Es' and not(.='')]")
                             If (IsNothing(ArticleTitle_Es) = False) Then
